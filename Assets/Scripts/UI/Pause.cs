@@ -4,7 +4,6 @@ using UnityEngine.UI;
 public class Pause : MonoBehaviour
 {
     public GameObject PauseUI;
-    private Text PauseSec;
     GameManager manager;
     void Start()
     {
@@ -20,8 +19,6 @@ public class Pause : MonoBehaviour
         {
             Time.timeScale = 0.001f; // 시간이 느리게 흘러가도록
             PauseUI.SetActive(true);
-            PauseSec = PauseUI.GetComponentInChildren<Text>();
-            PauseSec.enabled = false;
         }
     }
 }
