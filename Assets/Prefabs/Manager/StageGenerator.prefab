@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2694523669690464483
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2694523669690464485}
+  - component: {fileID: 2694523669690464484}
+  m_Layer: 0
+  m_Name: StageGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2694523669690464485
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2694523669690464483}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -126.412384, y: 127.991196, z: 20.683844}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2694523669690464484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2694523669690464483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d8d6eab50671945b6a3e883933be97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moneyPrefab: {fileID: 1705473951103510256, guid: 85c02cb2590cb3d4cbb4f94121830f64, type: 3}
+  fileStackPrefab: {fileID: 7650365492973964917, guid: fff6d0f9c4627474ab684125e9e0cc49, type: 3}
+  mailPrefab: {fileID: 6690256060525154710, guid: 5b2ba3f599260d542bcac22dc44b057a, type: 3}
+  postItPrefab: {fileID: 8402762533297212653, guid: 78fbd7dbe1eb3304bba3935d827c45f4, type: 3}
+  coffeePrefab: {fileID: 6235122001173261856, guid: 132d1d7c361ea3e45bfefda8591845c8, type: 3}
+  distance: 7
+  stageIndex: 0
+  stageFile: {fileID: 0}
