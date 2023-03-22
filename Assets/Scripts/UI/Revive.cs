@@ -17,7 +17,7 @@ public class Revive : MonoBehaviour
     public void OnReviveButtonClick()
     {
         StartCoroutine(GetEnumerator());
-        ReviveBtn.interactable=false;
+        ReviveBtn.interactable=false;        
     }
 
     public IEnumerator GetEnumerator()
@@ -32,6 +32,7 @@ public class Revive : MonoBehaviour
         }
         // 게임 다시 시작할 수 있도록
         GameOver_UI.SetActive(false);
+        ReviveSec.enabled = false;
         manager.isOver=false;
         Time.timeScale = 1f;
 
