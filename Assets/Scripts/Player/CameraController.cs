@@ -8,7 +8,9 @@ public class CameraController : MonoBehaviour
 
     public float distance = 10f;  // 카메라와 플레이어 간의 거리
     public float height = 5f;  // 카메라와 플레이어 간의 높이
-    public float smoothSpeed = 0.5f;  // 카메라 이동 시 부드러운 감속을 위한 변수
+
+    static public float smoothSpeed = 0.4f;  // 카메라 이동 시 부드러운 감속을 위한 변수
+    public static float changeSpeed = 0.1f; //카메라 빨라지는 정도
 
     private Vector3 velocity = Vector3.zero;  // 카메라 이동 시 사용할 속도 벡터
 
@@ -20,5 +22,18 @@ public class CameraController : MonoBehaviour
 
         // 카메라가 플레이어를 바라보도록 회전시킴
         transform.LookAt(target);
+    }
+
+    static public void smoothSpeedUp()
+    {
+        smoothSpeed -= changeSpeed;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("플레이어와 충돌");
+        }
     }
 }

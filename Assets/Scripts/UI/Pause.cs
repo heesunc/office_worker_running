@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Pause : MonoBehaviour
 {
-    public Button pauseBtn;
     public GameObject PauseUI;
+    private Text PauseSec;
     GameManager manager;
     void Start()
     {
@@ -14,20 +12,16 @@ public class Pause : MonoBehaviour
     }
     void Update()
     {
-        //Debug.Log("Update");
         transform.Translate(Time.deltaTime, 0, 0);
     }
-    private void FixedUpdate()
-    {
-        //Debug.Log("FixedUpdate");
-    }
-
     public void OnTogglePauseButton()
     {
         if (Time.timeScale == 1)
         {
-            Time.timeScale = 0; //멈추기
+            Time.timeScale = 0.001f; // 시간이 느리게 흘러가도록
             PauseUI.SetActive(true);
+            PauseSec = PauseUI.GetComponentInChildren<Text>();
+            PauseSec.enabled = false;
         }
     }
 }

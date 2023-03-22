@@ -1,11 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using System.Collections;
 
 public class PauseBtn : MonoBehaviour
 {
     public GameObject PauseUI;
+    private Text PauseSec;
 
     public void ExitBtn()
     {
@@ -16,8 +17,21 @@ public class PauseBtn : MonoBehaviour
 
     public void ProgressBtn()
     {
-        // Pause를 누르고 "계속 진행" 버튼을 누르면 3초 후 게임 계속할 수 있도록
+        StartCoroutine(GetEnumerator());
+    }
+
+    public IEnumerator GetEnumerator()
+    {
+        PauseSec = PauseUI.GetComponentInChildren<Text>();
+        PauseSec.enabled = true;
+        for (int i = 3; i >= 1; i--)
+        {
+            PauseSec.text = i.ToString();
+            yield return new WaitForSecondsRealtime(1f);
+        }
+
         PauseUI.SetActive(false);
         Time.timeScale = 1f;
+        Debug.Log("3초 뒤 다시 게임 시작");        
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public void ChangeMove() //넉백
+    public void ChangeMove()
     {
         move *= -1;
     }
@@ -35,9 +35,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    public bool seeX;
-    private Animator anim;
-
     //private:
     enum TurnState
     {
@@ -46,56 +43,82 @@ public class Player : MonoBehaviour
         LEFT = -1
     };
 
-    const int TILE = 7;
+    enum Direction
+    {
+        X,
+        Z,
+        READY,
+        WAIT
+    }
 
+    const int TILE = 7;
+    private Direction seeX = Direction.READY;
+
+    //move
+    public float speed = 7; //move speed
     private int move = 1;
+    private float playTime = 0f; //속도 올리기용. 나중에 없애기. 
+    private Vector3 correctVelocity = Vector3.zero; //it move to right line using this velocity
+    private float correctTime = 1f; //it move to right line while this time
+    private float correctGoalX;
+    private float correctGoalZ;
+
+    //turn
     private TurnState isturn = TurnState.NONE;
-    private bool isJump = false;
-    private int f = 5; //점프 힘 조절
-    private float speed = 7; //달리기 속도
-    private int mistake = 100; //스와이프 길이
-    private bool s = false; //왼쪽 터치면 true, 오른쪽 터치면 false
-    private bool go = true; //앞으로 가는 중 => 오차 줄이는 용도
-    private float playTime = 0f;
+    private bool go = true; //it is going now?
+    private int checkCount;
     private float lastX;
     private float lastZ;
 
+    //jump
+    private bool isJump = false;
+    private int f = 5; //jump Force
+
+    //Controller
+    private bool s = false; //Swipe mode true, Button mode false
+    private int mistake = 100; //touch width
+
+    //gameObject
     Rigidbody rg;
     Transform tf;
-    Vector3 startPos;
+    float x;
+    float z;
+
+    public Animator anim;
+    Vector3 startPos; //touch position in device
 
     void Start()
     {
-        //seeX = false;
         tf = gameObject.GetComponent<Transform>();
         rg = gameObject.GetComponent<Rigidbody>();
-        anim = gameObject.GetComponent<Animator>();
         startPos = new Vector3(0, 0, 0);
-        lastX = tf.position.x;
-        lastZ = tf.position.z;
+        correctGoalX = lastX = tf.position.x;
+        correctGoalZ = lastZ = tf.position.z;
+
+        checkCount = 2;
     }
 
     // Update is called once per frame
     void Update()
     {
-        anim.SetBool("isJumping", isJump);
+        x = tf.position.x;
+        z = tf.position.z;
 
-        //Swipe인 경우 터치 입력 받기
-        //아예 터치 받는 부분을 분리하고 다른 오브젝트에 붙여서 오브젝트 false하는 게 더 깔끔할 듯
-        if (Option.getController() == Controller.SWIPE && Input.touchCount > 0) //ù ��° ��ġ �߻�
+        //check user controller when it Swipe mode 
+        if (Option.getController() == Controller.SWIPE && Input.touchCount > 0) //first touch
         {
             Touch touch0 = Input.GetTouch(0);
 
-            if (touch0.phase == TouchPhase.Began) //오른쪽 터치면 점프, 왼쪽 터치면 스와이프 준비
+            if (touch0.phase == TouchPhase.Began) //if it just touch
             {
                 startPos = touch(touch0);
             }
-            else if (s && (touch0.phase == TouchPhase.Moved)) //왼쪽 터치일 때: 스와이프 어느쪽인지 확인
+            else if (s && (touch0.phase == TouchPhase.Moved)) //if it swipe
             {
                 swipe(touch0, startPos);
             }
 
-            if (Input.touchCount > 1) //두 번째 터치 발생 시 첫번째 터치와 같은 방식으로 처리.
+            if (Input.touchCount > 1) //second touch
             {
                 Touch touch1 = Input.GetTouch(1);
 
@@ -110,17 +133,25 @@ public class Player : MonoBehaviour
             }
         }
 
-        //회전 명령 확인
+        //check front at an inteval of 0.3s
+        if (playTime > 0.3 * checkCount && seeX != Direction.WAIT)
+        {
+            checkSeeX();
+            checkCount++;
+            Debug.Log(checkCount);
+        }
+
+        //ready turn
         if (isturn != TurnState.NONE)
         {
-            Debug.Log("버튼은 문제 없다");
-            float x = tf.position.x;
-            float z = tf.position.z;
-
-            if ((seeX && checkPlace(x) && Math.Round(x) % TILE == 0) //x축으로 이동 중일 경우 x축이 타일 사이일 때
-                || (!seeX && checkPlace(z) && Math.Round(z) % TILE == 0)) //z축으로 이동 중일 경우 z축이 타일 사이일 때 회전.
+            if (((seeX == Direction.X) && Math.Round(x) % TILE == 0) //when it going x line, check x position
+                || ((seeX == Direction.Z) && Math.Round(z) % TILE == 0)) //when it gotin z line, check z position
             {
-                Debug.Log("checkPlace도 되는데");
+                correctGoalX = (float)Math.Round(x);
+                correctGoalZ = (float)Math.Round(z);
+
+                seeX = Direction.WAIT;
+                checkCount += 2;
                 go = false;
 
                 if (isturn == TurnState.LEFT)
@@ -129,42 +160,51 @@ public class Player : MonoBehaviour
                 }
                 else //RIGHT
                 {
-                    StartCoroutine(turnR()); //테스트 해보기
+                    StartCoroutine(turnR());
                 }
-              
                 isturn = TurnState.NONE;
-                lastX = tf.position.x;
-                lastZ = tf.position.z;
             }
         }
 
-        checkSeeX();
-
-        //앞으로 가즈아??
+        //default move
         if (go == true)
         {
-            tf.Translate(Vector3.forward * speed * move * Time.deltaTime); //앞으로 가도록 함, 게임 속도 보정
+            tf.Translate(Vector3.forward * speed * move * Time.deltaTime);
         }
 
-        //시간에 따른 가속도
-        //플레이타임 만약에 필요하면 몇 번째 증속인지 세는 변수 도입.
-        playTime += Time.deltaTime;
+        //speed up at an interval of 25s
         if (playTime > 25)
         {
             playTime = 0;
-            //speedUp();
+            checkCount = 1;
+            speedUp();
+        }
+
+        playTime += Time.deltaTime;
+    }
+
+    private void correctLine() //no used
+    {
+        //correctLine
+        if (seeX == Direction.X)
+        {
+            transform.position = Vector3.SmoothDamp(tf.position, new Vector3(x, tf.position.y, correctGoalZ), ref correctVelocity, correctTime);
+        }
+        else if (seeX == Direction.Z)
+        {
+            transform.position = Vector3.SmoothDamp(tf.position, new Vector3(correctGoalX, tf.position.y, z), ref correctVelocity, correctTime);
         }
     }
 
     private void speedUp()
     {
         speed *= 1.2f;
+        CameraController.smoothSpeedUp();
     }
 
-    private bool checkPlace(float x) //오차가 너무 크니까 조금만 더 가서 돌아라
+    private bool checkPlace(float x) //no used.
     {
         float xf = x - (float)Math.Floor(x);
-        Debug.Log(xf);
 
         if (0.75 <= xf || xf <= 0.25)
             return true; //xd + 1
@@ -172,7 +212,7 @@ public class Player : MonoBehaviour
             return false; //xd
     }
 
-    private Vector3 touch(Touch touch) //터치 발생 -> 왼쪽인지 오른쪽인지 확인.
+    private Vector3 touch(Touch touch) //��ġ �߻� -> �������� ���������� Ȯ��.
     {
         if (touch.position.x > 960)
         {
@@ -186,22 +226,19 @@ public class Player : MonoBehaviour
         return touch.position;
     }
 
-    private void swipe(Touch touch, Vector3 startPos) //왼쪽 터치 발생 -> 어느쪽 스와이프인지 확인.
+    private void swipe(Touch touch, Vector3 startPos) //���� ��ġ �߻� -> ����� ������������ Ȯ��.
     {
-        if (touch.position.x - startPos.x > mistake) //직진보다는 회전 우선
+        if (touch.position.x - startPos.x > mistake) //�������ٴ� ȸ�� �켱
         {
             oderTurnR();
-            Debug.Log("오른쪽으로 스와이프");
         }
         else if (startPos.x - touch.position.x > mistake)
         {
             isturn = TurnState.LEFT;
-            Debug.Log("왼쪽으로 스와이프");
         }
         else if (touch.position.y - startPos.y > mistake)
         {
             oderFront();
-            Debug.Log("위쪽으로 스와이프");
         }
         else
             return;
@@ -209,31 +246,31 @@ public class Player : MonoBehaviour
         s = false;
     }
 
-    private void OnCollisionEnter(Collision other) //점프 가능 상태 확인.
+    private void OnCollisionEnter(Collision other) //���� ���� ���� Ȯ��.
     {
-        if (other.collider.CompareTag("Floor")) //대소문자 확인
+        if (other.collider.CompareTag("Floor")) //��ҹ��� Ȯ��
         {
             isJump = false;
         }
-
     }
+
     private void checkSeeX() //오차 1
     {
-        Debug.Log("checkSeeX 진입");
-
-        Debug.Log(lastX);
-        Debug.Log(lastZ);
+        Debug.Log(seeX);
 
         int o = 1; //오차
 
         if (lastX + o < tf.position.x || lastX - o > tf.position.x)
         {
-            seeX = true;
+            seeX = Direction.X;
         }
-        else if (lastZ + o < tf.position.z || lastX - o > tf.position.z)
+        else
         {
-            seeX = false;
+            seeX = Direction.Z;
         }
+
+        //lastX = tf.position.x;
+        //lastZ = tf.position.z;
     }
 
     private int turnGoal(int r)
@@ -249,30 +286,41 @@ public class Player : MonoBehaviour
         return r;
     }
 
-    IEnumerator turnR() //회전 메소드.
+    IEnumerator turnR()
     {
-        int rY = (int)tf.eulerAngles.y;
-        int goal = turnGoal(rY); //목표 각도
+        int rY = (int)tf.eulerAngles.y; //if error in angle, change int to float
+        int goal = turnGoal(rY); //turn
 
         while (rY != goal)
         {
-            rY += 3;
+            rY += 5; //ry값 조정. -> speed 올라가면 같이 올라가도록
             rg.MoveRotation(Quaternion.Euler(0, rY, 0));
             yield return null;
         }
-        go = true;
+
+        endTrun();
     }
 
-    IEnumerator turnL() //회전 메소드.
+    IEnumerator turnL() //ȸ�� �޼ҵ�.
     {
         int rY = (int)tf.eulerAngles.y;
-        int goal = turnGoal(rY); //목표 각도
+        int goal = turnGoal(rY); //��ǥ ����
+
         while (rY != goal)
         {
-            rY -= 3;
+            rY -= 5;
             rg.MoveRotation(Quaternion.Euler(0, rY, 0));
             yield return null;
         }
+
+        endTrun();
+    }
+
+    private void endTrun()
+    {
         go = true;
+        lastX = tf.position.x;
+        lastZ = tf.position.z;
+        seeX = Direction.READY;
     }
 }
