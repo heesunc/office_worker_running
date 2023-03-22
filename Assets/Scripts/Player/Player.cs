@@ -104,6 +104,7 @@ public class Player : MonoBehaviour
         x = tf.position.x;
         z = tf.position.z;
 
+        anim.SetBool("isJumping", isJump);
         //check user controller when it Swipe mode 
         if (Option.getController() == Controller.SWIPE && Input.touchCount > 0) //first touch
         {

@@ -17,8 +17,8 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.2500001
-  m_TransitionOffset: 0.3638301
+  m_TransitionDuration: 0.25000012
+  m_TransitionOffset: 0.4340696
   m_ExitTime: 0.7639754
   m_HasExitTime: 0
   m_HasFixedDuration: 1
@@ -88,7 +88,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: walk|walk|walk|runningjump
-  m_Speed: 1
+  m_Speed: 0.8
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -5056021447266453647}
@@ -150,9 +150,9 @@ AnimatorStateTransition:
   m_IsExit: 0
   serializedVersion: 3
   m_TransitionDuration: 0.20103186
-  m_TransitionOffset: 0.6782264
+  m_TransitionOffset: 0.7808436
   m_ExitTime: 0.6842105
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1

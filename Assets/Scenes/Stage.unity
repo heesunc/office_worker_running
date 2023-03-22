@@ -287,7 +287,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 471832847}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: Jump
         m_Mode: 1
@@ -1765,7 +1765,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  anim: {fileID: 0}
+  anim: {fileID: 471832850}
+--- !u!95 &471832850 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3339026223318983589, guid: 2b3c301e17bbdca41a8764b4bfa067d9, type: 3}
+  m_PrefabInstance: {fileID: 6819628145353947656}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &511529615
 GameObject:
   m_ObjectHideFlags: 0
@@ -3091,7 +3096,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 471832847}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: oderTurnR
         m_Mode: 1
@@ -3791,7 +3796,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 471832847}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: oderTurnL
         m_Mode: 1
@@ -5694,7 +5699,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 471832847}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: oderFront
         m_Mode: 1
@@ -6896,23 +6901,23 @@ PrefabInstance:
     - target: {fileID: 6763224327803364637, guid: 4abf9db4037895d4c918cb696f2c3598, type: 3}
       propertyPath: boss_UI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 246322472}
     - target: {fileID: 6763224327803364637, guid: 4abf9db4037895d4c918cb696f2c3598, type: 3}
       propertyPath: smoke_UI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1274796181}
     - target: {fileID: 6763224327803364637, guid: 4abf9db4037895d4c918cb696f2c3598, type: 3}
       propertyPath: keyCountUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 265018145}
     - target: {fileID: 6763224327803364637, guid: 4abf9db4037895d4c918cb696f2c3598, type: 3}
       propertyPath: GameOver_UI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 511529615}
     - target: {fileID: 6763224327803364637, guid: 4abf9db4037895d4c918cb696f2c3598, type: 3}
       propertyPath: GameClear_UI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1281482447}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4abf9db4037895d4c918cb696f2c3598, type: 3}
 --- !u!1001 &3414473562968771854
@@ -7047,11 +7052,11 @@ PrefabInstance:
     - target: {fileID: 3339026223318983588, guid: 2b3c301e17bbdca41a8764b4bfa067d9, type: 3}
       propertyPath: bossUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 246322472}
     - target: {fileID: 3339026223318983588, guid: 2b3c301e17bbdca41a8764b4bfa067d9, type: 3}
       propertyPath: smokeUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1274796181}
     - target: {fileID: 3339026223318983588, guid: 2b3c301e17bbdca41a8764b4bfa067d9, type: 3}
       propertyPath: mat.Array.data[0]
       value: 
