@@ -19,11 +19,14 @@ public class GameManager : MonoBehaviour
     public GameObject boss_UI;
     public GameObject smoke_UI;
 
+    public Animator anim;
+
     void Start()
     {
         keyCount = 0; //player가 획득한 key 개수 0으로 초기화
         keyFind = GameObject.FindGameObjectsWithTag("Key"); //Scene 전체의 키 찾기
         keyCountText = keyCountUI.GetComponentInChildren<Text>(); //keyCountUI의 자식 keyCountText의 Text 컴포넌트 get
+        anim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
     }
 
     void Update()
@@ -34,20 +37,28 @@ public class GameManager : MonoBehaviour
         if (keyFind.Length == keyCount)
         {
             GameClear();
-        }     
+        }
     }    
 
     public void GameOver()
     {
+        
+
         if (isOver || isClear)
         {
             return;
         }
         isOver = true;
         Debug.Log("GameOver!");
+        anim.SetBool("Dead", true);
+       
         Time.timeScale = 0;
         GameOver_UI.SetActive(true);
         InactiveUI(); //이미 활성화 된 UI들 제거
+
+        
+
+        
     }
 
     public void GameClear()

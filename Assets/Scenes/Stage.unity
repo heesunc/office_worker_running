@@ -5903,6 +5903,10 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 6763224327803364637, guid: 4abf9db4037895d4c918cb696f2c3598, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 471832850}
+    - target: {fileID: 6763224327803364637, guid: 4abf9db4037895d4c918cb696f2c3598, type: 3}
       propertyPath: boss_UI
       value: 
       objectReference: {fileID: 246322472}

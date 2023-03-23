@@ -13,6 +13,7 @@ public class LoadGame : MonoBehaviour
     public GameObject stageSelection;
     private Text stageIndexText;
 
+
     public void StartGame()
     {
         SceneManager.LoadScene(SceneToLoad);
@@ -35,6 +36,7 @@ public class LoadGame : MonoBehaviour
     public void Start()
     {
         stageIndexText = stageSelection.GetComponentInChildren<Text>();
+        
     }
 
     public void Update()
