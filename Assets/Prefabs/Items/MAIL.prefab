@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 6310458817900563244}
   - component: {fileID: 6934588264426685577}
   - component: {fileID: 5177006523191013443}
-  - component: {fileID: 5540241485784390376}
   - component: {fileID: 1230665454}
+  - component: {fileID: 6239689325034143459}
   m_Layer: 0
   m_Name: MAIL
   m_TagString: Mail
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6690256060525154710}
   m_LocalRotation: {x: -0.056440033, y: 0, z: 0, w: 0.998406}
   m_LocalPosition: {x: 87.10702, y: 2.01, z: 77.869576}
-  m_LocalScale: {x: 32, y: 32, z: 32}
+  m_LocalScale: {x: 32, y: 32, z: 51.512375}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -86,19 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5540241485784390376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6690256060525154710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4be758555cf509e43904d2710d7d07d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotateSpeed: 50
 --- !u!65 &1230665454
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -112,3 +99,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.05411352, y: 0.034913618, z: 0.0056796726}
   m_Center: {x: -0.0000040456653, y: 0.00087833777, z: -0.0003844977}
+--- !u!114 &6239689325034143459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6690256060525154710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be758555cf509e43904d2710d7d07d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: 50
