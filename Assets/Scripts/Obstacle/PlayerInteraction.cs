@@ -60,7 +60,12 @@ public class PlayerInteraction : MonoBehaviour
             }
         }
 
-        if(other.CompareTag("Key"))
+        if (other.CompareTag("Boss"))
+        {
+            manager.GameOver();
+        }
+
+        if (other.CompareTag("Key"))
         {
             
            
@@ -86,13 +91,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bomper")) 
         {
-
-            if (!bossUI.activeSelf)
                 ObstacleCollision(collision.gameObject.GetComponent<Collider>());
-            else //Boss is already active
-            {
-                manager.GameOver();
-            }
         }
     }
 

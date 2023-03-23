@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum Controller
 {
@@ -37,5 +38,10 @@ public class Option : MonoBehaviour
     public void closeOption()
     {
         option.SetActive(false);
+    }
+
+    public void goToShop()
+    {
+        SceneManager.LoadScene("Shop");
     }
 }
