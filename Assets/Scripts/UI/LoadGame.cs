@@ -9,7 +9,7 @@ public class LoadGame : MonoBehaviour
     public string SceneToLoad;
     public int Index = 0;
     public int numberOfStage = 2;
-
+ 
     public GameObject stageSelection;
     private Text stageIndexText;
 
@@ -17,6 +17,7 @@ public class LoadGame : MonoBehaviour
     {
         SceneManager.LoadScene(SceneToLoad);
         DontDestroyOnLoad(transform.gameObject);
+
     }
 
     public void UpIndex()
