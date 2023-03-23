@@ -429,6 +429,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PauseSecT: {fileID: 561419119}
   SecUI: {fileID: 48972596}
+  StartT: {fileID: 0}
 --- !u!1 &67981781
 GameObject:
   m_ObjectHideFlags: 0
@@ -4193,7 +4194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5756067376559395175, guid: 8eb2ba0e36e54114f9739c8255dae73c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.16
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5756067376559395175, guid: 8eb2ba0e36e54114f9739c8255dae73c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4235,6 +4236,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7361082934430168972, guid: 8eb2ba0e36e54114f9739c8255dae73c, type: 3}
+      propertyPath: height
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7361082934430168972, guid: 8eb2ba0e36e54114f9739c8255dae73c, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 6819628145353947657}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8eb2ba0e36e54114f9739c8255dae73c, type: 3}
 --- !u!1 &1576093374 stripped
