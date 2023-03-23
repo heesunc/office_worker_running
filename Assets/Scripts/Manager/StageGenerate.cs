@@ -21,6 +21,8 @@ public class StageGenerate : MonoBehaviour
 
     private void Awake()
     {
+        stageIndex = GameObject.Find("StageManager").GetComponent<LoadGame>().Index; //Stage Selection
+
         TextAsset stageData = Resources.Load<TextAsset>("Stage" + stageIndex); //Load Stage.text
         string[] lines = stageData.text.Split('\n');
 
