@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 9211915870930212439}
   - component: {fileID: 5222090038025329138}
   - component: {fileID: 8042409073822133560}
-  - component: {fileID: 7972575721756496548}
   - component: {fileID: 913822318}
+  - component: {fileID: -8931670714016322186}
   m_Layer: 0
   m_Name: POSTIT
   m_TagString: Bomper
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 8402762533297212653}
   m_LocalRotation: {x: -0.030076245, y: 0, z: 0, w: 0.99954766}
   m_LocalPosition: {x: 95.977585, y: 0.79, z: 78.79367}
-  m_LocalScale: {x: 90, y: 90, z: 1}
+  m_LocalScale: {x: 90, y: 90, z: 14.008483}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -87,19 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7972575721756496548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8402762533297212653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4be758555cf509e43904d2710d7d07d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotateSpeed: 50
 --- !u!65 &913822318
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -113,3 +100,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.020000009, y: 0.019999998, z: 0.026530944}
   m_Center: {x: 2.2808643e-12, y: -3.8014405e-13, z: 0.0032615997}
+--- !u!114 &-8931670714016322186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8402762533297212653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be758555cf509e43904d2710d7d07d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: 50

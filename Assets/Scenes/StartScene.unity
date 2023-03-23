@@ -1303,7 +1303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneToLoad: Stage
   Index: 0
-  numberOfStage: 2
+  numberOfStage: 1
   stageSelection: {fileID: 1926102404}
 --- !u!4 &879650741
 Transform:
