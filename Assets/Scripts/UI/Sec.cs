@@ -7,6 +7,7 @@ public class Sec : MonoBehaviour
 {
     public Text PauseSecT;
     public GameObject SecUI;
+    public Text StartT;
 
     public void StartSecond()
     {
@@ -22,6 +23,22 @@ public class Sec : MonoBehaviour
         }
         SecUI.SetActive(false); // 3초 UI 끄기
         Time.timeScale = 1f;
-        Debug.Log("3초 뒤 다시 게임 시작");        
+        Debug.Log("3초 뒤 다시 게임 시작");
+        ShowText();
+    }
+
+    public void ShowText()
+    {
+        if (!StartT.gameObject.activeSelf)
+        {
+            StartT.gameObject.SetActive(true); // activate the parent object
+        }
+        StartT.enabled = true; // enable the text component
+        Invoke("HideText", 1f); // schedule the HideText method to be called after 1 second
+    }
+
+    public void HideText()
+    {
+        StartT.enabled = false;
     }
 }
