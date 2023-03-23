@@ -25,6 +25,10 @@ public class Player : MonoBehaviour
         move = 1;
     }
 
+    public int getMove()
+    {
+        return move;
+    }
 
     public void Jump()
     {
@@ -101,9 +105,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        x = tf.position.x;
-        z = tf.position.z;
-
         anim.SetBool("isJumping", isJump);
         //check user controller when it Swipe mode 
         if (Option.getController() == Controller.SWIPE && Input.touchCount > 0) //first touch
@@ -142,11 +143,15 @@ public class Player : MonoBehaviour
             Debug.Log(checkCount);
         }
 
+        x = tf.position.x;
+        z = tf.position.z;
+
         //ready turn
         if (isturn != TurnState.NONE)
         {
             if (((seeX == Direction.X) && Math.Round(x) % TILE == 0) //when it going x line, check x position
                 || ((seeX == Direction.Z) && Math.Round(z) % TILE == 0)) //when it gotin z line, check z position
+            //if (Math.Round(x) % TILE == 0 && Math.Round(z) % TILE == 0)
             {
                 correctGoalX = (float)Math.Round(x);
                 correctGoalZ = (float)Math.Round(z);
@@ -170,6 +175,7 @@ public class Player : MonoBehaviour
         //default move
         if (go == true)
         {
+            Debug.Log(Vector3.forward * speed * move * Time.deltaTime);
             tf.Translate(Vector3.forward * speed * move * Time.deltaTime);
         }
 
@@ -200,7 +206,7 @@ public class Player : MonoBehaviour
     private void speedUp()
     {
         speed *= 1.2f;
-        CameraController.smoothSpeedUp();
+        //CameraController.smoothSpeedUp();
     }
 
     private bool checkPlace(float x) //no used.
