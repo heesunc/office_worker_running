@@ -40,4 +40,12 @@ public class CameraController : MonoBehaviour
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothSpeed);
         transform.LookAt(target);
     }
+
+    public void smoothSpeedUp()
+    {
+        if (smoothSpeed > 0.1f)
+        {
+            smoothSpeed -= 0.1f;
+        }
+    }
 }

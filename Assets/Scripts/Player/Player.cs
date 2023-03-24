@@ -87,6 +87,7 @@ public class Player : MonoBehaviour
     Transform tf;
     float x;
     float z;
+    public CameraController camera;
 
     public Animator anim;
     Vector3 startPos; //touch position in device
@@ -206,7 +207,7 @@ public class Player : MonoBehaviour
     private void speedUp()
     {
         speed *= 1.2f;
-        //CameraController.smoothSpeedUp();
+        camera.smoothSpeedUp();
     }
 
     private bool checkPlace(float x) //no used.
