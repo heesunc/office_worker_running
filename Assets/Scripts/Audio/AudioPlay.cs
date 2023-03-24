@@ -1,32 +1,62 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioPlay : MonoBehaviour
 {
-    private AudioSource audioSource;
-    private GameObject[] musics;
-    void Awake() // 오브젝트의 유일성 보장, 배경음악 한 번만 틀어줌, 씬이동시 파괴X
+    private static AudioPlay _instance; // 사운드를 한 곳에서 관리할 수 있도록
+    public AudioSource audioSource;
+    public AudioClip[] audioList;
+    private bool isMuted = false;
+
+    private void Awake()
     {
-        musics = GameObject.FindGameObjectsWithTag("Music");
-
-        if(musics.Length >=2)
+        if (_instance == null)
         {
-            Destroy(this.gameObject);
+            _instance = this;
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
-
-        DontDestroyOnLoad(transform.gameObject);
-        audioSource = GetComponent<AudioSource>();
+        else if (_instance != this)
+        {
+            Destroy(gameObject);
+        }
+        // scene이 전환되어도 object가 없어지지 않도록
+        DontDestroyOnLoad(gameObject);
     }
 
-    public void PlayMusic()
+    // scene이 로딩됐을때 해당 scene 이름과 같은 이름의 bgm 재생
+    private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
-        if(audioSource.isPlaying) return;
+        for (int i = 0; i < audioList.Length; i++)
+        {
+            if (arg0.name == audioList[i].name)
+            {
+                AudioSoundPlay(audioList[i]);
+            }
+        }
+        audioSource.mute = MuteManager.IsMuted;
+    }
+
+    // 음악 플레이
+    public void AudioSoundPlay(AudioClip clip)
+    {
+        audioSource.clip = clip;
+        audioSource.loop = true;
+        audioSource.volume = 0.1f;
         audioSource.Play();
     }
 
-    public void StopMusic()
+    public void ToggleMute()
     {
-        audioSource.Stop();
+        isMuted = !isMuted;
+        audioSource.mute = isMuted;
+        if (isMuted)
+        {
+            Debug.Log("Mute is turned on");
+        }
+        else
+        {
+            Debug.Log("Mute turned off");
+        }
+        MuteManager.IsMuted = isMuted;
     }
 }
