@@ -2292,7 +2292,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -2323,7 +2323,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1612364190
 MonoBehaviour:
@@ -2375,7 +2375,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c65d79fc8e0fe4a82e4c6207a11315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 2079032272}
 --- !u!1 &1666118866
 GameObject:
   m_ObjectHideFlags: 0
@@ -3306,7 +3305,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2079032271}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 960, y: 540, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3326,6 +3325,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ef17754b3b288d4f859c6e17914313c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 2079032272}
+  audioList:
+  - {fileID: 8300000, guid: 55f7fd0e553646e458cd58e49a71221c, type: 3}
+  - {fileID: 8300000, guid: f8e7f9d5284f7794fa9f4d587fb43872, type: 3}
 --- !u!1 &2126903521
 GameObject:
   m_ObjectHideFlags: 0
