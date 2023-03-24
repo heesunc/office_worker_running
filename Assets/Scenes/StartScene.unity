@@ -156,7 +156,7 @@ RectTransform:
   m_Children:
   - {fileID: 604271778}
   m_Father: {fileID: 2126903522}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -516,7 +516,7 @@ RectTransform:
   m_Children:
   - {fileID: 258023034}
   m_Father: {fileID: 2126903522}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1036,7 +1036,7 @@ RectTransform:
   m_Children:
   - {fileID: 1332668188}
   m_Father: {fileID: 2126903522}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -1226,7 +1226,7 @@ RectTransform:
   - {fileID: 1612364188}
   - {fileID: 1768048794}
   m_Father: {fileID: 2126903522}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -1935,7 +1935,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1666118871}
+      - m_Target: {fileID: 1768048798}
         m_TargetAssemblyTypeName: Option, Assembly-CSharp
         m_MethodName: closeOption
         m_Mode: 1
@@ -1960,7 +1960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7075472, g: 0.08276964, b: 0.08276964, a: 1}
+  m_Color: {r: 0.08235295, g: 0.23584394, b: 0.7058824, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2180,7 +2180,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2126903522}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2504,7 +2504,7 @@ RectTransform:
   m_Children:
   - {fileID: 1956757561}
   m_Father: {fileID: 2126903522}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -3018,7 +3018,7 @@ RectTransform:
   - {fileID: 1717618488}
   - {fileID: 965022418}
   m_Father: {fileID: 2126903522}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3356,13 +3356,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1926102405}
   - {fileID: 379549197}
   - {fileID: 1380303929}
   - {fileID: 1666118870}
   - {fileID: 51136164}
   - {fileID: 848098620}
   - {fileID: 802173421}
-  - {fileID: 1926102405}
   m_Father: {fileID: 1790145313}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
