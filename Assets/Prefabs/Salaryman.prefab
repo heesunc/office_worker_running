@@ -1572,7 +1572,7 @@ MonoBehaviour:
   smokeUI: {fileID: 0}
   mat:
   - {fileID: 2100000, guid: c344a8f4e362c9c418e5ec1cd7609635, type: 2}
-  - {fileID: 2100000, guid: 95fddaa31b0672448b89bf6a90f67b56, type: 2}
+  - {fileID: 2100000, guid: bf3b4e49eaa32874a8ec6e80e359bb2b, type: 2}
   - {fileID: 2100000, guid: 05e6ea4f8fcbc404ca67d6a23850d10d, type: 2}
 --- !u!114 &3339026223318983590
 MonoBehaviour:

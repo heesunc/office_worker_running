@@ -31,8 +31,8 @@ public class PlayerInteraction : MonoBehaviour
         manager = GameObject.Find("GameManager").GetComponent<GameManager>();
         generate = GameObject.Find("StageGenerator").GetComponent<StageGenerate>();
         timer = smokeUI.GetComponent<UITimer>();
-
-        
+       
+ 
         map = generate.mapData; //Load mapData
 
     }
