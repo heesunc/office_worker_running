@@ -18,11 +18,17 @@ public class StageGenerate : MonoBehaviour
     public int stageIndex; //Stage selection
     public TextAsset stageFile;
     public int[,] mapData;
+    
+    private GameObject stageManager;
+    private Transform player;
+    private Transform playerTarget;
 
-    GameObject stageManager;
     private void Awake()
     {
         stageManager = GameObject.Find("StageManager");
+        player = GameObject.FindWithTag("Player").transform;
+        playerTarget = GameObject.Find("PlayerTarget").transform;
+
         if (stageManager != null)
             stageIndex = GameObject.Find("StageManager").GetComponent<LoadGame>().Index; //Stage Selection
 
@@ -61,14 +67,25 @@ public class StageGenerate : MonoBehaviour
                 }
                 else if (mapData[i, j] == 4) //Create postIt
                 {
-                    Instantiate(postItPrefab, new Vector3(i * distance, 1.5f, j * distance), Quaternion.Euler(0, 90.0f, 0));
+                    Instantiate(postItPrefab, new Vector3(i * distance, 1.4f, j * distance), Quaternion.Euler(0, 90.0f, 0));
                 }
                 else if (mapData[i, j] == 5) //Create Coffee
                 {
                     Instantiate(coffeePrefab, new Vector3(i * distance, 0.7f, j * distance), Quaternion.Euler(-90.0f, 0, 0));
                 }
+                else if(mapData[i, j] == 6)
+                {
+                    Vector3 playerPos = new Vector3(i * distance, 0.0f, j * distance);
+                    player.position = playerPos;
+                }
+                else if(mapData[i, j] == 7)
+                {
+                    playerTarget.position = new Vector3(i * distance, 0.0f, j * distance);
+                }
             }
         }
+
+        player.LookAt(playerTarget);
     }
 
 
