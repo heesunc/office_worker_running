@@ -76,7 +76,7 @@ public class Player : MonoBehaviour
 
     //jump
     private bool isJump = false;
-    private int f = 5; //jump Force
+    private int f = 6; //jump Force
 
     //Controller
     private bool s = false; //Swipe mode true, Button mode false
