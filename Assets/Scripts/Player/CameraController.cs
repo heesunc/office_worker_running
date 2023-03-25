@@ -11,7 +11,7 @@ public class CameraController : MonoBehaviour
     Vector3 targetPosition;
     public Player player;
 
-    static public float smoothSpeed = 0.4f;  // 카메라 이동 시 부드러운 감속을 위한 변수
+    static public float smoothSpeed = 0.33f;  // 카메라 이동 시 부드러운 감속을 위한 변수
     private Vector3 velocity = Vector3.zero;  // 카메라 이동 시 사용할 속도 벡터
 
     private Transform tf; //gameObject.Transform

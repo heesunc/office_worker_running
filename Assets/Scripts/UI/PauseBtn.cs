@@ -12,8 +12,9 @@ public class PauseBtn : MonoBehaviour
     {
         // Pause를 누르고 "나가기" 버튼을 누르면 시작화면으로 이동
         Destroy(GameObject.Find("StageManager"));
-        SceneManager.LoadScene("StartScene");
-        Time.timeScale = 1f;
+        //For Fadeout
+        //SceneManager.LoadScene("StartScene");
+        //Time.timeScale = 1f;
     }
 
     public void ProgressBtn()
