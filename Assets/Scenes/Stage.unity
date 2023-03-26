@@ -480,7 +480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e54473f6afbe3e4aac9e773245c48df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  limitTime: 18.65
+  limitTime: 80
   textTimer: {fileID: 218602937}
 --- !u!1 &143062993
 GameObject:
@@ -754,7 +754,6 @@ GameObject:
   - component: {fileID: 204646511}
   - component: {fileID: 204646510}
   - component: {fileID: 204646509}
-  - component: {fileID: 204646508}
   m_Layer: 5
   m_Name: ClearExitBtn
   m_TagString: Untagged
@@ -783,20 +782,6 @@ RectTransform:
   m_AnchoredPosition: {x: 208, y: -242.80005}
   m_SizeDelta: {x: 450, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &204646508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 204646506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a265414547fa474baa90e6647e985a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PauseUI: {fileID: 0}
-  SecUI: {fileID: 0}
 --- !u!114 &204646509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -841,7 +826,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 204646508}
+      - m_Target: {fileID: 680795415}
         m_TargetAssemblyTypeName: PauseBtn, Assembly-CSharp
         m_MethodName: ExitBtn
         m_Mode: 1
@@ -851,18 +836,6 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1618771141}
-        m_TargetAssemblyTypeName: Fade, Assembly-CSharp
-        m_MethodName: B_Fadeout
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: StartScene
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &204646510
@@ -5040,7 +5013,6 @@ GameObject:
   - component: {fileID: 1859156543}
   - component: {fileID: 1859156542}
   - component: {fileID: 1859156541}
-  - component: {fileID: 1859156540}
   m_Layer: 5
   m_Name: OverExitBtn
   m_TagString: Untagged
@@ -5069,20 +5041,6 @@ RectTransform:
   m_AnchoredPosition: {x: 626, y: -385}
   m_SizeDelta: {x: 450, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1859156540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1859156538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a265414547fa474baa90e6647e985a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PauseUI: {fileID: 0}
-  SecUI: {fileID: 0}
 --- !u!114 &1859156541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5127,7 +5085,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1859156540}
+      - m_Target: {fileID: 680795415}
         m_TargetAssemblyTypeName: PauseBtn, Assembly-CSharp
         m_MethodName: ExitBtn
         m_Mode: 1
@@ -5608,7 +5566,6 @@ GameObject:
   - component: {fileID: 1998765701}
   - component: {fileID: 1998765700}
   - component: {fileID: 1998765699}
-  - component: {fileID: 1998765698}
   m_Layer: 5
   m_Name: ExitBtn
   m_TagString: Untagged
@@ -5637,20 +5594,6 @@ RectTransform:
   m_AnchoredPosition: {x: 192, y: -67}
   m_SizeDelta: {x: 230, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1998765698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1998765696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a265414547fa474baa90e6647e985a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PauseUI: {fileID: 604607061}
-  SecUI: {fileID: 0}
 --- !u!114 &1998765699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5695,7 +5638,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1998765698}
+      - m_Target: {fileID: 680795415}
         m_TargetAssemblyTypeName: PauseBtn, Assembly-CSharp
         m_MethodName: ExitBtn
         m_Mode: 1
@@ -5937,7 +5880,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2694523669690464484, guid: e239189d8746156468929cff01381e83, type: 3}
       propertyPath: stageIndex
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2694523669690464485, guid: e239189d8746156468929cff01381e83, type: 3}
       propertyPath: m_RootOrder

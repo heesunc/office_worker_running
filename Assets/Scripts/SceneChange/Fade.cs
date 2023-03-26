@@ -39,7 +39,7 @@ public class Fade : MonoBehaviour
     //    fadeimage.SetActive(false);
     //}
 
-    IEnumerator Fadeout(string Name)// bool Loading) 
+    IEnumerator Fadeout()// bool Loading) 
     {
         while (color.a < 1)
         {
@@ -54,15 +54,20 @@ public class Fade : MonoBehaviour
             //if (Loading)
             //LoadingSceneController.LoadScene(Name); //�ε����� �̿��� �ε�.
             //else
-            SceneManager.LoadScene(Name);
+            //SceneManager.LoadScene(Name);
             yield break;
         }
     }
 
-    public void B_Fadeout(string Name)
+    public void B_Fadeout()
     {
         image.SetActive(true);
-        StartCoroutine(Fadeout(Name)); //, false));
+        StartCoroutine(Fadeout()); //, false));
+    }
+
+    public void B_Fadeover()
+    {
+        image.SetActive(false);
     }
 
     //public void L_Fadeout(string Name)
