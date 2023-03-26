@@ -24,41 +24,27 @@ public class PlayerInteraction : MonoBehaviour
     StageGenerate generate;
 
     public Material[] mat = new Material[3];
-   
+
+    Transform tf;
+
     // Start is called before the first frame update
     void Start()
     {
         manager = GameObject.Find("GameManager").GetComponent<GameManager>();
         generate = GameObject.Find("StageGenerator").GetComponent<StageGenerate>();
         timer = smokeUI.GetComponent<UITimer>();
-       
- 
+        tf = gameObject.GetComponent<Transform>();
         map = generate.mapData; //Load mapData
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-       
-            
     }
 
     void OnTriggerEnter(Collider other) 
     {
         if (other.CompareTag("Smoke") || other.CompareTag("Mail") || other.CompareTag("Bomb")) //Handling Obstacle Conflicts
         {
-            if (!bossUI.activeSelf) 
                 ObstacleCollision(other);
-            else //Boss is already active
-            {
-                if (other.CompareTag("Smoke"))//Smoke is not GameOver
-                    ObstacleCollision(other);
-                else
-                    manager.GameOver(); 
-            }
         }
+
 
         if (other.CompareTag("Boss"))
         {
@@ -101,6 +87,8 @@ public class PlayerInteraction : MonoBehaviour
 
         if (obstacle.CompareTag("Mail"))
         {
+            Vector3 bossPosition = tf.position - tf.forward * 3;
+            Instantiate(bossUI, bossPosition, Quaternion.identity);
             bossUI.SetActive(true);
         }
         else if (obstacle.CompareTag("Smoke"))
@@ -145,12 +133,8 @@ public class PlayerInteraction : MonoBehaviour
                     Debug.Log("removed!");
                     break;
                 }
-
             }
-
         }
-
-
     }
 
     void DFS(int x, int y)

@@ -6,12 +6,12 @@ public class UITimer : MonoBehaviour
 {
     // Start is called before the first frame update
     public float uiTimer;
-    public float limitTime =10.0f;
+    public float limitTime = 10.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        uiTimer = 0f;
 
 
     }
@@ -22,8 +22,16 @@ public class UITimer : MonoBehaviour
         uiTimer += Time.deltaTime; //UI Å¸ÀÌ¸Ó
         if (uiTimer >= limitTime)
         {
-            gameObject.SetActive(false);
             uiTimer = 0.0f;
+
+            if (gameObject.CompareTag("Boss"))
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                gameObject.SetActive(false);
+            }
         }
 
     }

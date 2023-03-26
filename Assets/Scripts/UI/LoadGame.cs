@@ -16,7 +16,8 @@ public class LoadGame : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(SceneToLoad);
+        LoadingSceneController.LoadScene(SceneToLoad);
+        //SceneManager.LoadScene(SceneToLoad);
         DontDestroyOnLoad(transform.gameObject);
 
     }
