@@ -67,7 +67,7 @@ public class StageGenerate : MonoBehaviour
                 }
                 else if (mapData[i, j] == 4) //Create postIt
                 {
-                    Instantiate(postItPrefab, new Vector3(i * distance, 1.4f, j * distance), Quaternion.Euler(0, 90.0f, 0));
+                    Instantiate(postItPrefab, new Vector3(i * distance, 1.2f, j * distance), Quaternion.Euler(0, 90.0f, 0));
                 }
                 else if (mapData[i, j] == 5) //Create Coffee
                 {
