@@ -23,6 +23,9 @@ public class PlayerInteraction : MonoBehaviour
     GameManager manager;
     StageGenerate generate;
 
+    GameObject soundSource;
+    EffectSoundManager effectSound;
+
     public Material[] mat = new Material[3];
 
     Transform tf;
@@ -32,6 +35,11 @@ public class PlayerInteraction : MonoBehaviour
     {
         manager = GameObject.Find("GameManager").GetComponent<GameManager>();
         generate = GameObject.Find("StageGenerator").GetComponent<StageGenerate>();
+        soundSource = GameObject.Find("EffectSoundSource");
+
+        if(soundSource != null)
+            effectSound = GameObject.Find("EffectSoundSource").GetComponent<EffectSoundManager>();
+
         timer = smokeUI.GetComponent<UITimer>();
         tf = gameObject.GetComponent<Transform>();
         map = generate.mapData; //Load mapData
@@ -53,8 +61,9 @@ public class PlayerInteraction : MonoBehaviour
 
         if (other.CompareTag("Key"))
         {
-            
+
            
+
             int x, y; //Keyname split
             string keyName = other.name;
             keyName = keyName.Trim('(', ')');
@@ -64,8 +73,13 @@ public class PlayerInteraction : MonoBehaviour
 
 
             GameObject.Find("(" + x + "," + y + ")").GetComponent<MeshRenderer>().materials = mat;  //Eating key
+
             if(map[x,y]==1)
+            {
+                effectSound.SoundPlay("Money");
                 manager.keyCount++;
+            }    
+                
             map[x, y] = 9;
            
 
@@ -87,12 +101,14 @@ public class PlayerInteraction : MonoBehaviour
 
         if (obstacle.CompareTag("Mail"))
         {
+            effectSound.SoundPlay("Mail");
             Vector3 bossPosition = tf.position - tf.forward * 3;
             Instantiate(bossUI, bossPosition, Quaternion.identity);
             bossUI.SetActive(true);
         }
         else if (obstacle.CompareTag("Smoke"))
         {
+            effectSound.SoundPlay("Coffee");
             if (smokeUI.activeSelf) //Smoke is already active
                 timer.uiTimer = 0.0f; //Timer Reset
             else
@@ -100,10 +116,12 @@ public class PlayerInteraction : MonoBehaviour
         }
         else if (obstacle.CompareTag("Bomb"))
         {
+            effectSound.SoundPlay("Bomb");
             manager.GameOver();
         }
         else if(obstacle.CompareTag("Bomper"))
         {
+            effectSound.SoundPlay("PostIt");
             gameObject.GetComponent<Player>().ChangeMove();
         }
 
@@ -183,6 +201,8 @@ public class PlayerInteraction : MonoBehaviour
                 }
             }
         }
+
+        effectSound.SoundPlay("RuleMoney");
     }
 
 }
