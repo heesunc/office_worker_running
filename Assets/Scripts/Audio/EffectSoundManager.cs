@@ -16,7 +16,8 @@ public class EffectSoundManager : MonoBehaviour
      4 = 포스트잇
      5 = 커피
      6 = 점프
-     7 = ??
+     7 = 스테이지 클리어
+     8 = 스테이지 실패
       */
     private void Awake()
     {
@@ -49,6 +50,12 @@ public class EffectSoundManager : MonoBehaviour
             if (name == "PostIt")
                 effectAudioSource.clip = effectAudioList[4];
             if (name == "Coffee")
+                effectAudioSource.clip = effectAudioList[5];
+            if (name == "Jump")
+                effectAudioSource.clip = effectAudioList[5];
+            if (name == "GameClear")
+                effectAudioSource.clip = effectAudioList[5];
+            if (name == "GameOver")
                 effectAudioSource.clip = effectAudioList[5];
 
 
