@@ -14,6 +14,12 @@ public class StageGenerate : MonoBehaviour
     public GameObject postItPrefab;
     public GameObject coffeePrefab;
 
+    public GameObject moneyPrefab; //Items Prefabs
+    public GameObject fileStackPrefab;
+    public GameObject mailPrefab;
+    public GameObject postItPrefab;
+    public GameObject coffeePrefab;
+
     public float distance = 7.0f;
     public int stageIndex; //Stage selection
     public TextAsset stageFile;
@@ -28,6 +34,7 @@ public class StageGenerate : MonoBehaviour
         stageManager = GameObject.Find("StageManager");
         player = GameObject.FindWithTag("Player").transform;
         playerTarget = GameObject.Find("PlayerTarget").transform;
+        
 
         if (stageManager != null)
             stageIndex = GameObject.Find("StageManager").GetComponent<LoadGame>().Index; //Stage Selection
@@ -56,29 +63,35 @@ public class StageGenerate : MonoBehaviour
                 {
                    GameObject money = Instantiate(moneyPrefab, new Vector3(i * distance, 1.6f, j * distance), Quaternion.identity);
                     money.name = "(" + i + "," + j + ")";
+
+
                 }
                 else if (mapData[i, j] == 2) //Create fileStack
                 {
-                    Instantiate(fileStackPrefab, new Vector3(i * distance, 1.5f, j * distance), Quaternion.Euler(-90.0f, 0, 0));
+                    GameObject fileStack = Instantiate(fileStackPrefab, new Vector3(i * distance, 1.5f, j * distance), Quaternion.Euler(-90.0f, 0, 0));
+                    fileStack.name = "(" + i + "," + j + ")";
                 }
                 else if (mapData[i, j] == 3) //Create mail
                 {
-                    Instantiate(mailPrefab, new Vector3(i * distance, 1.5f, j * distance), Quaternion.Euler(0, 90.0f, 0));
+                    GameObject mail = Instantiate(mailPrefab, new Vector3(i * distance, 1.5f, j * distance), Quaternion.Euler(0, 90.0f, 0));
+                    mail.name = "(" + i + "," + j + ")";
                 }
                 else if (mapData[i, j] == 4) //Create postIt
                 {
-                    Instantiate(postItPrefab, new Vector3(i * distance, 1.2f, j * distance), Quaternion.Euler(0, 90.0f, 0));
+                    GameObject postIt = Instantiate(postItPrefab, new Vector3(i * distance, 1.2f, j * distance), Quaternion.Euler(0, 90.0f, 0));
+                    postIt.name = "(" + i + "," + j + ")";
                 }
                 else if (mapData[i, j] == 5) //Create Coffee
                 {
-                    Instantiate(coffeePrefab, new Vector3(i * distance, 0.7f, j * distance), Quaternion.Euler(-90.0f, 0, 0));
+                    GameObject coffee = Instantiate(coffeePrefab, new Vector3(i * distance, 0.7f, j * distance), Quaternion.Euler(-90.0f, 0, 0));
+                    coffee.name = "(" + i + "," + j + ")";
                 }
-                else if(mapData[i, j] == 6)
+                else if(mapData[i, j] == 6) //move playerPos
                 {
                     Vector3 playerPos = new Vector3(i * distance, 0.0f, j * distance);
                     player.position = playerPos;
                 }
-                else if(mapData[i, j] == 7)
+                else if(mapData[i, j] == 7) //set player direction
                 {
                     playerTarget.position = new Vector3(i * distance, 0.0f, j * distance);
                 }

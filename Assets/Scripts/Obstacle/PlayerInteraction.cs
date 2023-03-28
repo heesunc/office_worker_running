@@ -76,7 +76,8 @@ public class PlayerInteraction : MonoBehaviour
 
             if(map[x,y]==1)
             {
-                effectSound.SoundPlay("Money");
+                if (soundSource != null)
+                    effectSound.SoundPlay("Money");
                 manager.keyCount++;
             }    
                 
@@ -108,20 +109,26 @@ public class PlayerInteraction : MonoBehaviour
         }
         else if (obstacle.CompareTag("Smoke"))
         {
-            effectSound.SoundPlay("Coffee");
+            
             if (smokeUI.activeSelf) //Smoke is already active
                 timer.uiTimer = 0.0f; //Timer Reset
             else
+            {
+                if (soundSource != null)
+                    effectSound.SoundPlay("Coffee");
                 smokeUI.SetActive(true);
+            }   
         }
         else if (obstacle.CompareTag("Bomb"))
         {
-            effectSound.SoundPlay("Bomb");
+            if (soundSource != null)
+                effectSound.SoundPlay("Bomb");
             manager.GameOver();
         }
         else if(obstacle.CompareTag("Bomper"))
         {
-            effectSound.SoundPlay("PostIt");
+            if (soundSource != null)
+                effectSound.SoundPlay("PostIt");
             gameObject.GetComponent<Player>().ChangeMove();
         }
 
@@ -201,8 +208,8 @@ public class PlayerInteraction : MonoBehaviour
                 }
             }
         }
-
-        effectSound.SoundPlay("RuleMoney");
+        if (soundSource != null)
+            effectSound.SoundPlay("RuleMoney");
     }
 
 }
