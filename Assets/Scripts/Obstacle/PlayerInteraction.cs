@@ -109,15 +109,14 @@ public class PlayerInteraction : MonoBehaviour
         }
         else if (obstacle.CompareTag("Smoke"))
         {
-            
+            if (soundSource != null)
+                itemSound.SoundPlay("Coffee");
+
             if (smokeUI.activeSelf) //Smoke is already active
                 timer.uiTimer = 0.0f; //Timer Reset
             else
-            {
-                if (soundSource != null)
-                    itemSound.SoundPlay("Coffee");
                 smokeUI.SetActive(true);
-            }   
+             
         }
         else if (obstacle.CompareTag("Bomb"))
         {

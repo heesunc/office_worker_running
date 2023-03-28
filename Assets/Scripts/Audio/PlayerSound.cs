@@ -49,7 +49,7 @@ public class PlayerSound : MonoBehaviour
                 if (name == "GameClear")
                 {
                     playerAudioSource.clip = playerAudioList[2];
-                    volume = 0.7f;
+                    volume = 0.4f;
                 }
                 else if (name == "GameOver")
                 {
@@ -73,5 +73,11 @@ public class PlayerSound : MonoBehaviour
         playerAudioSource.loop = true;
         playerAudioSource.volume = volume;
         playerAudioSource.Play();
+    }
+
+    public void SoundStop()
+    {
+       
+        playerAudioSource.Stop();
     }
 }
