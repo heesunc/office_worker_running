@@ -15,10 +15,17 @@ public class EnemyController : MonoBehaviour
 
     private Vector3 velocity = Vector3.zero;  // 카메라 이동 시 사용할 속도 벡터
 
+    public AudioSource bossAudioSource; //bossSound
+    public AudioClip bossAudioClip;
+    private float volume = 0.05f;
+
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player");
         targetP = target.GetComponent<Transform>();
+
+        BossSoundPlay();
+
     }
 
     void LateUpdate()
@@ -41,6 +48,19 @@ public class EnemyController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("플레이어와 충돌");
+        }
+    }
+
+    public void BossSoundPlay()
+    {
+        if (!MuteManager.EffectIsMuted)
+        {
+            bossAudioSource.clip = bossAudioClip;
+            volume = 0.3f;
+
+            bossAudioSource.loop = true;
+            bossAudioSource.volume = volume;
+            bossAudioSource.Play();
         }
     }
 }

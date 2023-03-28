@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EffectSoundManager : MonoBehaviour
+public class ItemSound : MonoBehaviour
 {
-    public AudioSource effectAudioSource;
-    public AudioClip[] effectAudioList;
+    public AudioSource itemAudioSource;
+    public AudioClip[] itemAudioList;
     private float volume = 0.05f;
     /*
      0 = 돈
@@ -15,12 +15,10 @@ public class EffectSoundManager : MonoBehaviour
      3 = 메일
      4 = 포스트잇
      5 = 커피
-     6 = 스테이지 클리어
-     7 = 스테이지 실패
       */
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+       
     }
     // Start is called before the first frame update
     void Start()
@@ -40,46 +38,38 @@ public class EffectSoundManager : MonoBehaviour
         {
             if(name == "Money")
             {
-                effectAudioSource.clip = effectAudioList[0];
+                itemAudioSource.clip = itemAudioList[0];
                 volume = 1.0f;
             }
             else if (name == "RuleMoney")
             {
-                effectAudioSource.clip = effectAudioList[1];
+                itemAudioSource.clip = itemAudioList[1];
                 volume = 0.7f; ;
             }  
             else if (name == "Bomb")
             {
-                effectAudioSource.clip = effectAudioList[2];
+                itemAudioSource.clip = itemAudioList[2];
+                volume = 0.7f;
             }   
             else if (name == "Mail")
             {
-                effectAudioSource.clip = effectAudioList[3];
+                itemAudioSource.clip = itemAudioList[3];
+                volume = 0.7f;
             }  
             else if (name == "PostIt")
             {
-                effectAudioSource.clip = effectAudioList[4];
+                itemAudioSource.clip = itemAudioList[4];
                 volume = 0.7f;
             }
             else if (name == "Coffee")
             {
-                effectAudioSource.clip = effectAudioList[5];
-            }
-            else if (name == "GameClear")
-            {
-                effectAudioSource.clip = effectAudioList[6];
-                volume = 0.2f;
-            }
-            else if (name == "GameOver")
-            {
-                effectAudioSource.clip = effectAudioList[7];
-                
+                itemAudioSource.clip = itemAudioList[5];
+                volume = 0.3f;
             }
 
-
-            effectAudioSource.loop = false;
-            effectAudioSource.volume = volume;
-            effectAudioSource.Play();
+            itemAudioSource.loop = false;
+            itemAudioSource.volume = volume;
+            itemAudioSource.Play();
 
 
         }

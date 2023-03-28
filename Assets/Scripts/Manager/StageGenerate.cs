@@ -37,7 +37,7 @@ public class StageGenerate : MonoBehaviour
         
 
         if (stageManager != null)
-            stageIndex = GameObject.Find("StageManager").GetComponent<LoadGame>().Index; //Stage Selection
+            stageIndex = stageManager.GetComponent<LoadGame>().Index; //Stage Selection
 
 
         TextAsset stageData = Resources.Load<TextAsset>("Stage" + stageIndex); //Load Stage.text

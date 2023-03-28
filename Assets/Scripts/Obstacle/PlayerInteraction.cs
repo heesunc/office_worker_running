@@ -24,7 +24,7 @@ public class PlayerInteraction : MonoBehaviour
     StageGenerate generate;
 
     GameObject soundSource;
-    EffectSoundManager effectSound;
+    ItemSound itemSound;
 
     public Material[] mat = new Material[3];
 
@@ -35,10 +35,10 @@ public class PlayerInteraction : MonoBehaviour
     {
         manager = GameObject.Find("GameManager").GetComponent<GameManager>();
         generate = GameObject.Find("StageGenerator").GetComponent<StageGenerate>();
-        soundSource = GameObject.Find("EffectSoundSource");
 
+        soundSource = GameObject.Find("ItemSoundSource");
         if(soundSource != null)
-            effectSound = GameObject.Find("EffectSoundSource").GetComponent<EffectSoundManager>();
+            itemSound = soundSource.GetComponent<ItemSound>();
 
         timer = smokeUI.GetComponent<UITimer>();
         tf = gameObject.GetComponent<Transform>();
@@ -77,7 +77,7 @@ public class PlayerInteraction : MonoBehaviour
             if(map[x,y]==1)
             {
                 if (soundSource != null)
-                    effectSound.SoundPlay("Money");
+                    itemSound.SoundPlay("Money");
                 manager.keyCount++;
             }    
                 
@@ -102,7 +102,7 @@ public class PlayerInteraction : MonoBehaviour
 
         if (obstacle.CompareTag("Mail"))
         {
-            effectSound.SoundPlay("Mail");
+            itemSound.SoundPlay("Mail");
             Vector3 bossPosition = tf.position - tf.forward * 3;
             Instantiate(bossUI, bossPosition, Quaternion.identity);
             bossUI.SetActive(true);
@@ -115,20 +115,20 @@ public class PlayerInteraction : MonoBehaviour
             else
             {
                 if (soundSource != null)
-                    effectSound.SoundPlay("Coffee");
+                    itemSound.SoundPlay("Coffee");
                 smokeUI.SetActive(true);
             }   
         }
         else if (obstacle.CompareTag("Bomb"))
         {
             if (soundSource != null)
-                effectSound.SoundPlay("Bomb");
+                itemSound.SoundPlay("Bomb");
             manager.GameOver();
         }
         else if(obstacle.CompareTag("Bomper"))
         {
             if (soundSource != null)
-                effectSound.SoundPlay("PostIt");
+                itemSound.SoundPlay("PostIt");
             gameObject.GetComponent<Player>().ChangeMove();
         }
 
@@ -209,7 +209,7 @@ public class PlayerInteraction : MonoBehaviour
             }
         }
         if (soundSource != null)
-            effectSound.SoundPlay("RuleMoney");
+            itemSound.SoundPlay("RuleMoney");
     }
 
 }

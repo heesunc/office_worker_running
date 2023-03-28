@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     public Animator anim;
     GameObject soundSource;
-    EffectSoundManager effectSound;
+    PlayerSound playerSound;
 
     void Start()
     {
@@ -30,10 +30,9 @@ public class GameManager : MonoBehaviour
         keyCountText = keyCountUI.GetComponentInChildren<Text>(); //keyCountUI의 자식 keyCountText의 Text 컴포넌트 get
         anim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
 
-        soundSource = GameObject.Find("EffectSoundSource");
-
+        soundSource = GameObject.Find("PlayerSoundSource");
         if (soundSource != null)
-            effectSound = GameObject.Find("EffectSoundSource").GetComponent<EffectSoundManager>();
+            playerSound = soundSource.GetComponent<PlayerSound>();
     }
 
     void Update()
@@ -57,7 +56,7 @@ public class GameManager : MonoBehaviour
         }
         isOver = true;
         Debug.Log("GameOver!");
-        effectSound.SoundPlay("GameOver");
+        playerSound.SoundPlay("GameOver");
         anim.SetBool("Dead", true);
 
         
@@ -77,7 +76,7 @@ public class GameManager : MonoBehaviour
             return;
         }
         isClear = true;
-        effectSound.SoundPlay("GameClear");
+        playerSound.SoundPlay("GameClear");
         Debug.Log("GameClear!");
         Time.timeScale = 0;
         GameClear_UI.SetActive(true);

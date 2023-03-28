@@ -36,6 +36,8 @@ public class Player : MonoBehaviour
         {
             isJump = true;
             rg.AddForce(Vector3.up * f, ForceMode.Impulse);
+            playerSound.SoundPlay("Jump");
+
         }
     }
 
@@ -92,8 +94,16 @@ public class Player : MonoBehaviour
     public Animator anim;
     Vector3 startPos; //touch position in device
 
+    //PlayerSound
+    GameObject soundSource;
+    PlayerSound playerSound;
+
     void Start()
     {
+        soundSource = GameObject.Find("PlayerSoundSource");
+        if(soundSource != null)
+            playerSound = soundSource.GetComponent<PlayerSound>();
+
         tf = gameObject.GetComponent<Transform>();
         rg = gameObject.GetComponent<Rigidbody>();
         startPos = new Vector3(0, 0, 0);
