@@ -7,7 +7,7 @@ public class AudioPlay : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip[] audioList;
     private bool isMuted = false;
-
+    private bool effectIsMuted = false;
     private void Awake()
     {
         if (_instance == null)
@@ -58,5 +58,19 @@ public class AudioPlay : MonoBehaviour
             Debug.Log("Mute turned off");
         }
         MuteManager.IsMuted = isMuted;
+    }
+    public void EffectToggleMute()
+    {
+        effectIsMuted = !effectIsMuted;
+        audioSource.mute = isMuted;
+        if (effectIsMuted)
+        {
+            Debug.Log("EMute is turned on");
+        }
+        else
+        {
+            Debug.Log("EMute turned off");
+        }
+        MuteManager.EffectIsMuted = effectIsMuted;
     }
 }

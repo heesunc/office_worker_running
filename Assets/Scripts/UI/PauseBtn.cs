@@ -23,5 +23,6 @@ public class PauseBtn : MonoBehaviour
         SecUI.SetActive(true);
         Sec secScript = SecUI.GetComponent<Sec>();
         secScript.StartSecond(); // 3초 세는 코루틴 함수 실행
+
     }
 }

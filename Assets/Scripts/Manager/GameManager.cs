@@ -20,8 +20,13 @@ public class GameManager : MonoBehaviour
     public GameObject smoke_UI;
 
     public Animator anim;
+
+    GameObject soundSource;
+    PlayerSound playerSound;
+
     private Player player;
     private Fade fade;
+
 
     void Start()
     {
@@ -29,6 +34,12 @@ public class GameManager : MonoBehaviour
         keyFind = GameObject.FindGameObjectsWithTag("Key"); //Scene 전체의 키 찾기
         keyCountText = keyCountUI.GetComponentInChildren<Text>(); //keyCountUI의 자식 keyCountText의 Text 컴포넌트 get
         anim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+
+
+        soundSource = GameObject.Find("PlayerSoundSource");
+        if (soundSource != null)
+            playerSound = soundSource.GetComponent<PlayerSound>();
+            
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         fade = GameObject.Find("Fade").GetComponent<Fade>();
     }
@@ -52,6 +63,10 @@ public class GameManager : MonoBehaviour
         }
         isOver = true;
         Debug.Log("GameOver!");
+
+        playerSound.SoundPlay("GameOver");
+        anim.SetBool("Dead", true);
+        
         player.speed = 0.1f;
         anim.SetBool("Dead", true);
         Invoke("GameOverTest", 3f);
@@ -59,6 +74,7 @@ public class GameManager : MonoBehaviour
 
     private void GameOverTest()
     {
+
         Time.timeScale = 0;
         GameOver_UI.SetActive(true);
         InactiveUI(); //이미 활성화 된 UI들 제거
@@ -71,6 +87,7 @@ public class GameManager : MonoBehaviour
             return;
         }
         isClear = true;
+        playerSound.SoundPlay("GameClear");
         Debug.Log("GameClear!");
         // player.speed = 0.5f;
         // fade.B_Fadeout();
