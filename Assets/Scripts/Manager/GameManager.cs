@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class GameManager : MonoBehaviour
 
     public int keyCount; //획득한 키의 수
     public GameObject keyCountUI;
-    private Text keyCountText;
+    private TextMeshProUGUI keyCountText;
 
     public bool isClear;
     public bool isOver;
@@ -32,7 +33,7 @@ public class GameManager : MonoBehaviour
     {
         keyCount = 0; //player가 획득한 key 개수 0으로 초기화
         keyFind = GameObject.FindGameObjectsWithTag("Key"); //Scene 전체의 키 찾기
-        keyCountText = keyCountUI.GetComponentInChildren<Text>(); //keyCountUI의 자식 keyCountText의 Text 컴포넌트 get
+        keyCountText = keyCountUI.GetComponentInChildren<TextMeshProUGUI>(); //keyCountUI의 자식 keyCountText의 Text 컴포넌트 get
         anim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
 
 
