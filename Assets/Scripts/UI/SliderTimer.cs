@@ -7,7 +7,7 @@ public class SliderTimer : MonoBehaviour
     GameManager manager;
 
     Slider slTimer;
-    public float fSliderTime= 10.0f;
+    public float fSliderTime= 1000.0f;
     // Start is called before the first frame update
     void Start()
     {

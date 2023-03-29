@@ -5393,7 +5393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be754b3e9ca64094bad43f25bdc90595, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fSliderTime: 10
+  fSliderTime: 1000
 --- !u!114 &1661364676
 MonoBehaviour:
   m_ObjectHideFlags: 0

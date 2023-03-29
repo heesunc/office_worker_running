@@ -66,7 +66,6 @@ public class GameManager : MonoBehaviour
         Debug.Log("GameOver!");
 
         playerSound.SoundPlay("GameOver");
-        anim.SetBool("Dead", true);
         
         player.speed = 0.1f;
         anim.SetBool("Dead", true);
@@ -90,13 +89,14 @@ public class GameManager : MonoBehaviour
         isClear = true;
         playerSound.SoundPlay("GameClear");
         Debug.Log("GameClear!");
-        // player.speed = 0.5f;
-        // fade.B_Fadeout();
-        // Invoke("GameClearTest", 2.5f);
+        player.speed = 0.1f;
+        //fade.B_Fadeout();
+        anim.SetBool("Clear", true);
+        Invoke("GameClearTest", 2.5f);
 
-        Time.timeScale = 0;
-        GameClear_UI.SetActive(true);
-        InactiveUI();
+        //Time.timeScale = 0;
+        //GameClear_UI.SetActive(true);
+        //InactiveUI();
     }
 
     // fade위한 것이였던 함수...

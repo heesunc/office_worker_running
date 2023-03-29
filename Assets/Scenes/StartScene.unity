@@ -207,9 +207,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 879650740}
-        m_TargetAssemblyTypeName: LoadGame, Assembly-CSharp
-        m_MethodName: StartGame
+      - m_Target: {fileID: 1648247611}
+        m_TargetAssemblyTypeName: BtnSound, Assembly-CSharp
+        m_MethodName: SoundPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -219,9 +219,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1648247611}
-        m_TargetAssemblyTypeName: BtnSound, Assembly-CSharp
-        m_MethodName: SoundPlay
+      - m_Target: {fileID: 879650740}
+        m_TargetAssemblyTypeName: LoadGame, Assembly-CSharp
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
