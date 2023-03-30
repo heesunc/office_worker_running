@@ -1576,17 +1576,12 @@ Transform:
   m_Father: {fileID: 1625675018}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &471832840 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8915268738744828688, guid: 2b3c301e17bbdca41a8764b4bfa067d9, type: 3}
-  m_PrefabInstance: {fileID: 6819628145353947656}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &471832847 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 471832847, guid: 2b3c301e17bbdca41a8764b4bfa067d9, type: 3}
   m_PrefabInstance: {fileID: 6819628145353947656}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 471832840}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1843edf27a03914081fd2723d827986, type: 3}
@@ -2889,8 +2884,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameOver_UI: {fileID: 511529615}
   SecUI: {fileID: 48972596}
+  anim: {fileID: 0}
   ReviveBtn: {fileID: 834585979}
-  player: {fileID: 471832840}
 --- !u!114 &834585979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6793,7 +6788,7 @@ PrefabInstance:
       objectReference: {fileID: 1439369523}
     - target: {fileID: 2694523669690464484, guid: e239189d8746156468929cff01381e83, type: 3}
       propertyPath: stageIndex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2694523669690464484, guid: e239189d8746156468929cff01381e83, type: 3}
       propertyPath: moneyParent
@@ -7010,6 +7005,10 @@ PrefabInstance:
       propertyPath: camera
       value: 
       objectReference: {fileID: 2141999119}
+    - target: {fileID: 3283566064347624628, guid: 2b3c301e17bbdca41a8764b4bfa067d9, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3339026223318983588, guid: 2b3c301e17bbdca41a8764b4bfa067d9, type: 3}
       propertyPath: bossUI
       value: 
@@ -7026,6 +7025,14 @@ PrefabInstance:
       propertyPath: mat.Array.data[2]
       value: 
       objectReference: {fileID: 2100000, guid: d60c3166819f8eb4ba539c0b0f3e47fa, type: 2}
+    - target: {fileID: 6789337503008292505, guid: 2b3c301e17bbdca41a8764b4bfa067d9, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789337503008292505, guid: 2b3c301e17bbdca41a8764b4bfa067d9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7
+      objectReference: {fileID: 0}
     - target: {fileID: 8138766498160679338, guid: 2b3c301e17bbdca41a8764b4bfa067d9, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -7074,7 +7081,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Salaryman
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1591668730856008229, guid: 2b3c301e17bbdca41a8764b4bfa067d9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2b3c301e17bbdca41a8764b4bfa067d9, type: 3}
 --- !u!4 &6819628145353947657 stripped
 Transform:
