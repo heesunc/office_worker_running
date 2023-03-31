@@ -7,6 +7,7 @@ using System.Text;
 public class StageGenerate : MonoBehaviour
 {
     const int MAPSIZE = 29;
+    private int timeLimit;
 
     public GameObject moneyPrefab; //Items Prefabs
     public GameObject fileStackPrefab;
@@ -14,7 +15,7 @@ public class StageGenerate : MonoBehaviour
     public GameObject postItPrefab;
     public GameObject coffeePrefab;
 
-    public GameObject moneyParent; //Items Prefabs
+    public GameObject moneyParent; //Items Parent
     public GameObject fileStackParent;
     public GameObject mailParent;
     public GameObject postItParent;
@@ -28,13 +29,14 @@ public class StageGenerate : MonoBehaviour
     private GameObject stageManager;
     private Transform player;
     private Transform playerTarget;
+    private SliderTimer timer;
 
     private void Awake()
     {
         stageManager = GameObject.Find("StageManager");
         player = GameObject.FindWithTag("Player").transform;
         playerTarget = GameObject.Find("PlayerTarget").transform;
-        
+        timer = GameObject.Find("SliderTimer").GetComponent<SliderTimer>();
 
         if (stageManager != null)
             stageIndex = stageManager.GetComponent<LoadGame>().Index; //Stage Selection
@@ -43,6 +45,7 @@ public class StageGenerate : MonoBehaviour
         TextAsset stageData = Resources.Load<TextAsset>("Stage" + stageIndex); //Load Stage.text
         string[] lines = stageData.text.Split('\n');
 
+        timeLimit = int.Parse(lines[29]); //Last line is TimeLimit
         mapData = new int[MAPSIZE, MAPSIZE]; 
 
         for (int i = 0; i < MAPSIZE; i++) //Split stage data
@@ -54,6 +57,7 @@ public class StageGenerate : MonoBehaviour
             }
         }
 
+        timer.fSliderTime = timeLimit; //set timer
       
         for (int i = 0; i < MAPSIZE; i++) //Create Stage
         {
