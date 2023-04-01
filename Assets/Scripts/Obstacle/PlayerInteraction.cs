@@ -53,7 +53,6 @@ public class PlayerInteraction : MonoBehaviour
                 ObstacleCollision(other);
         }
 
-
         if (other.CompareTag("Boss"))
         {
             manager.GameOver();
@@ -61,9 +60,6 @@ public class PlayerInteraction : MonoBehaviour
 
         if (other.CompareTag("Key"))
         {
-
-           
-
             int x, y; //Keyname split
             string keyName = other.name;
             keyName = keyName.Trim('(', ')');
@@ -95,17 +91,22 @@ public class PlayerInteraction : MonoBehaviour
                 ObstacleCollision(collision.gameObject.GetComponent<Collider>());
         }
     }
-
  
     public void ObstacleCollision(Collider obstacle) //Obstacle collision handling function
     {
-
         if (obstacle.CompareTag("Mail"))
         {
             itemSound.SoundPlay("Mail");
-            Vector3 bossPosition = tf.position - tf.forward * 3;
-            Instantiate(bossUI, bossPosition, Quaternion.identity);
-            bossUI.SetActive(true);
+            if (GameObject.FindWithTag("Boss") ==  null)
+            {
+                Vector3 bossPosition = tf.position - tf.forward * 3;
+                Instantiate(bossUI, bossPosition, Quaternion.identity);
+                bossUI.SetActive(true);
+            }
+            else
+            {
+                manager.GameOver();
+            }
         }
         else if (obstacle.CompareTag("Smoke"))
         {
