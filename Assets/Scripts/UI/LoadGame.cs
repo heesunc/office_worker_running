@@ -37,7 +37,11 @@ public class LoadGame : MonoBehaviour
     public void Awake()
     {
         stageIndexText = stageSelection.GetComponentInChildren<Text>();
+        if (PlayerPrefs.GetInt("curIndex") == 0)
+            PlayerPrefs.SetInt("curIndex", 1);
+
         Index = PlayerPrefs.GetInt("curIndex");
+        
     }
 
     public void Update()

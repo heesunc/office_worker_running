@@ -50,8 +50,9 @@ public class GameManager : MonoBehaviour
         
         keyCountText.text = (keyFind.Length - keyCount).ToString(); //KeyCount UI
 
-        if (keyFind.Length == keyCount)
+        if (keyCount >= keyFind.Length)
         {
+            keyCount = keyFind.Length;
             GameClear();
         }
     }    

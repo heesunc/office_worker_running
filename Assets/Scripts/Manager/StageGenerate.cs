@@ -23,6 +23,7 @@ public class StageGenerate : MonoBehaviour
 
     public float distance = 7.0f;
     public static int stageIndex; //Stage selection
+    public int testIndex;
     public TextAsset stageFile;
     public int[,] mapData;
     
@@ -40,10 +41,12 @@ public class StageGenerate : MonoBehaviour
 
         if (stageManager != null)
         {
-            Debug.Log("asdasdasdasdasda");
             stageIndex = stageManager.GetComponent<LoadGame>().Index; //Stage Selection
         }
-            
+        else
+        {
+            stageIndex = testIndex;
+        }  
 
 
         TextAsset stageData = Resources.Load<TextAsset>("Stage" + stageIndex); //Load Stage.text
@@ -114,6 +117,12 @@ public class StageGenerate : MonoBehaviour
         player.LookAt(playerTarget);
     }
 
+    public void NextStageLoad()
+    {
+        Time.timeScale = 1.0f;
+        stageManager.GetComponent<LoadGame>().Index++;
+        LoadingSceneController.LoadScene("Stage");
+    }
 
     void Start()
     {
