@@ -22,7 +22,7 @@ public class StageGenerate : MonoBehaviour
     public GameObject coffeeParent;
 
     public float distance = 7.0f;
-    public int stageIndex; //Stage selection
+    public static int stageIndex; //Stage selection
     public TextAsset stageFile;
     public int[,] mapData;
     
@@ -39,10 +39,15 @@ public class StageGenerate : MonoBehaviour
         timer = GameObject.Find("SliderTimer").GetComponent<SliderTimer>();
 
         if (stageManager != null)
+        {
+            Debug.Log("asdasdasdasdasda");
             stageIndex = stageManager.GetComponent<LoadGame>().Index; //Stage Selection
+        }
+            
 
 
         TextAsset stageData = Resources.Load<TextAsset>("Stage" + stageIndex); //Load Stage.text
+        PlayerPrefs.SetInt("curIndex", stageIndex); 
         string[] lines = stageData.text.Split('\n');
 
         timeLimit = int.Parse(lines[29]); //Last line is TimeLimit

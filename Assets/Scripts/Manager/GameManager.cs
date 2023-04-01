@@ -87,6 +87,12 @@ public class GameManager : MonoBehaviour
             return;
         }
         isClear = true;
+
+        if(PlayerPrefs.GetInt("curIndex") > PlayerPrefs.GetInt("clearData"))
+        {
+            PlayerPrefs.SetInt("clearData", PlayerPrefs.GetInt("curIndex"));
+        }
+
         playerSound.SoundPlay("GameClear");
         Debug.Log("GameClear!");
         player.speed = 0.1f;

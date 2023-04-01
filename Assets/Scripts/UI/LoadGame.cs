@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class LoadGame : MonoBehaviour
 {
     public string SceneToLoad;
-    public int Index = 0;
+    public int Index;
     public int numberOfStage = 2;
  
     public GameObject stageSelection;
@@ -24,20 +24,20 @@ public class LoadGame : MonoBehaviour
 
     public void UpIndex()
     {
-        if (Index < numberOfStage)
+        if (Index < numberOfStage && Index <= PlayerPrefs.GetInt("clearData"))
             Index++;
     }
 
     public void DownIndex()
     {
-        if (Index > 0)
+        if (Index > 1)
             Index--;
     }
 
-    public void Start()
+    public void Awake()
     {
         stageIndexText = stageSelection.GetComponentInChildren<Text>();
-        
+        Index = PlayerPrefs.GetInt("curIndex");
     }
 
     public void Update()
