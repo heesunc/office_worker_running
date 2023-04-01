@@ -21,6 +21,8 @@ public class StageGenerate : MonoBehaviour
     public GameObject postItParent;
     public GameObject coffeeParent;
 
+    public GameObject tutorial;
+
     public float distance = 7.0f;
     public static int stageIndex; //Stage selection
     public int testIndex;
@@ -113,8 +115,12 @@ public class StageGenerate : MonoBehaviour
                 }
             }
         }
-
         player.LookAt(playerTarget);
+
+        if(stageIndex == 1)
+        {
+            OpenTutorial();
+        }
     }
 
     public void NextStageLoad()
@@ -124,6 +130,18 @@ public class StageGenerate : MonoBehaviour
         LoadingSceneController.LoadScene("Stage");
     }
 
+    void OpenTutorial()
+    {
+        Time.timeScale = 0.0f;
+        tutorial.SetActive(true);
+    }
+
+    public void CloseTutorial()
+    {
+        Time.timeScale = 1.0f;
+        tutorial.SetActive(false);
+
+    }
     void Start()
     {
        
