@@ -126,8 +126,9 @@ public class StageGenerate : MonoBehaviour
     public void NextStageLoad()
     {
         Time.timeScale = 1.0f;
-        stageManager.GetComponent<LoadGame>().Index++;
-        LoadingSceneController.LoadScene("Stage");
+        stageManager.GetComponent<LoadGame>().UpIndex();
+        if(PlayerPrefs.GetInt("curIndex") != stageManager.GetComponent<LoadGame>().numberOfStage)
+            LoadingSceneController.LoadScene("Stage");
     }
 
     void OpenTutorial()

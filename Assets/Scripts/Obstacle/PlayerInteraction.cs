@@ -101,7 +101,7 @@ public class PlayerInteraction : MonoBehaviour
             {
                 Vector3 bossPosition = tf.position - tf.forward * 3;
                 Instantiate(bossUI, bossPosition, Quaternion.identity);
-                bossUI.SetActive(true);
+                //bossUI.SetActive(true);
             }
             else
             {
