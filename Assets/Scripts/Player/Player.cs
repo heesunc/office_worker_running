@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
     private Direction seeX = Direction.READY;
 
     //move
-    public float speed = 7; //move speed
+    public float speed; //move speed
     private int move = 1;
     private float playTime = 0f; //속도 올리기용. 나중에 없애기. 
     private Vector3 correctVelocity = Vector3.zero; //it move to right line using this velocity
