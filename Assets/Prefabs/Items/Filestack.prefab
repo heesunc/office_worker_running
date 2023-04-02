@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &7016711906130842831
 Transform:
@@ -62,16 +62,16 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7198559261415225722, guid: 57a50c1d04ea29e499bcc4c40e19ae9c, type: 3}
-  - {fileID: -5605289326131794027, guid: 57a50c1d04ea29e499bcc4c40e19ae9c, type: 3}
-  - {fileID: -6087771358165109452, guid: 57a50c1d04ea29e499bcc4c40e19ae9c, type: 3}
-  - {fileID: 880774007180850119, guid: 57a50c1d04ea29e499bcc4c40e19ae9c, type: 3}
-  - {fileID: 6699446615349125189, guid: 57a50c1d04ea29e499bcc4c40e19ae9c, type: 3}
-  - {fileID: -6478536213147159724, guid: 57a50c1d04ea29e499bcc4c40e19ae9c, type: 3}
-  - {fileID: 9185737683893222716, guid: 57a50c1d04ea29e499bcc4c40e19ae9c, type: 3}
-  - {fileID: 1886820026795636259, guid: 57a50c1d04ea29e499bcc4c40e19ae9c, type: 3}
-  - {fileID: -4246479402191905792, guid: 57a50c1d04ea29e499bcc4c40e19ae9c, type: 3}
-  - {fileID: -8693172909504858975, guid: 57a50c1d04ea29e499bcc4c40e19ae9c, type: 3}
+  - {fileID: 2100000, guid: 235298c33b22a234db717ff170f7b759, type: 2}
+  - {fileID: 2100000, guid: bbdc93234c5a3254cbfa50394fb2a584, type: 2}
+  - {fileID: 2100000, guid: 235298c33b22a234db717ff170f7b759, type: 2}
+  - {fileID: 2100000, guid: 1270d40415bc10149a1fb5904689e73f, type: 2}
+  - {fileID: 2100000, guid: bdd16a78720ad8a47b6bde045609c5df, type: 2}
+  - {fileID: 2100000, guid: fed3e9fd0cb807b44986afa32289b570, type: 2}
+  - {fileID: 2100000, guid: d4ad5df28d46c90489150494357a7a9e, type: 2}
+  - {fileID: 2100000, guid: 43fb410383c2236499cf5359b0ad53ab, type: 2}
+  - {fileID: 2100000, guid: eb2d78bab9387a44597eff0d8275b722, type: 2}
+  - {fileID: 2100000, guid: 501182cffcca1854099a9932696b6f9e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
