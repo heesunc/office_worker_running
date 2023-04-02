@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Smoke
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &6758859330639361178
 Transform:
@@ -62,10 +62,10 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -5796834796327705238, guid: 3d3a6279486d2fe43b3f675ee919d9f6, type: 3}
-  - {fileID: -5149870277412881170, guid: 3d3a6279486d2fe43b3f675ee919d9f6, type: 3}
-  - {fileID: -2690191287224471105, guid: 3d3a6279486d2fe43b3f675ee919d9f6, type: 3}
-  - {fileID: -6478536213147159724, guid: 3d3a6279486d2fe43b3f675ee919d9f6, type: 3}
+  - {fileID: 2100000, guid: 55977e0cfe1102547a92db705c227f05, type: 2}
+  - {fileID: 2100000, guid: 792d98e70be7b2949b6869a2d4f939c7, type: 2}
+  - {fileID: 2100000, guid: 9d0decf6c0459cf47846874f14fd9eed, type: 2}
+  - {fileID: 2100000, guid: 0394520a19bdf854f87e8267f2c51b37, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
