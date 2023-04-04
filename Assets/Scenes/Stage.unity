@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17543843, g: 0.21951073, b: 0.30182981, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7130,7 +7130,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAudioSource: {fileID: 2123252835}
   playerAudioList:
-  - {fileID: 8300000, guid: 2dd46702a1a4f7948b145c1fd73780b8, type: 3}
   - {fileID: 8300000, guid: bf88b65784c4769469014b03c6a307e4, type: 3}
   - {fileID: 8300000, guid: f92d0eec389686843b315db5fa1f73b3, type: 3}
   - {fileID: 8300000, guid: e6606b430a64f8b4c9d8359fd16d059b, type: 3}
@@ -7185,7 +7184,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.15686275, g: 0.15686275, b: 0.15686275, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -7313,6 +7312,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StageGenerator
       objectReference: {fileID: 0}
+    - target: {fileID: 2694523669690464484, guid: e239189d8746156468929cff01381e83, type: 3}
+      propertyPath: SecUI
+      value: 
+      objectReference: {fileID: 48972596}
     - target: {fileID: 2694523669690464484, guid: e239189d8746156468929cff01381e83, type: 3}
       propertyPath: tutorial
       value: 
@@ -7615,6 +7618,10 @@ PrefabInstance:
     - target: {fileID: 7691697941427007215, guid: f3547a6b0afb9ec42823270a7529068f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195960829261798697, guid: f3547a6b0afb9ec42823270a7529068f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8195960829261798698, guid: f3547a6b0afb9ec42823270a7529068f, type: 3}
       propertyPath: m_LocalPosition.x

@@ -34,12 +34,16 @@ public class StageGenerate : MonoBehaviour
     private Transform playerTarget;
     private SliderTimer timer;
 
+    public GameObject SecUI;
+    Sec secScript;
+
     private void Awake()
     {
         stageManager = GameObject.Find("StageManager");
         player = GameObject.FindWithTag("Player").transform;
         playerTarget = GameObject.Find("PlayerTarget").transform;
         timer = GameObject.Find("SliderTimer").GetComponent<SliderTimer>();
+        secScript = SecUI.GetComponent<Sec>();
 
         if (stageManager != null)
         {
@@ -121,6 +125,12 @@ public class StageGenerate : MonoBehaviour
         {
             OpenTutorial();
         }
+        else
+        {
+            Time.timeScale = 0.0f;
+            SecUI.SetActive(true);
+            secScript.StartSecond(); // 3초 세는 코루틴 함수 실행
+        }
     }
 
     public void NextStageLoad()
@@ -139,8 +149,10 @@ public class StageGenerate : MonoBehaviour
 
     public void CloseTutorial()
     {
-        Time.timeScale = 1.0f;
+        
         tutorial.SetActive(false);
+        SecUI.SetActive(true);
+        secScript.StartSecond(); // 3초 세는 코루틴 함수 실행
 
     }
     void Start()

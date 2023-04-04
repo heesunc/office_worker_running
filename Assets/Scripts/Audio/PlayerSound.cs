@@ -9,10 +9,9 @@ public class PlayerSound : MonoBehaviour
     private float volume = 0.05f;
 
     /*
-     0 = 걷기
-     1 = 점프
-     2 = 게임 클리어
-     3 = 게임 오버
+     0 = 점프
+     1 = 게임 클리어
+     2 = 게임 오버
       */
 
     // Start is called before the first frame update
@@ -30,49 +29,28 @@ public class PlayerSound : MonoBehaviour
     {
         if (!MuteManager.EffectIsMuted)
         {
-            if (name == "Walk")
+            
+            if(name == "Jump")
             {
-                WalkSoundPlay();
-            }
-            else if(name == "Jump")
-            {
-                playerAudioSource.clip = playerAudioList[1];
+                playerAudioSource.clip = playerAudioList[0];
                 volume = 1.0f;
-                playerAudioSource.loop = false;
-                playerAudioSource.volume = volume;
-                playerAudioSource.Play();
-
-                Invoke("WalkSoundPlay", 1f);
             }
-            else 
+            else if (name == "GameClear")
             {
-                if (name == "GameClear")
-                {
-                    playerAudioSource.clip = playerAudioList[2];
+                    playerAudioSource.clip = playerAudioList[1];
                     volume = 0.4f;
-                }
-                else if (name == "GameOver")
-                {
-                    playerAudioSource.clip = playerAudioList[3];
+            }
+            else if (name == "GameOver")
+            {
+                    playerAudioSource.clip = playerAudioList[2];
                     volume = 0.7f;
 
-                }
-                playerAudioSource.loop = false;
-                playerAudioSource.volume = volume;
-                playerAudioSource.Play();
             }
-           
 
+            playerAudioSource.loop = false;
+            playerAudioSource.volume = volume;
+            playerAudioSource.Play();
         }
-    }
-
-    public void WalkSoundPlay()
-    {
-        playerAudioSource.clip = playerAudioList[0];
-        volume = 0.4f;
-        playerAudioSource.loop = true;
-        playerAudioSource.volume = volume;
-        playerAudioSource.Play();
     }
 
     public void SoundStop()
