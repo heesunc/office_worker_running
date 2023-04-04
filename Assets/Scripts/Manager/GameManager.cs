@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
         // fade.B_Fadeout();
         // Invoke("GameClearTest", 2.5f);
 
-        Time.timeScale = 0;
+        Time.timeScale = 0.001f;
         GameClear_UI.SetActive(true);
         InactiveUI();
     }
