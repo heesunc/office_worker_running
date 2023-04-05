@@ -12,7 +12,7 @@ public class Pause : MonoBehaviour
     }
     void Update()
     {
-        transform.Translate(Time.deltaTime, 0, 0);
+        //transform.Translate(Time.deltaTime, 0, 0);
     }
     public void OnTogglePauseButton()
     {

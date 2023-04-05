@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class GameManager : MonoBehaviour
 
     public int keyCount; //획득한 키의 수
     public GameObject keyCountUI;
-    private Text keyCountText;
+    private TextMeshProUGUI keyCountText;
 
     public bool isClear;
     public bool isOver;
@@ -32,7 +33,7 @@ public class GameManager : MonoBehaviour
     {
         keyCount = 0; //player가 획득한 key 개수 0으로 초기화
         keyFind = GameObject.FindGameObjectsWithTag("Key"); //Scene 전체의 키 찾기
-        keyCountText = keyCountUI.GetComponentInChildren<Text>(); //keyCountUI의 자식 keyCountText의 Text 컴포넌트 get
+        keyCountText = keyCountUI.GetComponentInChildren<TextMeshProUGUI>(); //keyCountUI의 자식 keyCountText의 Text 컴포넌트 get
         anim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
 
 
@@ -49,8 +50,9 @@ public class GameManager : MonoBehaviour
         
         keyCountText.text = (keyFind.Length - keyCount).ToString(); //KeyCount UI
 
-        if (keyFind.Length == keyCount)
+        if (keyCount >= keyFind.Length)
         {
+            keyCount = keyFind.Length;
             GameClear();
         }
     }    
@@ -65,7 +67,6 @@ public class GameManager : MonoBehaviour
         Debug.Log("GameOver!");
 
         playerSound.SoundPlay("GameOver");
-        anim.SetBool("Dead", true);
         
         player.speed = 0.1f;
         anim.SetBool("Dead", true);
@@ -87,15 +88,22 @@ public class GameManager : MonoBehaviour
             return;
         }
         isClear = true;
+
+        if(PlayerPrefs.GetInt("curIndex") > PlayerPrefs.GetInt("clearData"))
+        {
+            PlayerPrefs.SetInt("clearData", PlayerPrefs.GetInt("curIndex"));
+        }
+
         playerSound.SoundPlay("GameClear");
         Debug.Log("GameClear!");
-        // player.speed = 0.5f;
-        // fade.B_Fadeout();
-        // Invoke("GameClearTest", 2.5f);
+        player.speed = 0.1f;
+        //fade.B_Fadeout();
+        anim.SetBool("Clear", true);
+        Invoke("GameClearTest", 2.5f);
 
-        Time.timeScale = 0.001f;
-        GameClear_UI.SetActive(true);
-        InactiveUI();
+        //Time.timeScale = 0;
+        //GameClear_UI.SetActive(true);
+        //InactiveUI();
     }
 
     // fade위한 것이였던 함수...
