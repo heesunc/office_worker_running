@@ -118,8 +118,7 @@ public class GameManager : MonoBehaviour
     private void InactiveUI()
     {
         smoke_UI.SetActive(false);
-        Destroy(boss_UI);
-
+        boss_UI.SetActive(false);
     }
 
 }

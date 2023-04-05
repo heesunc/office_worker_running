@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5756067376559395175
 Transform:
   m_ObjectHideFlags: 0
@@ -81,7 +81,7 @@ MonoBehaviour:
   distance: 2.5
   height: 0
   bossAudioSource: {fileID: 3495989825809400045}
-  bossAudioClip: {fileID: 8300000, guid: 9004d71a3c3e1ae459c01eeec1b6855d, type: 3}
+  bossAudioClip: {fileID: 8300000, guid: f136618b48e607f48b729031731450f0, type: 3}
 --- !u!82 &3495989825809400045
 AudioSource:
   m_ObjectHideFlags: 0

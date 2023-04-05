@@ -17,7 +17,7 @@ public class PlayerSound : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SoundPlay("Walk");
+
     }
 
     // Update is called once per frame
@@ -46,11 +46,17 @@ public class PlayerSound : MonoBehaviour
                     volume = 0.7f;
 
             }
+            else if (name == "Revive")
+            {
+                playerAudioSource.clip = playerAudioList[3];
+                volume = 1.0f;
+            }
 
             playerAudioSource.loop = false;
             playerAudioSource.volume = volume;
             playerAudioSource.Play();
         }
+       
     }
 
     public void SoundStop()

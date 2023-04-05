@@ -4201,8 +4201,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 2079032272}
   audioList:
-  - {fileID: 8300000, guid: 55f7fd0e553646e458cd58e49a71221c, type: 3}
-  - {fileID: 8300000, guid: f8e7f9d5284f7794fa9f4d587fb43872, type: 3}
+  - {fileID: 8300000, guid: 5d91735edccbeb44caf1de67ac2e6458, type: 3}
+  - {fileID: 8300000, guid: ac085446aa3cf264588858636ecb5ecc, type: 3}
 --- !u!1 &2126903521
 GameObject:
   m_ObjectHideFlags: 0

@@ -37,6 +37,11 @@ public class StageGenerate : MonoBehaviour
     public GameObject SecUI;
     Sec secScript;
 
+    public Material[] playerBody = new Material[2];
+    public Material[] floorColor = new Material[2];
+    private int matNum;
+
+
     private void Awake()
     {
         stageManager = GameObject.Find("StageManager");
@@ -54,7 +59,18 @@ public class StageGenerate : MonoBehaviour
             stageIndex = testIndex;
         }  
 
+        //스테이지에 따른 머티리얼 변경
+        if(stageIndex == 1)
+            matNum = 0;
+        else if(stageIndex == 2)
+            matNum = 1;
 
+        floorColor = Resources.LoadAll<Material>("Materials/Floor" + matNum);
+        GameObject.FindWithTag("Player").GetComponentInChildren<SkinnedMeshRenderer>().material = playerBody[matNum];
+        GameObject.FindWithTag("Floor").GetComponent<MeshRenderer>().materials = floorColor;
+
+
+        //Stage Generate
         TextAsset stageData = Resources.Load<TextAsset>("Stage" + stageIndex); //Load Stage.text
         PlayerPrefs.SetInt("curIndex", stageIndex); 
         string[] lines = stageData.text.Split('\n');
