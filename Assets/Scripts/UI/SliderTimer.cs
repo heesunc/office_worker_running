@@ -12,9 +12,8 @@ public class SliderTimer : MonoBehaviour
     public AudioSource timerAudioSource;
     public AudioClip[] timerAudioList;
     private float volume = 0.05f;
-    private float pitch = 1.0f;
     private bool isTimeOut = false;
-
+    private bool activeSound = false;
     /* 
         0 = timer
         1= timeOver
@@ -28,7 +27,7 @@ public class SliderTimer : MonoBehaviour
         slTimer.maxValue = fSliderTime;
         slTimer.value = fSliderTime;
 
-        TimerSoundPlay("Timer");
+        
     }
 
     // Update is called once per frame
@@ -37,8 +36,15 @@ public class SliderTimer : MonoBehaviour
         if(slTimer.value >0.0f)
         {
             slTimer.value -= Time.deltaTime;
-            pitch = 1.0f + (1.0f - slTimer.value/fSliderTime); //효과음 속도 비율
-            timerAudioSource.pitch = pitch;
+
+            if(slTimer.value < 8.0f)
+            {
+                if(activeSound == false)
+                {
+                    TimerSoundPlay("Timer");
+                    activeSound = true;
+                }
+            }
 
             if (Time.timeScale != 1.0f)
             {
@@ -48,6 +54,7 @@ public class SliderTimer : MonoBehaviour
             {
                 timerAudioSource.volume = 0.5f;
             }
+            
 
         }
         else
@@ -70,12 +77,11 @@ public class SliderTimer : MonoBehaviour
             if(name == "Timer")
             {
                 timerAudioSource.clip = timerAudioList[0];
-                timerAudioSource.loop = true;
+                timerAudioSource.loop = false;
                
             }
             else if(name == "TimeOut")
             {
-                timerAudioSource.pitch = 1.0f;
                 timerAudioSource.clip = timerAudioList[1];
                 timerAudioSource.loop = false;
                 
