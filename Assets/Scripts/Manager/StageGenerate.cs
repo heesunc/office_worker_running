@@ -60,9 +60,9 @@ public class StageGenerate : MonoBehaviour
         }  
 
         //스테이지에 따른 머티리얼 변경
-        if(stageIndex == 1)
+        if(stageIndex <= 10)
             matNum = 0;
-        else if(stageIndex == 2)
+        else if(stageIndex <= 20)
             matNum = 1;
 
         floorColor = Resources.LoadAll<Material>("Materials/Floor" + matNum);

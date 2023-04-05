@@ -11,7 +11,7 @@ public class SliderTimer : MonoBehaviour
 
     public AudioSource timerAudioSource;
     public AudioClip[] timerAudioList;
-    private float volume = 0.05f;
+    private float volume = 0.5f;
     private bool isTimeOut = false;
     private bool activeSound = false;
     /* 
@@ -48,11 +48,13 @@ public class SliderTimer : MonoBehaviour
 
             if (Time.timeScale != 1.0f)
             {
-                timerAudioSource.volume = 0.0f;
+                
+                    timerAudioSource.Pause();
             }
             else
             {
-                timerAudioSource.volume = 0.5f;
+                if (!timerAudioSource.isPlaying)
+                    timerAudioSource.Play();
             }
             
 
@@ -77,16 +79,16 @@ public class SliderTimer : MonoBehaviour
             if(name == "Timer")
             {
                 timerAudioSource.clip = timerAudioList[0];
-                timerAudioSource.loop = false;
-               
+  
             }
             else if(name == "TimeOut")
             {
                 timerAudioSource.clip = timerAudioList[1];
-                timerAudioSource.loop = false;
-                
+             
             }
 
+            timerAudioSource.loop = false;
+            timerAudioSource.volume = volume;
             timerAudioSource.Play();
         }
 
