@@ -89,6 +89,7 @@ public class Player : MonoBehaviour
     Transform tf;
     float x;
     float z;
+    public CameraController camera;
 
     public Animator anim;
     Vector3 startPos; //touch position in device
@@ -150,6 +151,7 @@ public class Player : MonoBehaviour
         {
             checkSeeX();
             checkCount++;
+            //Debug.Log(checkCount);
         }
 
         x = tf.position.x;
@@ -184,6 +186,7 @@ public class Player : MonoBehaviour
         //default move
         if (go == true)
         {
+            //Debug.Log(Vector3.forward * speed * move * Time.deltaTime);
             tf.Translate(Vector3.forward * speed * move * Time.deltaTime);
         }
 
@@ -214,6 +217,7 @@ public class Player : MonoBehaviour
     private void speedUp()
     {
         speed *= 1.2f;
+        camera.smoothSpeedUp();
     }
 
     private bool checkPlace(float x) //no used.
@@ -270,6 +274,8 @@ public class Player : MonoBehaviour
 
     private void checkSeeX() //오차 1
     {
+        //Debug.Log(seeX);
+
         int o = 1; //오차
 
         if (lastX + o < tf.position.x || lastX - o > tf.position.x)

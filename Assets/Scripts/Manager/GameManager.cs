@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public bool isOver;
     public GameObject GameOver_UI;
     public GameObject GameClear_UI;
-    private GameObject boss_UI;
+    public GameObject boss_UI;
     public GameObject smoke_UI;
 
     public Animator anim;
@@ -26,8 +26,6 @@ public class GameManager : MonoBehaviour
     PlayerSound playerSound;
 
     private Player player;
-    private Fade fade;
-
 
     void Start()
     {
@@ -42,7 +40,6 @@ public class GameManager : MonoBehaviour
             playerSound = soundSource.GetComponent<PlayerSound>();
             
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        fade = GameObject.Find("Fade").GetComponent<Fade>();
     }
 
     void Update()
@@ -97,7 +94,6 @@ public class GameManager : MonoBehaviour
         playerSound.SoundPlay("GameClear");
         Debug.Log("GameClear!");
         player.speed = 0.1f;
-        //fade.B_Fadeout();
         anim.SetBool("Clear", true);
         Invoke("GameClearTest", 2.5f);
 
@@ -106,11 +102,9 @@ public class GameManager : MonoBehaviour
         //InactiveUI();
     }
 
-    // fade위한 것이였던 함수...
     private void GameClearTest()
     {
         Time.timeScale = 0;
-        fade.B_Fadeover();
         GameClear_UI.SetActive(true);
         InactiveUI();
     }
@@ -119,7 +113,7 @@ public class GameManager : MonoBehaviour
     {
         smoke_UI.SetActive(false);
         boss_UI = GameObject.FindWithTag("Boss");
-        if (boss_UI!= null)
+        if (boss_UI != null)
         {
             Destroy(boss_UI);
         }
