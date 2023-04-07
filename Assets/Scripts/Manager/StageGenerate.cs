@@ -60,10 +60,12 @@ public class StageGenerate : MonoBehaviour
         }  
 
         //스테이지에 따른 머티리얼 변경
-        if(stageIndex <= 10)
+        if(stageIndex <= 5)
             matNum = 0;
-        else if(stageIndex <= 20)
+        else if(stageIndex <= 10)
             matNum = 1;
+        else if (stageIndex <= 15)
+            matNum = 2;
 
         floorColor = Resources.LoadAll<Material>("Materials/Floor" + matNum);
         GameObject.FindWithTag("Player").GetComponentInChildren<SkinnedMeshRenderer>().material = playerBody[matNum];

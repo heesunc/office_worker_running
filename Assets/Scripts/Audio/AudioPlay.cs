@@ -33,7 +33,7 @@ public class AudioPlay : MonoBehaviour
             if(playTime > 30.0f)
             {
                 playTime = 0.0f;
-                pitch = pitch + (pitch * 0.08f);
+                pitch = pitch + (pitch * 0.05f);
                 audioSource.pitch = pitch;
             }
             Debug.Log("playTime : " + playTime);
