@@ -89,7 +89,6 @@ public class AdmobRewardAd : MonoBehaviour
                 Debug.Log("광고 확인");
                 Time.timeScale = 0.001f;
                 rewardCallback();
-                RegisterReloadHandler(rewardedAd);
             });
             
         }
