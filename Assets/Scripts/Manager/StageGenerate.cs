@@ -33,6 +33,7 @@ public class StageGenerate : MonoBehaviour
     private Transform player;
     private Transform playerTarget;
     private SliderTimer timer;
+    AdmobRewardAd admobRewardAd;
 
     public GameObject SecUI;
     Sec secScript;
@@ -59,7 +60,7 @@ public class StageGenerate : MonoBehaviour
             stageIndex = testIndex;
         }  
 
-        //½ºÅ×ÀÌÁö¿¡ µû¸¥ ¸ÓÆ¼¸®¾ó º¯°æ
+        //ìŠ¤í…Œì´ì§€ì— ë”°ë¥¸ ë¨¸í‹°ë¦¬ì–¼ ë³€ê²½
         if(stageIndex <= 5)
             matNum = 0;
         else if(stageIndex <= 10)
@@ -147,16 +148,26 @@ public class StageGenerate : MonoBehaviour
         {
             Time.timeScale = 0.0f;
             SecUI.SetActive(true);
-            secScript.StartSecond(); // 3ÃÊ ¼¼´Â ÄÚ·çÆ¾ ÇÔ¼ö ½ÇÇà
+            secScript.StartSecond(); // 3ì´ˆ ì„¸ëŠ” ì½”ë£¨í‹´ í•¨ìˆ˜ ì‹¤í–‰
         }
     }
 
     public void NextStageLoad()
     {
-        Time.timeScale = 1.0f;
-        stageManager.GetComponent<LoadGame>().UpIndex();
-        if(PlayerPrefs.GetInt("curIndex") != stageManager.GetComponent<LoadGame>().numberOfStage)
-            LoadingSceneController.LoadScene("Stage");
+        if (admobRewardAd != null)
+        {
+            admobRewardAd.ShowAd(() =>
+            {
+                Time.timeScale = 1.0f;
+                 stageManager.GetComponent<LoadGame>().UpIndex();
+                 if(PlayerPrefs.GetInt("curIndex") != stageManager.GetComponent<LoadGame>().numberOfStage)
+                     LoadingSceneController.LoadScene("Stage");    
+            });
+        }
+        else
+        {
+            Debug.LogError("ê³„ì†í•˜ê¸° ë²„íŠ¼ ëˆ„ë¥¼ ì‹œ ê´‘ê³  ì˜¤ë¥˜");
+        }
     }
 
     void OpenTutorial()
@@ -170,13 +181,12 @@ public class StageGenerate : MonoBehaviour
         
         tutorial.SetActive(false);
         SecUI.SetActive(true);
-        secScript.StartSecond(); // 3ÃÊ ¼¼´Â ÄÚ·çÆ¾ ÇÔ¼ö ½ÇÇà
+        secScript.StartSecond(); // 3ì´ˆ ì„¸ëŠ” ì½”ë£¨í‹´ í•¨ìˆ˜ ì‹¤í–‰
 
     }
     void Start()
     {
-       
-        
+       admobRewardAd = FindObjectOfType<AdmobRewardAd>();
     }
 
     void update()
