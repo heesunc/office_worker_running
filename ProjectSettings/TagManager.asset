@@ -11,6 +11,8 @@ TagManager:
   - Mail
   - Smoke
   - Bomb
+  - Boss
+  - wall
   layers:
   - Default
   - TransparentFX
