@@ -8,7 +8,7 @@ public class LoadGame : MonoBehaviour
 {
     public string SceneToLoad;
     public int Index;
-    public int numberOfStage = 2;
+    public int numberOfStage = 11;
  
     public GameObject stageSelection;
     private Text stageIndexText;

@@ -8,7 +8,17 @@ public class SliderTimer : MonoBehaviour
     public Button reviveBtn;
 
     Slider slTimer;
-    public float fSliderTime = 1000.0f;
+
+    public float fSliderTime= 1000.0f;
+    public AudioSource timerAudioSource;
+    public AudioClip[] timerAudioList;
+    private float volume = 0.5f;
+    private bool isTimeOut = false;
+    private bool activeSound = false;
+    /* 
+        0 = timer
+        1= timeOver
+    */
     // Start is called before the first frame update
     void Start()
     {
@@ -24,12 +34,67 @@ public class SliderTimer : MonoBehaviour
         if (slTimer.value > 0.0f)
         {
             slTimer.value -= Time.deltaTime;
+
+            if(slTimer.value < 8.0f)
+            {
+                if(activeSound == false)
+                {
+                    TimerSoundPlay("Timer");
+                    activeSound = true;
+                }
+            }
+
+            if (Time.timeScale != 1.0f)
+            {
+                
+                    timerAudioSource.Pause();
+            }
+            else
+            {
+                if (!timerAudioSource.isPlaying)
+                    timerAudioSource.Play();
+            }
+            
+
         }
         else
         {
-            Debug.Log("Time Out");
+            if(isTimeOut == false)
+            {
+                isTimeOut = true;
+                TimerSoundPlay("TimeOut");
+            } 
             manager.GameOver();
             reviveBtn.interactable = false;
         }
+
+
+    }
+
+   public void TimerSoundPlay(string name)
+   {
+        if (!MuteManager.EffectIsMuted)
+        {
+            if(name == "Timer")
+            {
+                timerAudioSource.clip = timerAudioList[0];
+  
+            }
+            else if(name == "TimeOut")
+            {
+                timerAudioSource.clip = timerAudioList[1];
+             
+            }
+
+            timerAudioSource.loop = false;
+            timerAudioSource.volume = volume;
+            timerAudioSource.Play();
+        }
+
+   }
+
+    void Delay()
+    {
+        Debug.Log("delay");
     }
 }
