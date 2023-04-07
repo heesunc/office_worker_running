@@ -39,34 +39,34 @@ public class ItemSound : MonoBehaviour
             if(name == "Money")
             {
                 itemAudioSource.clip = itemAudioList[0];
-                volume = 1.0f;
+                
             }
             else if (name == "RuleMoney")
             {
                 itemAudioSource.clip = itemAudioList[1];
-                volume = 0.7f; ;
+               
             }  
             else if (name == "Bomb")
             {
                 itemAudioSource.clip = itemAudioList[2];
-                volume = 0.7f;
+                
             }   
             else if (name == "Mail")
             {
                 itemAudioSource.clip = itemAudioList[3];
-                volume = 0.7f;
+                
             }  
             else if (name == "PostIt")
             {
                 itemAudioSource.clip = itemAudioList[4];
-                volume = 0.7f;
+                
             }
             else if (name == "Coffee")
             {
                 itemAudioSource.clip = itemAudioList[5];
-                volume = 0.3f;
+               
             }
-
+            volume = 0.5f;
             itemAudioSource.loop = false;
             itemAudioSource.volume = volume;
             itemAudioSource.Play();

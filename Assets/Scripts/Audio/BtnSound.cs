@@ -25,7 +25,7 @@ public class BtnSound : MonoBehaviour
         if (!MuteManager.EffectIsMuted)
         {
             btnAudioSource.clip = btnAudioClip;
-            volume = 0.5f;
+            volume = 0.1f;
 
             btnAudioSource.loop = false;
             btnAudioSource.volume = volume;

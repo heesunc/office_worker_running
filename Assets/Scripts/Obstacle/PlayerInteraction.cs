@@ -75,12 +75,13 @@ public class PlayerInteraction : MonoBehaviour
                 if (soundSource != null)
                     itemSound.SoundPlay("Money");
                 manager.keyCount++;
+                map[x, y] = 9;
+                Debug.Log(x + " ," + y + "asd");
+                Debug.Log(map[x, y] + "asd");
+                edgeRule(x, y);
             }    
                 
-            map[x, y] = 9;
-           
 
-            edgeRule(x, y);
         }
     }
 
@@ -101,7 +102,7 @@ public class PlayerInteraction : MonoBehaviour
             {
                 Vector3 bossPosition = tf.position - tf.forward * 3;
                 Instantiate(bossUI, bossPosition, Quaternion.identity);
-                bossUI.SetActive(true);
+                //bossUI.SetActive(true);
             }
             else
             {
@@ -146,10 +147,10 @@ public class PlayerInteraction : MonoBehaviour
             yy = y + dy[i]; //dx, dy are next position parameters
 
             findEmpty = false;
-
+            if (xx < 0 || yy < 0)
+                continue;
             if (map[xx, yy] == 1) //Next position is key  
             {
-
                 DFS(xx, yy);
                 if (!findEmpty) //Fail to reach goal
                 {

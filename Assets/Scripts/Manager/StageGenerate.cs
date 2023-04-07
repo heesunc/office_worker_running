@@ -35,12 +35,21 @@ public class StageGenerate : MonoBehaviour
     private SliderTimer timer;
     AdmobRewardAd admobRewardAd;
 
+    public GameObject SecUI;
+    Sec secScript;
+
+    public Material[] playerBody = new Material[2];
+    public Material[] floorColor = new Material[2];
+    private int matNum;
+
+
     private void Awake()
     {
         stageManager = GameObject.Find("StageManager");
         player = GameObject.FindWithTag("Player").transform;
         playerTarget = GameObject.Find("PlayerTarget").transform;
         timer = GameObject.Find("SliderTimer").GetComponent<SliderTimer>();
+        secScript = SecUI.GetComponent<Sec>();
 
         if (stageManager != null)
         {
@@ -51,7 +60,20 @@ public class StageGenerate : MonoBehaviour
             stageIndex = testIndex;
         }  
 
+        //�������� �� ��Ƽ���� ����
+        if(stageIndex <= 5)
+            matNum = 0;
+        else if(stageIndex <= 10)
+            matNum = 1;
+        else if (stageIndex <= 15)
+            matNum = 2;
 
+        floorColor = Resources.LoadAll<Material>("Materials/Floor" + matNum);
+        GameObject.FindWithTag("Player").GetComponentInChildren<SkinnedMeshRenderer>().material = playerBody[matNum];
+        GameObject.FindWithTag("Floor").GetComponent<MeshRenderer>().materials = floorColor;
+
+
+        //Stage Generate
         TextAsset stageData = Resources.Load<TextAsset>("Stage" + stageIndex); //Load Stage.text
         PlayerPrefs.SetInt("curIndex", stageIndex); 
         string[] lines = stageData.text.Split('\n');
@@ -95,7 +117,7 @@ public class StageGenerate : MonoBehaviour
                 }
                 else if (mapData[i, j] == 4) //Create postIt
                 {
-                    GameObject postIt = Instantiate(postItPrefab, new Vector3(i * distance, 1.5f, j * distance), Quaternion.Euler(0, 90.0f, 0));
+                    GameObject postIt = Instantiate(postItPrefab, new Vector3(i * distance, 1.2f, j * distance), Quaternion.Euler(0, 90.0f, 0));
                     postIt.name = "(" + i + "," + j + ")";
                     postIt.transform.parent = postItParent.transform;
                 }
@@ -122,6 +144,12 @@ public class StageGenerate : MonoBehaviour
         {
             OpenTutorial();
         }
+        else
+        {
+            Time.timeScale = 0.0f;
+            SecUI.SetActive(true);
+            secScript.StartSecond(); // 3�� ���� �ڷ�ƾ �Լ� ����
+        }
     }
 
     public void NextStageLoad()
@@ -131,14 +159,16 @@ public class StageGenerate : MonoBehaviour
             admobRewardAd.ShowAd(() =>
             {
                 Time.timeScale = 1.0f;
-                stageManager.GetComponent<LoadGame>().Index++;
-                LoadingSceneController.LoadScene("Stage");
+                stageManager.GetComponent<LoadGame>().UpIndex();
+                if(PlayerPrefs.GetInt("curIndex") != stageManager.GetComponent<LoadGame>().numberOfStage)
+                    LoadingSceneController.LoadScene("Stage");
             });
         }
         else
         {
             Debug.LogError("계속하기 버튼 누를 시 광고 오류");
         }
+
     }
 
     void OpenTutorial()
@@ -149,8 +179,10 @@ public class StageGenerate : MonoBehaviour
 
     public void CloseTutorial()
     {
-        Time.timeScale = 1.0f;
+        
         tutorial.SetActive(false);
+        SecUI.SetActive(true);
+        secScript.StartSecond(); // 3�� ���� �ڷ�ƾ �Լ� ����
 
     }
     void Start()

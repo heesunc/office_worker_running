@@ -24,7 +24,6 @@ public class Sec : MonoBehaviour
         }
         SecUI.SetActive(false); // 3초 UI 끄기
         Time.timeScale = 1f;
-        GameObject.Find("PlayerSoundSource").GetComponent<PlayerSound>().SoundPlay("Walk");
         Debug.Log("3초 뒤 다시 게임 시작");
         ShowText();
     }
