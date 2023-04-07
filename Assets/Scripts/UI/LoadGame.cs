@@ -46,6 +46,7 @@ public class LoadGame : MonoBehaviour
 
     public void Update()
     {
-        stageIndexText.text = Index + "/" + numberOfStage;
+        if (stageSelection != null)
+            stageIndexText.text = Index + "/" + numberOfStage;
     }
 }
