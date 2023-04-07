@@ -289,6 +289,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d77b8471f4228a442b08b9c93d4b8eb3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c4d8561b706551f4aa605116d8ded66c, type: 2}
+    - target: {fileID: -7511558181221131132, guid: d77b8471f4228a442b08b9c93d4b8eb3, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8c93a883fb896da4e8a1ca7e63218b74, type: 2}
     - target: {fileID: 919132149155446097, guid: d77b8471f4228a442b08b9c93d4b8eb3, type: 3}
       propertyPath: m_Name
       value: floorbeige

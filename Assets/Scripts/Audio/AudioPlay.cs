@@ -8,6 +8,9 @@ public class AudioPlay : MonoBehaviour
     public AudioClip[] audioList;
     private bool isMuted = false;
     private bool effectIsMuted = false;
+    private float pitch = 1.0f;
+    private float playTime;
+
     private void Awake()
     {
         if (_instance == null)
@@ -21,6 +24,20 @@ public class AudioPlay : MonoBehaviour
         }
         // scene이 전환되어도 object가 없어지지 않도록
         DontDestroyOnLoad(gameObject);
+    }
+    public void Update()
+    {
+        if(SceneManager.GetActiveScene().name == "Stage")
+        {
+            playTime += Time.deltaTime;
+            if(playTime > 30.0f)
+            {
+                playTime = 0.0f;
+                pitch = pitch + (pitch * 0.05f);
+                audioSource.pitch = pitch;
+            }
+            Debug.Log("playTime : " + playTime);
+        }
     }
 
     // scene이 로딩됐을때 해당 scene 이름과 같은 이름의 bgm 재생
@@ -42,6 +59,7 @@ public class AudioPlay : MonoBehaviour
         audioSource.clip = clip;
         audioSource.loop = true;
         audioSource.volume = 0.1f;
+        audioSource.pitch = 1.0f;
         audioSource.Play();
     }
 
