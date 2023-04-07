@@ -9,6 +9,8 @@ public class Sec : MonoBehaviour
     public GameObject SecUI;
     public Text StartT;
 
+    // 그냥 대충 수정
+
 
     public void StartSecond()
     {
