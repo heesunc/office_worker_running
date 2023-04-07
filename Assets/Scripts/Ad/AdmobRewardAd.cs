@@ -74,7 +74,7 @@ public class AdmobRewardAd : MonoBehaviour
             });
     }
 
-    public void ShowAd(Action rewardCallback) //광고 보기
+    public void ShowAd(Action rewardCallback) //광고 보기, 
     {
         const string rewardMsg =
             "Rewarded ad rewarded the user. Type: {0}, amount: {1}.";
@@ -89,7 +89,9 @@ public class AdmobRewardAd : MonoBehaviour
                 Debug.Log("광고 확인");
                 Time.timeScale = 0.001f;
                 rewardCallback();
+                RegisterReloadHandler(rewardedAd);
             });
+            
         }
     }
 
