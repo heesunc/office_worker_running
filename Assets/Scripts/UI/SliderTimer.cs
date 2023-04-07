@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class SliderTimer : MonoBehaviour
 {
     GameManager manager;
+    public Button reviveBtn;
 
     Slider slTimer;
     public float fSliderTime= 1000.0f;
@@ -26,14 +27,12 @@ public class SliderTimer : MonoBehaviour
         slTimer = GetComponent<Slider>();
         slTimer.maxValue = fSliderTime;
         slTimer.value = fSliderTime;
-
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(slTimer.value >0.0f)
+        if (slTimer.value > 0.0f)
         {
             slTimer.value -= Time.deltaTime;
 
@@ -67,6 +66,7 @@ public class SliderTimer : MonoBehaviour
                 TimerSoundPlay("TimeOut");
             } 
             manager.GameOver();
+            reviveBtn.interactable = false;
         }
 
 

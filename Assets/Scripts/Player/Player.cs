@@ -151,7 +151,7 @@ public class Player : MonoBehaviour
         {
             checkSeeX();
             checkCount++;
-            Debug.Log(checkCount);
+            //Debug.Log(checkCount);
         }
 
         x = tf.position.x;
@@ -186,7 +186,7 @@ public class Player : MonoBehaviour
         //default move
         if (go == true)
         {
-            Debug.Log(Vector3.forward * speed * move * Time.deltaTime);
+            //Debug.Log(Vector3.forward * speed * move * Time.deltaTime);
             tf.Translate(Vector3.forward * speed * move * Time.deltaTime);
         }
 
@@ -274,7 +274,7 @@ public class Player : MonoBehaviour
 
     private void checkSeeX() //오차 1
     {
-        Debug.Log(seeX);
+        //Debug.Log(seeX);
 
         int o = 1; //오차
 
