@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public bool isOver;
     public GameObject GameOver_UI;
     public GameObject GameClear_UI;
-    public GameObject boss_UI;
+    private GameObject boss_UI;
     public GameObject smoke_UI;
 
     public Animator anim;

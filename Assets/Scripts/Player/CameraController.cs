@@ -1,51 +1,134 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraController : MonoBehaviour
 {
-    private const float DISTANCE = 5f;
-    private const float HEIGHT = 4f;
+    //private const float DISTANCE = 5f;
+    //private const float HEIGHT = 4f;
 
-    public Transform target;  // ÇÃ·¹ÀÌ¾îÀÇ À§Ä¡¸¦ ÀúÀåÇÒ º¯¼ö
-    Vector3 targetPosition;
-    public Player player;
+    //public Transform target;  // í”Œë ˆì´ì–´ì˜ ìœ„ì¹˜ë¥¼ ì €ì¥í•  ë³€ìˆ˜
+    //Vector3 targetPosition;
+    //public Player player;
 
-    static public float smoothSpeed = 0.33f;  // Ä«¸Ş¶ó ÀÌµ¿ ½Ã ºÎµå·¯¿î °¨¼ÓÀ» À§ÇÑ º¯¼ö
-    private Vector3 velocity = Vector3.zero;  // Ä«¸Ş¶ó ÀÌµ¿ ½Ã »ç¿ëÇÒ ¼Óµµ º¤ÅÍ
+    //static public float smoothSpeed = 0.33f;  // ì¹´ë©”ë¼ ì´ë™ ì‹œ ë¶€ë“œëŸ¬ìš´ ê°ì†ì„ ìœ„í•œ ë³€ìˆ˜
+    //private Vector3 velocity = Vector3.zero;  // ì¹´ë©”ë¼ ì´ë™ ì‹œ ì‚¬ìš©í•  ì†ë„ ë²¡í„°
 
-    private Transform tf; //gameObject.Transform
-    private int direction = 1;
+    //private Transform tf; //gameObject.Transform
+    //private int direction = 1;
 
-    void Start()
+    //void Start()
+    //{
+    //    tf = gameObject.GetComponent<Transform>();
+    //}
+
+    //void LateUpdate()
+    //{
+    //    direction = player.getMove();
+
+    //    //ì¹´ë©”ë¼ë¥¼ íƒ€ê¹ƒ í¬ì§€ì…˜ìœ¼ë¡œ ì´ë™.
+    //    if (direction == 1)
+    //    {
+    //        targetPosition = target.position + Vector3.up * HEIGHT - target.forward * DISTANCE;
+    //    }
+    //    else //direction == -1
+    //    {
+    //        targetPosition = target.position + Vector3.up * HEIGHT - target.forward * DISTANCE * 3f;
+    //    }
+
+    //    //ì¹´ë©”ë¼ ìœ„ì¹˜ì™€ ë°©í–¥ ì—…ë°ì´íŠ¸
+    //    transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothSpeed);
+    //    transform.LookAt(target);
+    //}
+
+    //public void smoothSpeedUp()
+    //{
+    //    if (smoothSpeed > 0.1f)
+    //    {
+    //        smoothSpeed -= 0.1f;
+    //    }
+    //}
+
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("wall"))
+    //    {
+    //        Image image = collision.gameObject.GetComponent<Image>();
+
+    //        Color color = image.color;
+    //        color.a = 0f;
+    //        image.color = color;
+
+    //        //StartCoroutine(Fadein(image));
+    //    }
+    //}
+
+    //private void OnCollisionExit(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("wall"))
+    //    {
+    //        Image image = collision.gameObject.GetComponent<Image>();
+
+    //        Color color = image.color;
+    //        color.a = 0f;
+    //        image.color = color;
+
+    //        //StartCoroutine(Fadeout(image));
+    //    }
+    //}
+
+    Renderer rend;
+    Transform child;
+    Material material;
+    Color color;
+
+    private void OnTriggerEnter(Collider collider)
     {
-        tf = gameObject.GetComponent<Transform>();
+        Debug.Log("ì¸ì‹ì€ í•¨");
+
+        GameObject c = collider.gameObject;
+
+        if (c.CompareTag("wall"))
+        {
+            int count = c.transform.childCount;
+            for (int i = 0; i < count; i++)
+            {
+                child = c.transform.GetChild(i);
+                rend = child.gameObject.GetComponent<Renderer>();
+                material = rend.material;
+                color = material.color;
+                material.shader = Shader.Find("Transparent/Diffuse");
+                material.color = new Color(1f, 1f, 1f, 0f);
+            }
+        }
     }
 
-    void LateUpdate()
+
+    //color = material.color;
+    //color.a = 0f;
+    //material.color = color;
+
+    private void OnTriggerExit(Collider collider)
     {
-        direction = player.getMove();
+        Debug.Log("íƒˆì¶œ");
 
-        //Ä«¸Ş¶ó¸¦ Å¸±ê º¸Áö¼ÇÀ¸·Î ÀÌµ¿.
-        if (direction == 1)
-        {
-            targetPosition = target.position + Vector3.up * HEIGHT - target.forward * DISTANCE;
-        }
-        else //direction == -1
-        {
-            targetPosition = target.position + Vector3.up * HEIGHT - target.forward * DISTANCE * 3f;
-        }
+        GameObject c = collider.gameObject;
 
-        //Ä«¸Ş¶ó À§Ä¡¿Í ¹æÇâ ¾÷µ¥ÀÌÆ®
-        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothSpeed);
-        transform.LookAt(target);
-    }
-
-    public void smoothSpeedUp()
-    {
-        if (smoothSpeed > 0.1f)
+        if (c.CompareTag("wall"))
         {
-            smoothSpeed -= 0.1f;
+            int count = c.transform.childCount;
+            for (int i = 0; i < count; i++)
+            {
+                child = c.transform.GetChild(i);
+                rend = child.gameObject.GetComponent<Renderer>();
+                material = rend.material;
+                material.shader = Shader.Find("Transparent/Diffuse");
+                material.color = color;
+                //color = material.color;
+                //color.a = 0f;
+                //material.color = color;
+            }
         }
     }
 }
