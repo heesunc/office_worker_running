@@ -9,11 +9,7 @@ using UnityEngine.UI;
 public class AdmobRewardAd : MonoBehaviour
 {
     private RewardedAd rewardedAd;
-
     string adUnitId;
-
-    GameManager manager;
-    public Text GetMoney;
 
     void Start()
     {
@@ -22,8 +18,7 @@ public class AdmobRewardAd : MonoBehaviour
             //초기화 완료
         });
 
-        manager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        //GetMoney = GameObject.Find("GetTxtC").GetComponent<Text>();
+
 
 #if UNITY_ANDROID
         // 실제 office_Worker_running 코드
@@ -31,7 +26,7 @@ public class AdmobRewardAd : MonoBehaviour
 
         // 구글 예제 코드
         adUnitId = "ca-app-pub-3940256099942544/5224354917";
-        
+
 #elif UNITY_IOS
             adUnitId = "ca-app-pub-3940256099942544/1712485313";
 #else
@@ -54,9 +49,9 @@ public class AdmobRewardAd : MonoBehaviour
 
         // 테스트 기기 아이디
         List<string> testDeviceIds = new List<string>() { "AB4677508C285C44E01E5FC2B460F70E" };
-    RequestConfiguration configuration =
-        new RequestConfiguration.Builder().SetTestDeviceIds(testDeviceIds).build();
-    MobileAds.SetRequestConfiguration(configuration);
+        RequestConfiguration configuration =
+            new RequestConfiguration.Builder().SetTestDeviceIds(testDeviceIds).build();
+        MobileAds.SetRequestConfiguration(configuration);
 
         // create our request used to load the ad.
         var adRequest = new AdRequest.Builder().Build();
@@ -75,16 +70,11 @@ public class AdmobRewardAd : MonoBehaviour
 
                 Debug.Log("Rewarded ad loaded with response : "
                           + ad.GetResponseInfo());
-
                 rewardedAd = ad;
             });
-
-        
     }
 
-    
-
-    public void ShowAd() //광고 보기
+    public void ShowAd(Action rewardCallback) //광고 보기
     {
         const string rewardMsg =
             "Rewarded ad rewarded the user. Type: {0}, amount: {1}.";
@@ -96,16 +86,12 @@ public class AdmobRewardAd : MonoBehaviour
                 //보상 획득하기
                 Debug.Log(String.Format(rewardMsg, reward.Type, reward.Amount));
 
-                manager.keyCount *= 2;
-                GetMoney.text = "획득한 돈 갯수 : " + manager.keyCount;
-                Debug.Log(GetMoney.text);
+                Debug.Log("광고 확인");
                 Time.timeScale = 0.001f;
-                Score.Rescore?.Invoke(); // Update the Score UI
+                rewardCallback();
             });
         }
     }
-
-    
 
     public void RegisterReloadHandler(RewardedAd ad) //광고 재로드
     {

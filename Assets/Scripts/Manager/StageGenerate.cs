@@ -33,6 +33,7 @@ public class StageGenerate : MonoBehaviour
     private Transform player;
     private Transform playerTarget;
     private SliderTimer timer;
+    AdmobRewardAd admobRewardAd;
 
     private void Awake()
     {
@@ -125,9 +126,19 @@ public class StageGenerate : MonoBehaviour
 
     public void NextStageLoad()
     {
-        Time.timeScale = 1.0f;
-        stageManager.GetComponent<LoadGame>().Index++;
-        LoadingSceneController.LoadScene("Stage");
+        if (admobRewardAd != null)
+        {
+            admobRewardAd.ShowAd(() =>
+            {
+                Time.timeScale = 1.0f;
+                stageManager.GetComponent<LoadGame>().Index++;
+                LoadingSceneController.LoadScene("Stage");
+            });
+        }
+        else
+        {
+            Debug.LogError("계속하기 버튼 누를 시 광고 오류");
+        }
     }
 
     void OpenTutorial()
@@ -144,8 +155,7 @@ public class StageGenerate : MonoBehaviour
     }
     void Start()
     {
-       
-        
+       admobRewardAd = FindObjectOfType<AdmobRewardAd>();
     }
 
     void update()
