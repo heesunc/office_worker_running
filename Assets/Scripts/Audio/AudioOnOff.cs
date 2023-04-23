@@ -13,4 +13,8 @@ public class AudioOnOff : MonoBehaviour
     {
         audioPlay.ToggleMute();
     }
+    public void ToggleEffectMute()
+    {
+        audioPlay.EffectToggleMute();
+    }
 }

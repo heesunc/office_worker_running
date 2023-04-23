@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class AudioPlay : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class AudioPlay : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
         // scene이 전환되어도 object가 없어지지 않도록
         DontDestroyOnLoad(gameObject);
     }
