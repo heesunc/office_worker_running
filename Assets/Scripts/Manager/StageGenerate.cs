@@ -21,7 +21,7 @@ public class StageGenerate : MonoBehaviour
     public GameObject postItParent;
     public GameObject coffeeParent;
 
-    public GameObject tutorial;
+    public GameObject[] tutorial;
 
     public float distance = 7.0f;
     public static int stageIndex; //Stage selection
@@ -74,7 +74,7 @@ public class StageGenerate : MonoBehaviour
 
 
         //Stage Generate
-        TextAsset stageData = Resources.Load<TextAsset>("Stage" + stageIndex); //Load Stage.text
+        TextAsset stageData = Resources.Load<TextAsset>("Stage/Stage" + stageIndex); //Load Stage.text
         PlayerPrefs.SetInt("curIndex", stageIndex); 
         string[] lines = stageData.text.Split('\n');
 
@@ -174,13 +174,18 @@ public class StageGenerate : MonoBehaviour
     void OpenTutorial()
     {
         Time.timeScale = 0.0f;
-        tutorial.SetActive(true);
+        tutorial[0].SetActive(true);
+        tutorial[1].SetActive(true);
+        tutorial[2].SetActive(true);
+        tutorial[3].SetActive(false);
+        tutorial[4].SetActive(true);
+        tutorial[5].SetActive(false);
     }
 
     public void CloseTutorial()
     {
         
-        tutorial.SetActive(false);
+        tutorial[0].SetActive(false);
         SecUI.SetActive(true);
         secScript.StartSecond(); // 3�� ���� �ڷ�ƾ �Լ� ����
 
