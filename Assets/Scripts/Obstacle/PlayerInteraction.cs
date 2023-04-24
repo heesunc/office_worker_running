@@ -29,6 +29,8 @@ public class PlayerInteraction : MonoBehaviour
     public Material[] mat = new Material[3];
 
     Transform tf;
+    public GameObject cashParticle;
+    public GameObject cashRuleParticle;
 
     // Start is called before the first frame update
     void Start()
@@ -68,10 +70,14 @@ public class PlayerInteraction : MonoBehaviour
              y = int.Parse(parts[1]);
 
 
-            GameObject.Find("(" + x + "," + y + ")").GetComponent<MeshRenderer>().materials = mat;  //Eating key
 
-            if(map[x,y]==1)
+
+            if (map[x,y]==1)
             {
+                other.GetComponentInChildren<MeshRenderer>().materials = mat;  //Eating key
+                other.transform.GetChild(0).gameObject.SetActive(false);
+                Instantiate(cashParticle, tf);
+
                 if (soundSource != null)
                     itemSound.SoundPlay("Money");
                 manager.keyCount++;
@@ -147,7 +153,7 @@ public class PlayerInteraction : MonoBehaviour
             yy = y + dy[i]; //dx, dy are next position parameters
 
             findEmpty = false;
-            if (xx < 0 || yy < 0)
+            if (xx < 0 || yy < 0 || xx>28 || yy>28)
                 continue;
             if (map[xx, yy] == 1) //Next position is key  
             {
@@ -176,7 +182,7 @@ public class PlayerInteraction : MonoBehaviour
                 xx = x + dx[i];
                 yy = y + dy[i];
 
-                if (findEmpty)
+                if (findEmpty /*|| xx < 0 || yy < 0 || xx > 28 || yy > 28*/)
                     continue;
 
                 if (map[xx, yy] != 9 && visited[xx, yy] == false)
@@ -203,7 +209,12 @@ public class PlayerInteraction : MonoBehaviour
                 if (remove[i, j] == 1)
                 {
                     Debug.Log(i + ", " + j);
-                    GameObject.Find("(" + i + "," + j + ")").GetComponent<MeshRenderer>().materials = mat; //Eating key
+
+                    GameObject.Find("(" + i + "," + j + ")").GetComponentInChildren<MeshRenderer>().materials = mat; //Eating key
+                    GameObject.Find("(" + i + "," + j + ")").transform.GetChild(0).gameObject.SetActive(false);
+                    Vector3 particlePos = tf.position + 2 * Vector3.up;
+                    Instantiate(cashRuleParticle, particlePos, Quaternion.identity, tf);
+
                     map[i, j] = 9;
                     manager.keyCount++;
                 }

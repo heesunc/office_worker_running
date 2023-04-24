@@ -23,7 +23,7 @@ public class StageGenerate : MonoBehaviour
 
     public GameObject[] tutorial;
 
-    public float distance = 7.0f;
+    const float distance = 7.0f;
     public static int stageIndex; //Stage selection
     public int testIndex;
     public TextAsset stageFile;
@@ -36,6 +36,7 @@ public class StageGenerate : MonoBehaviour
     AdmobRewardAd admobRewardAd;
 
     public GameObject SecUI;
+    public Pause pause;
     Sec secScript;
 
     public Material[] playerBody = new Material[2];
@@ -142,7 +143,9 @@ public class StageGenerate : MonoBehaviour
 
         if(stageIndex == 1)
         {
+            pause.isPause = true;
             OpenTutorial();
+            
         }
         else
         {

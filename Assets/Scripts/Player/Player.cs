@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
         move *= -1;
     }
 
-    public void oderTurnR()
+    public void oderTurnR() // Add condition statement if (!isPause && !isOver) in Pause, GameManager script when clicking the button *****
     {
         isturn = TurnState.RIGHT;
     }

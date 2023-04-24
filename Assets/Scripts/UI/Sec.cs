@@ -8,10 +8,11 @@ public class Sec : MonoBehaviour
     public Text PauseSecT;
     public GameObject SecUI;
     public Text StartT;
-
+    public Pause pause;
 
     public void StartSecond()
     {
+        pause.isPause = true;
         StartCoroutine(GetEnumerator());
     }
 
@@ -24,6 +25,7 @@ public class Sec : MonoBehaviour
         }
         SecUI.SetActive(false); // 3초 UI 끄기
         Time.timeScale = 1f;
+        pause.isPause = false;
         Debug.Log("3초 뒤 다시 게임 시작");
         ShowText();
     }
