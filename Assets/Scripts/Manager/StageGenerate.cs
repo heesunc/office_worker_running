@@ -105,7 +105,7 @@ public class StageGenerate : MonoBehaviour
                 }
                 else if (mapData[i, j] == 2) //Create fileStack
                 {
-                    GameObject fileStack = Instantiate(fileStackPrefab, new Vector3(i * distance, 1.5f, j * distance), Quaternion.Euler(-90.0f, 0, 0));
+                    GameObject fileStack = Instantiate(fileStackPrefab, new Vector3(i * distance, 1.0f, j * distance), Quaternion.Euler(-90.0f, 0, 0));
                     fileStack.name = "(" + i + "," + j + ")";
                     fileStack.transform.parent = fileStackParent.transform;
                 }

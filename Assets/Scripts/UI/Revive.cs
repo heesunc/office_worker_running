@@ -106,7 +106,7 @@ public class Revive : MonoBehaviour
 
                 manager.isOver = false;
                 ReviveBtn.interactable = false;
-                Score.Rescore(); // 부활하고 먹은 점수 반영되도록
+                //Score.Rescore(); // 부활하고 먹은 점수 반영되도록
             });
         }
         else

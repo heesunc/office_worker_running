@@ -81,7 +81,7 @@ MonoBehaviour:
   distance: 2.5
   height: 0
   bossAudioSource: {fileID: 6872531782769615587}
-  bossAudioClip: {fileID: 8300000, guid: 9004d71a3c3e1ae459c01eeec1b6855d, type: 3}
+  bossAudioClip: {fileID: 8300000, guid: f136618b48e607f48b729031731450f0, type: 3}
 --- !u!82 &6872531782769615587
 AudioSource:
   m_ObjectHideFlags: 0

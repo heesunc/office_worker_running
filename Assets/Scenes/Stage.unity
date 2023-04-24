@@ -4762,15 +4762,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 224462850629580898, guid: 10fb5284c5aadff4a94184fe0b371475, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.04049
+      value: 0.471496
       objectReference: {fileID: 0}
     - target: {fileID: 224462850629580898, guid: 10fb5284c5aadff4a94184fe0b371475, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.04049
+      value: 0.471496
       objectReference: {fileID: 0}
     - target: {fileID: 224462850629580898, guid: 10fb5284c5aadff4a94184fe0b371475, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.04049
+      value: 0.471496
       objectReference: {fileID: 0}
     - target: {fileID: 224462850629580898, guid: 10fb5284c5aadff4a94184fe0b371475, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5674,7 +5674,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1735481983}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27.00414, y: 13.903555, z: 32.811653}
+  m_LocalPosition: {x: 27.00414, y: 47.1, z: 32.811653}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7122,7 +7122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2694523669690464484, guid: e239189d8746156468929cff01381e83, type: 3}
       propertyPath: testIndex
-      value: 1
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2694523669690464484, guid: e239189d8746156468929cff01381e83, type: 3}
       propertyPath: mailParent
@@ -7148,6 +7148,10 @@ PrefabInstance:
       propertyPath: fileStackParent
       value: 
       objectReference: {fileID: 939208925}
+    - target: {fileID: 2694523669690464484, guid: e239189d8746156468929cff01381e83, type: 3}
+      propertyPath: fileStackPrefab
+      value: 
+      objectReference: {fileID: 8062224302207480034, guid: 39be8e596502cda4b89e8c8d646577c0, type: 3}
     - target: {fileID: 2694523669690464484, guid: e239189d8746156468929cff01381e83, type: 3}
       propertyPath: tutorial.Array.size
       value: 6
