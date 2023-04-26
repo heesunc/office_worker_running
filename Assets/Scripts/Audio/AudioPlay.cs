@@ -10,7 +10,7 @@ public class AudioPlay : MonoBehaviour
     private bool isMuted = false;
     private bool effectIsMuted = false;
     private float pitch = 1.0f;
-    private float playTime;
+    public float playTime;
 
     private void Awake()
     {
@@ -50,6 +50,7 @@ public class AudioPlay : MonoBehaviour
             if (arg0.name == audioList[i].name)
             {
                 AudioSoundPlay(audioList[i]);
+                pitch = 1.0f;
             }
         }
         audioSource.mute = MuteManager.IsMuted;
