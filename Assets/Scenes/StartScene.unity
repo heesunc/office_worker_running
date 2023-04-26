@@ -551,7 +551,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6b6981a0d9cdd704799d7b9f363ef32c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 982c0b39066eaa64880a76b185d7d7f0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6336,6 +6336,7 @@ MonoBehaviour:
   audioList:
   - {fileID: 8300000, guid: 5d91735edccbeb44caf1de67ac2e6458, type: 3}
   - {fileID: 8300000, guid: ac085446aa3cf264588858636ecb5ecc, type: 3}
+  playTime: 0
 --- !u!1 &2093042319
 GameObject:
   m_ObjectHideFlags: 0
