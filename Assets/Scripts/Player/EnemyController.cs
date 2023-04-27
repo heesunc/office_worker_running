@@ -7,10 +7,10 @@ public class EnemyController : MonoBehaviour
     public GameObject target;
     public Transform targetP;  // 플레이어의 위치를 저장할 변수
 
-    public float distance = 2.5f;  // 카메라와 플레이어 간의 거리
-    public float height = 1f;  // 카메라와 플레이어 간의 높이
+    public float distance = 2f;  // 카메라와 플레이어 간의 거리
+    public float height = 1f;  // 높이
 
-    static public float smoothSpeed = 0.4f;  // 카메라 이동 시 부드러운 감속을 위한 변수
+    static public float smoothSpeed = 0.4f;  //부드러운 감속
     public static float changeSpeed = 0.1f; //카메라 빨라지는 정도
 
     private Vector3 velocity = Vector3.zero;  // 카메라 이동 시 사용할 속도 벡터

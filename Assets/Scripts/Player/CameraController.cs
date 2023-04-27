@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class CameraController : MonoBehaviour
 {
+    private const float R = 1f;
+    private const float MOTIONTIME = 2f;
     //private const float DISTANCE = 5f;
     //private const float HEIGHT = 4f;
 
@@ -78,10 +80,17 @@ public class CameraController : MonoBehaviour
     //    }
     //}
 
+    public GameObject player;
     Renderer rend;
     Transform child;
+    Transform tf;
     Material material;
     Color color;
+    
+    void Start()
+    {
+        tf = gameObject.GetComponent<Transform>();
+    }
 
     private void OnTriggerEnter(Collider collider)
     {
@@ -122,5 +131,26 @@ public class CameraController : MonoBehaviour
                 material.color = color;
             }
         }
+    }
+
+    public void motionTrigger()
+    {
+        StartCoroutine(cameraMotion());
+    }
+
+    IEnumerator cameraMotion()
+    {
+        float z = - R;
+        float x;
+
+        while(z < R)
+        {
+            z = Time.deltaTime * MOTIONTIME / (R*2);
+            x = Mathf.Sqrt(Mathf.Pow(R, 2) + Mathf.Pow(z, 2));
+            tf.localPosition = new Vector3(x, tf.localPosition.y, z);
+            yield return null;
+            //tf.LookAt()
+        }
+
     }
 }

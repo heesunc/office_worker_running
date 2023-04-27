@@ -1706,7 +1706,11 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 471832847, guid: 2b3c301e17bbdca41a8764b4bfa067d9, type: 3}
   m_PrefabInstance: {fileID: 6819628145353947656}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
   m_GameObject: {fileID: 471832840}
+=======
+  m_GameObject: {fileID: 6819628145353947657}
+>>>>>>> Stashed changes
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1843edf27a03914081fd2723d827986, type: 3}
@@ -7154,6 +7158,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< Updated upstream
+=======
+--- !u!114 &2141999119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141999118}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a260d0ea269cc4782ca3c095ed8c1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 6819628145353947657}
+>>>>>>> Stashed changes
 --- !u!81 &2141999120
 AudioListener:
   m_ObjectHideFlags: 0
@@ -7532,7 +7552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8138766498160679338, guid: 2b3c301e17bbdca41a8764b4bfa067d9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 174.71
+      value: 181.6
       objectReference: {fileID: 0}
     - target: {fileID: 8138766498160679338, guid: 2b3c301e17bbdca41a8764b4bfa067d9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7568,6 +7588,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3c301e17bbdca41a8764b4bfa067d9, type: 3}
+--- !u!1 &6819628145353947657 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8915268738744828688, guid: 2b3c301e17bbdca41a8764b4bfa067d9, type: 3}
+  m_PrefabInstance: {fileID: 6819628145353947656}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8195960828937341328
 PrefabInstance:
   m_ObjectHideFlags: 0
