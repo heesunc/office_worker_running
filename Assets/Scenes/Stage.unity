@@ -7304,6 +7304,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3254055383296445764, guid: 2b3c301e17bbdca41a8764b4bfa067d9, type: 3}
+      propertyPath: m_TagString
+      value: PlayerPoint
+      objectReference: {fileID: 0}
     - target: {fileID: 3339026223318983588, guid: 2b3c301e17bbdca41a8764b4bfa067d9, type: 3}
       propertyPath: smokeUI
       value: 

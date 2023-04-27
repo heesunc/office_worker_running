@@ -35,4 +35,9 @@ public class UITimer : MonoBehaviour
         }
 
     }
+
+    public void timeReset()
+    {
+        uiTimer = 0f;
+    }
 }
