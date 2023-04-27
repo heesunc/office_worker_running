@@ -104,11 +104,6 @@ public class CameraController : MonoBehaviour
         }
     }
 
-
-    //color = material.color;
-    //color.a = 0f;
-    //material.color = color;
-
     private void OnTriggerExit(Collider collider)
     {
         Debug.Log("탈출");
@@ -125,9 +120,6 @@ public class CameraController : MonoBehaviour
                 material = rend.material;
                 material.shader = Shader.Find("Transparent/Diffuse");
                 material.color = color;
-                //color = material.color;
-                //color.a = 0f;
-                //material.color = color;
             }
         }
     }
