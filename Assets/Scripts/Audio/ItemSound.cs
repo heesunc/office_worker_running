@@ -66,7 +66,7 @@ public class ItemSound : MonoBehaviour
                 itemAudioSource.clip = itemAudioList[5];
                
             }
-            volume = 0.5f;
+            volume = 0.75f;
             itemAudioSource.loop = false;
             itemAudioSource.volume = volume;
             itemAudioSource.Play();

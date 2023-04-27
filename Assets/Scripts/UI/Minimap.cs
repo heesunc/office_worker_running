@@ -24,7 +24,7 @@ public class Minimap : MonoBehaviour
     public void OpenMap()
     {
         index = GameObject.FindObjectOfType<LoadGame>().Index;
-        IndexText.text = "PREVIEW STAGE" + index;
+        IndexText.text = "PREVIEW STAGE " + index;
         minimap.sprite = Resources.Load<Sprite>("Minimap/Minimap" + index); //Load Map
     }
 }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 385c6ac2e35273e459acc79fa190c1aa
+guid: 12de7eb4f807e0b4a86a3a0235879ed6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -44,11 +44,11 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 410, y: 401, z: 399, w: 408}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -129,22 +129,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: teamname_0
+      name: "006\uC2A4\uC640\uC774\uD504on_0"
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2280
-        height: 1080
+        x: 715
+        y: 304
+        width: 845
+        height: 472
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e978023f171b3a7448d24d90c098e0a0
-      internalID: -1834584497
+      spriteID: 0f48b269a9c743b4b85575bedce826e2
+      internalID: 615730008
       vertices: []
       indices: 
       edges: []
@@ -153,14 +153,14 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      teamname_0: -1834584497
+      "006\uC2A4\uC640\uC774\uD504on_0": 615730008
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
