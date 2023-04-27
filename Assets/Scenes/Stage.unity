@@ -1112,7 +1112,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &313462564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7107,7 +7107,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2694523669690464484, guid: e239189d8746156468929cff01381e83, type: 3}
       propertyPath: testIndex
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2694523669690464484, guid: e239189d8746156468929cff01381e83, type: 3}
       propertyPath: mailParent
