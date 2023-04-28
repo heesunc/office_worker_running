@@ -16,6 +16,7 @@ public class PlayerInteraction : MonoBehaviour
     int[,] remove = new int[MAPSIZE, MAPSIZE]; //Keys to be removed
 
     public GameObject bossUI;
+    public GameObject boss;
     public GameObject smokeUI; //Coffee UI
     UITimer timer;
     GameObject obstacle; 
@@ -104,15 +105,15 @@ public class PlayerInteraction : MonoBehaviour
         if (obstacle.CompareTag("Mail"))
         {
             itemSound.SoundPlay("Mail");
-            if (GameObject.FindWithTag("Boss") ==  null)
+            if ( GameObject.FindWithTag("Boss") ==  null)
             {
                 Vector3 bossPosition = tf.position - tf.forward * 3;
-                Instantiate(bossUI, bossPosition, Quaternion.identity);
+                boss = Instantiate(bossUI, bossPosition, Quaternion.identity);
                 //bossUI.SetActive(true);
             }
             else
             {
-                manager.GameOver();
+                boss.GetComponent<UITimer>().timeReset();
             }
         }
         else if (obstacle.CompareTag("Smoke"))
@@ -121,7 +122,10 @@ public class PlayerInteraction : MonoBehaviour
                 itemSound.SoundPlay("Coffee");
 
             if (smokeUI.activeSelf) //Smoke is already active
-                timer.uiTimer = 0.0f; //Timer Reset
+            {
+                smokeUI.GetComponent<UITimer>().timeReset();
+                //timer.uiTimer = 0.0f; //Timer Reset
+            }
             else
                 smokeUI.SetActive(true);
              

@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     private GameObject boss_UI;
     public GameObject smoke_UI;
 
+    public CameraController eyes;
+
     public Animator anim;
 
     GameObject soundSource;
@@ -97,6 +99,7 @@ public class GameManager : MonoBehaviour
         anim.SetBool("Clear", true);
         Invoke("GameClearTest", 2.5f);
 
+        eyes.motionStart();
         //Time.timeScale = 0;
         //GameClear_UI.SetActive(true);
         //InactiveUI();
