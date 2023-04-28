@@ -61,7 +61,7 @@ public class AudioPlay : MonoBehaviour
     {
         audioSource.clip = clip;
         audioSource.loop = true;
-        audioSource.volume = 0.1f;
+        audioSource.volume = 0.15f;
         audioSource.pitch = 1.0f;
         audioSource.Play();
     }

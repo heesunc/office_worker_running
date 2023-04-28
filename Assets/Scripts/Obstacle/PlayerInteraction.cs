@@ -61,7 +61,7 @@ public class PlayerInteraction : MonoBehaviour
             manager.GameOver();
         }
 
-        if (other.CompareTag("Key"))
+        if (other.CompareTag("EffectKey"))
         {
             int x, y; //Keyname split
             string keyName = other.name;
@@ -146,7 +146,7 @@ public class PlayerInteraction : MonoBehaviour
     }
 
     void edgeRule(int x, int y) //(DFS executed on a live key (starting point) in 8 directions (clockwise) from the location of the collision) Dead key = Wall, Obstacle or Empty = Arrival point
-    {                           //(충돌한 위치에서 8방향(시계방향)에 있는 살아있는 열쇠(출발지점)에 DFS 실행) 죽은 열쇠 = 벽, 장애물이나 빈공간 = 도착지점 
+    {                           //(충돌한 위치에서 8방향(시계방향)에 있는 살아있는 열쇠(출발지점)에 DFS 실행) 죽은 열쇠 = 벽, 장애물이나 빈공간 & 맵 밖 = 도착지점 
         remove = new int[MAPSIZE, MAPSIZE]; //Remove array reset
 
         int i, xx, yy;
@@ -186,7 +186,9 @@ public class PlayerInteraction : MonoBehaviour
                 xx = x + dx[i];
                 yy = y + dy[i];
 
-                if (findEmpty /*|| xx < 0 || yy < 0 || xx > 28 || yy > 28*/)
+                if (xx < 0 || yy < 0 || xx > 28 || yy > 28) //Out of map is goal too.
+                    findEmpty = true;
+                if (findEmpty)
                     continue;
 
                 if (map[xx, yy] != 9 && visited[xx, yy] == false)

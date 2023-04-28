@@ -13,9 +13,9 @@ TagManager:
   - Bomb
   - Boss
   - wall
-  - FxTemporaire
   - Music
-  - PlayerPoint
+  - FxTemporaire
+  - EffectKey
   layers:
   - Default
   - TransparentFX
