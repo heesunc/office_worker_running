@@ -16,6 +16,9 @@ public class CameraController : MonoBehaviour
     float t = 0;
     bool motion = false;
 
+    //폭쥭폭쥭
+    public GameObject party;
+
     void Start()
     {
         tf = GetComponent<Transform>();
@@ -30,6 +33,9 @@ public class CameraController : MonoBehaviour
             tf.RotateAround(parent.position, parent.up, 180 * Time.deltaTime);
             if (t > 1f)
             {
+                Vector3 p = parent.position + parent.right * 5;
+                Instantiate(party, parent.position + parent.up * 2 + parent.right * 3, parent.rotation);
+                Instantiate(party, parent.position + parent.up * 2 - parent.right * 3, parent.rotation);
                 motion = false;
             }
         }
