@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7972761030345866407}
   m_Layer: 0
   m_Name: EffectCash
-  m_TagString: Key
+  m_TagString: EffectKey
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

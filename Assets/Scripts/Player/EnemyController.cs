@@ -7,10 +7,10 @@ public class EnemyController : MonoBehaviour
     public GameObject target;
     public Transform targetP;  // 플레이어의 위치를 저장할 변수
 
-    public float distance = 2.5f;  // 카메라와 플레이어 간의 거리
+    public float distance;  // 카메라와 플레이어 간의 거리
     public float height = 1f;  // 카메라와 플레이어 간의 높이
 
-    static public float smoothSpeed = 0.4f;  // 카메라 이동 시 부드러운 감속을 위한 변수
+    static public float smoothSpeed = 0.3f;  // 카메라 이동 시 부드러운 감속을 위한 변수
     public static float changeSpeed = 0.1f; //카메라 빨라지는 정도
 
     private Vector3 velocity = Vector3.zero;  // 카메라 이동 시 사용할 속도 벡터
@@ -21,7 +21,8 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player");
+        distance = 1f;
+        target = GameObject.FindGameObjectWithTag("PlayerPoint");
         targetP = target.GetComponent<Transform>();
 
         BossSoundPlay();
