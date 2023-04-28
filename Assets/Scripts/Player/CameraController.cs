@@ -34,8 +34,8 @@ public class CameraController : MonoBehaviour
             if (t > 1f)
             {
                 Vector3 p = parent.position + parent.right * 5;
-                Instantiate(party, parent.position + parent.up * 2 + parent.right * 3, parent.rotation);
-                Instantiate(party, parent.position + parent.up * 2 - parent.right * 3, parent.rotation);
+                Instantiate(party, parent.position + parent.up * 4f + parent.right * 4, Quaternion.identity);
+                Instantiate(party, parent.position + parent.up * 4f - parent.right * 4, Quaternion.identity);
                 motion = false;
             }
         }
