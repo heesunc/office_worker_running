@@ -6457,6 +6457,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1944299109}
   m_CullTransparentMesh: 1
+--- !u!114 &1965315992 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2141999119, guid: 2b3c301e17bbdca41a8764b4bfa067d9, type: 3}
+  m_PrefabInstance: {fileID: 6819628145353947656}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a260d0ea269cc4782ca3c095ed8c1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1998765696
 GameObject:
   m_ObjectHideFlags: 0
@@ -7249,6 +7260,14 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 6763224327803364637, guid: 4abf9db4037895d4c918cb696f2c3598, type: 3}
+      propertyPath: eyes
+      value: 
+      objectReference: {fileID: 1965315992}
+    - target: {fileID: 6763224327803364637, guid: 4abf9db4037895d4c918cb696f2c3598, type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 1965315992}
+    - target: {fileID: 6763224327803364637, guid: 4abf9db4037895d4c918cb696f2c3598, type: 3}
       propertyPath: boss_UI
       value: 
       objectReference: {fileID: 5756067376559395177, guid: 8eb2ba0e36e54114f9739c8255dae73c, type: 3}
@@ -7281,6 +7300,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2141999119, guid: 2b3c301e17bbdca41a8764b4bfa067d9, type: 3}
+      propertyPath: party
+      value: 
+      objectReference: {fileID: 1920873459331074, guid: 211df3921ba166e4d97f049834dc5490, type: 3}
+    - target: {fileID: 2141999119, guid: 2b3c301e17bbdca41a8764b4bfa067d9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254055383296445764, guid: 2b3c301e17bbdca41a8764b4bfa067d9, type: 3}
+      propertyPath: m_TagString
+      value: PlayerPoint
+      objectReference: {fileID: 0}
     - target: {fileID: 3339026223318983588, guid: 2b3c301e17bbdca41a8764b4bfa067d9, type: 3}
       propertyPath: smokeUI
       value: 
