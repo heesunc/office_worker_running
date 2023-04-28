@@ -60,7 +60,7 @@ public class PlayerInteraction : MonoBehaviour
             manager.GameOver();
         }
 
-        if (other.CompareTag("Key"))
+        if (other.CompareTag("EffectKey"))
         {
             int x, y; //Keyname split
             string keyName = other.name;

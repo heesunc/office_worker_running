@@ -13,6 +13,9 @@ TagManager:
   - Bomb
   - Boss
   - wall
+  - Music
+  - FxTemporaire
+  - EffectKey
   layers:
   - Default
   - TransparentFX
