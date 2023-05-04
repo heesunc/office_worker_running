@@ -7288,6 +7288,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 511529615}
     - target: {fileID: 6763224327803364637, guid: 4abf9db4037895d4c918cb696f2c3598, type: 3}
+      propertyPath: moneyParent
+      value: 
+      objectReference: {fileID: 449312637}
+    - target: {fileID: 6763224327803364637, guid: 4abf9db4037895d4c918cb696f2c3598, type: 3}
       propertyPath: GameClear_UI
       value: 
       objectReference: {fileID: 1281482447}

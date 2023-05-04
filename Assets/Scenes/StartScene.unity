@@ -5177,7 +5177,10 @@ MonoBehaviour:
   audioList:
   - {fileID: 8300000, guid: 5d91735edccbeb44caf1de67ac2e6458, type: 3}
   - {fileID: 8300000, guid: ac085446aa3cf264588858636ecb5ecc, type: 3}
+  - {fileID: 8300000, guid: 209f58eb9ef205741a69a22835bea083, type: 3}
+  - {fileID: 8300000, guid: 7bc45350283045e4596d9df026922a9e, type: 3}
   playTime: 0
+  loadGame: {fileID: 879650740}
 --- !u!1 &2093042319
 GameObject:
   m_ObjectHideFlags: 0
