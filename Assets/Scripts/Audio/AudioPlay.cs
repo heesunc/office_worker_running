@@ -11,6 +11,7 @@ public class AudioPlay : MonoBehaviour
     private bool effectIsMuted = false;
     private float pitch = 1.0f;
     public float playTime;
+    private int count = 0;
 
     private void Awake()
     {
@@ -32,11 +33,12 @@ public class AudioPlay : MonoBehaviour
         if(SceneManager.GetActiveScene().name == "Stage")
         {
             playTime += Time.deltaTime;
-            if(playTime > 30.0f)
+            if(playTime > 30.0f && count < 3) //최대 세 번만 배속 
             {
                 playTime = 0.0f;
-                pitch = pitch + (pitch * 0.05f);
+                pitch = pitch + (pitch * 0.08f);
                 audioSource.pitch = pitch;
+                count++; //배속 카운터
             }
             Debug.Log("playTime : " + playTime);
         }
@@ -47,10 +49,11 @@ public class AudioPlay : MonoBehaviour
     {
         for (int i = 0; i < audioList.Length; i++)
         {
-            if (arg0.name == audioList[i].name)
+            if (arg0.name == audioList[i].name) //이부분 난이도 별 음악 재생으로 수정.
             {
                 AudioSoundPlay(audioList[i]);
-                pitch = 1.0f;
+                pitch = 1.0f; //Scene 변경 시 count 및 배속 초기화
+                count = 0; 
             }
         }
         audioSource.mute = MuteManager.IsMuted;
