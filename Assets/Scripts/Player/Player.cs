@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
 
     //turn
     private TurnState isturn = TurnState.NONE;
-    private bool go = true; //it is going now?
+    public bool go = true; //it is going now?
     private int checkCount;
     private float lastX;
     private float lastZ;
@@ -85,7 +85,7 @@ public class Player : MonoBehaviour
     private int mistake = 100; //touch width
 
     //gameObject
-    public Rigidbody rg;
+    Rigidbody rg;
     Transform tf;
     float x;
     float z;
