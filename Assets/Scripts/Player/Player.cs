@@ -85,7 +85,7 @@ public class Player : MonoBehaviour
     private int mistake = 100; //touch width
 
     //gameObject
-    Rigidbody rg;
+    public Rigidbody rg;
     Transform tf;
     float x;
     float z;

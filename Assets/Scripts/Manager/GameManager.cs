@@ -67,7 +67,10 @@ public class GameManager : MonoBehaviour
 
         playerSound.SoundPlay("GameOver");
         
-        player.speed = 0.1f;
+        //player.speed = 0.1f;
+        player.rg.isKinematic = true;
+        player.enabled = false;
+
         anim.SetBool("Dead", true);
         Invoke("GameOverTest", 3f);
     }
@@ -95,7 +98,9 @@ public class GameManager : MonoBehaviour
 
         playerSound.SoundPlay("GameClear");
         Debug.Log("GameClear!");
-        player.speed = 0.1f;
+        
+        player.rg.isKinematic = true;
+        player.enabled = false;
         anim.SetBool("Clear", true);
         Invoke("GameClearTest", 2.5f);
 
