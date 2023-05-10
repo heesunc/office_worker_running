@@ -13,7 +13,10 @@ public class Pause : MonoBehaviour
     }
     void Update()
     {
-        //transform.Translate(Time.deltaTime, 0, 0);
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            OnTogglePauseButton();
+        }
     }
     public void OnTogglePauseButton()
     {
