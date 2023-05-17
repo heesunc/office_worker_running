@@ -38,10 +38,20 @@ public class Player : MonoBehaviour
         if (!isJump)
         {
             isJump = true;
-            rg.AddForce(Vector3.up * f, ForceMode.Impulse);
+            //tf.DOJump(testJump(), 1f, 1, speed * 1000);
+            rg.AddForce(Vector3.up * f);
             playerSound.SoundPlay("Jump");
 
         }
+    }
+
+    private Vector3 testJump()
+    {
+        Vector3 result = tf.position;
+
+        result += tf.forward * TILE;
+
+        return result;
     }
 
     //private:
@@ -80,7 +90,7 @@ public class Player : MonoBehaviour
 
     //jump
     private bool isJump = false;
-    private int f = 6; //jump Force
+    private int f = 15; //jump Force
 
     //Controller
     private bool s = false; //Swipe mode true, Button mode false
