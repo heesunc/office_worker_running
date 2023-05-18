@@ -21,7 +21,7 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
-        distance = 1f;
+        //distance = 1f;
         target = GameObject.FindGameObjectWithTag("PlayerPoint");
         targetP = target.GetComponent<Transform>();
 
