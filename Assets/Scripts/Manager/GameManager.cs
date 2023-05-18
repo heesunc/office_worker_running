@@ -40,13 +40,13 @@ public class GameManager : MonoBehaviour
         soundSource = GameObject.Find("PlayerSoundSource");
         if (soundSource != null)
             playerSound = soundSource.GetComponent<PlayerSound>();
-            
+
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
     void Update()
     {
-        
+
         keyCountText.text = (keyFind.Length - keyCount).ToString(); //KeyCount UI
 
         if (keyCount >= keyFind.Length)
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
             keyCount = keyFind.Length;
             GameClear();
         }
-    }    
+    }
 
     public void GameOver()
     {
@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
 
         playerSound.SoundPlay("GameOver");
         
-        player.speed = 0.1f;
+        player.go = false;
         anim.SetBool("Dead", true);
         Invoke("GameOverTest", 3f);
     }
@@ -88,14 +88,15 @@ public class GameManager : MonoBehaviour
         }
         isClear = true;
 
-        if(PlayerPrefs.GetInt("curIndex") > PlayerPrefs.GetInt("clearData"))
+        if (PlayerPrefs.GetInt("curIndex") > PlayerPrefs.GetInt("clearData"))
         {
             PlayerPrefs.SetInt("clearData", PlayerPrefs.GetInt("curIndex"));
         }
 
         playerSound.SoundPlay("GameClear");
         Debug.Log("GameClear!");
-        player.speed = 0.1f;
+
+        player.go = false;
         anim.SetBool("Clear", true);
         Invoke("GameClearTest", 2.5f);
 
