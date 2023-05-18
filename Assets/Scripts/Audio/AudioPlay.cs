@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class AudioPlay : MonoBehaviour
 {
+    const int normal = 5, hard = 10, chaos = 15;
     private static AudioPlay _instance; // 사운드를 한 곳에서 관리할 수 있도록
     public AudioSource audioSource;
     public AudioClip[] audioList;
@@ -11,6 +12,9 @@ public class AudioPlay : MonoBehaviour
     private bool effectIsMuted = false;
     private float pitch = 1.0f;
     public float playTime;
+    private int count = 0;
+    public int stageIndex;
+    
 
     private void Awake()
     {
@@ -32,11 +36,12 @@ public class AudioPlay : MonoBehaviour
         if(SceneManager.GetActiveScene().name == "Stage")
         {
             playTime += Time.deltaTime;
-            if(playTime > 30.0f)
+            if(playTime > 30.0f && count < 3 && stageIndex <= hard) //최대 세 번만 배속, 하드 스테이지 이하만 배속
             {
                 playTime = 0.0f;
-                pitch = pitch + (pitch * 0.05f);
+                pitch = pitch + (pitch * 0.08f);
                 audioSource.pitch = pitch;
+                count++; //배속 카운터
             }
             Debug.Log("playTime : " + playTime);
         }
@@ -45,14 +50,26 @@ public class AudioPlay : MonoBehaviour
     // scene이 로딩됐을때 해당 scene 이름과 같은 이름의 bgm 재생
     private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
-        for (int i = 0; i < audioList.Length; i++)
+        stageIndex = GameObject.FindObjectOfType<LoadGame>().Index;
+        if(arg0.name == "StartScene")
         {
-            if (arg0.name == audioList[i].name)
-            {
-                AudioSoundPlay(audioList[i]);
-                pitch = 1.0f;
-            }
+            AudioSoundPlay(audioList[0]);
+            
         }
+        else if(arg0.name == "Stage")
+        {
+            playTime = 0.0f;
+            count = 0;
+            pitch = 1.0f; //Scene 변경 시 count 및 배속 초기화
+
+           if (stageIndex <= normal)
+                AudioSoundPlay(audioList[1]);
+           else if (stageIndex <= hard)
+                AudioSoundPlay(audioList[2]);
+           else if (stageIndex <= chaos)
+                AudioSoundPlay(audioList[3]);
+        }
+        
         audioSource.mute = MuteManager.IsMuted;
     }
 

@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public GameObject GameClear_UI;
     private GameObject boss_UI;
     public GameObject smoke_UI;
+    public GameObject moneyParent;
 
     public CameraController eyes;
 
@@ -92,7 +93,7 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("clearData", PlayerPrefs.GetInt("curIndex"));
         }
-
+        moneyParent.SetActive(false); //Clear시 돈 비활성화
         playerSound.SoundPlay("GameClear");
         Debug.Log("GameClear!");
 

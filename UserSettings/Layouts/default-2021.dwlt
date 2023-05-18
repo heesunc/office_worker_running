@@ -641,9 +641,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 714.07214, y: 390.2721, z: 947.91614}
+    m_Target: {x: 70.40159, y: -99.853096, z: 196.10948}
     speed: 2
-    m_Value: {x: 714.07214, y: 390.2721, z: 947.91614}
+    m_Value: {x: 70.40159, y: -99.853096, z: 196.10948}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -690,7 +690,7 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.007280051, y: -0.99188167, z: -0.09374062, w: -0.08193983}
+    m_Target: {x: -0.36916968, y: 0.047026787, z: -0.018749567, w: -0.9280274}
     speed: 2
     m_Value: {x: -0.007280051, y: 0.99188167, z: 0.09374062, w: 0.08193983}
   m_Size:
@@ -702,8 +702,8 @@ MonoBehaviour:
     speed: 2
     m_Value: 0
   m_CameraSettings:
-    m_Speed: 1
-    m_SpeedNormalized: 0.5
+    m_Speed: 1.06047
+    m_SpeedNormalized: 0.53
     m_SpeedMin: 0.001
     m_SpeedMax: 2
     m_EasingEnabled: 1
@@ -714,7 +714,7 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: 0.036559556, y: -0.18184535, z: -0.006770517, w: -0.9826376}
+  m_LastSceneViewRotation: {x: 0.013576396, y: -0.89745474, z: -0.02774149, w: -0.44011784}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
