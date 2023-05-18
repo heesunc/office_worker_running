@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using System;
+//using System;
 using UnityEngine;
+using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
@@ -12,12 +13,14 @@ public class Player : MonoBehaviour
 
     public void oderTurnR() // Add condition statement if (!isPause && !isOver) in Pause, GameManager script when clicking the button *****
     {
-        isturn = TurnState.RIGHT;
+        if (isturn != TurnState.DOING)
+            isturn = TurnState.RIGHT;
     }
 
     public void oderTurnL()
     {
-        isturn = TurnState.LEFT;
+        if (isturn != TurnState.DOING)
+            isturn = TurnState.LEFT;
     }
 
     public void oderFront()
@@ -35,50 +38,59 @@ public class Player : MonoBehaviour
         if (!isJump)
         {
             isJump = true;
-            rg.AddForce(Vector3.up * f, ForceMode.Impulse);
+            //tf.DOJump(testJump(), 1f, 1, speed * 1000);
+            rg.AddForce(Vector3.up * f);
             playerSound.SoundPlay("Jump");
 
         }
     }
 
+    private Vector3 testJump()
+    {
+        Vector3 result = tf.position;
+
+        result += tf.forward * TILE;
+
+        return result;
+    }
+
     //private:
     enum TurnState
     {
+        REEADY,
         NONE,
-        RIGHT = 1,
-        LEFT = -1
+        DOING,
+        RIGHT,
+        LEFT
     };
 
-    enum Direction
-    {
-        X,
-        Z,
-        READY,
-        WAIT
-    }
+    //enum Direction
+    //{
+    //    X,
+    //    Z,
+    //    READY,
+    //    WAIT
+    //}
 
     const int TILE = 7;
-    private Direction seeX = Direction.READY;
+
+    //control
+    float timeAmongButton = 0.02f;
 
     //move
     public float speed; //move speed
     private int move = 1;
+    private bool go = false; //it is going now?
+
     private float playTime = 0f; //속도 올리기용. 나중에 없애기. 
-    private Vector3 correctVelocity = Vector3.zero; //it move to right line using this velocity
-    private float correctTime = 1f; //it move to right line while this time
-    private float correctGoalX;
-    private float correctGoalZ;
 
     //turn
     private TurnState isturn = TurnState.NONE;
-    private bool go = true; //it is going now?
-    private int checkCount;
-    private float lastX;
-    private float lastZ;
+    private bool rotateComplete = false;
 
     //jump
     private bool isJump = false;
-    private int f = 6; //jump Force
+    private int f = 15; //jump Force
 
     //Controller
     private bool s = false; //Swipe mode true, Button mode false
@@ -87,8 +99,6 @@ public class Player : MonoBehaviour
     //gameObject
     Rigidbody rg;
     Transform tf;
-    float x;
-    float z;
 
     public Animator anim;
     Vector3 startPos; //touch position in device
@@ -97,25 +107,32 @@ public class Player : MonoBehaviour
     GameObject soundSource;
     PlayerSound playerSound;
 
+
     void Start()
     {
         soundSource = GameObject.Find("PlayerSoundSource");
         if(soundSource != null)
             playerSound = soundSource.GetComponent<PlayerSound>();
 
-        tf = gameObject.GetComponent<Transform>();
-        rg = gameObject.GetComponent<Rigidbody>();
-        startPos = new Vector3(0, 0, 0);
-        correctGoalX = lastX = tf.position.x;
-        correctGoalZ = lastZ = tf.position.z;
+        tf = GetComponent<Transform>();
+        rg = GetComponent<Rigidbody>();
 
-        checkCount = 2;
+        startPos = new Vector3(0, 0, 0);
+
+        speed = 0.001f;
+
+        //checkCount = 2;
+
+        //Test
+        //tf.DOMove(nextPosition(), speed * 2000);
+        //tf.DORotate(angleRL(), speed * 500);
     }
 
     // Update is called once per frame
     void Update()
     {
         anim.SetBool("isJumping", isJump);
+
         //check user controller when it Swipe mode 
         if (Option.getController() == Controller.SWIPE && Input.touchCount > 0) //first touch
         {
@@ -145,85 +162,155 @@ public class Player : MonoBehaviour
             }
         }
 
-        //check front at an inteval of 0.3s
-        if (playTime > 0.3 * checkCount && seeX != Direction.WAIT)
+        //move
+        if (rotateComplete == true)
         {
-            checkSeeX();
-            checkCount++;
+            go = true; //회전 막고
+            rotateComplete = false; //검사 새로 해야함.
+            step(); //앞으로 가요.
         }
 
-        x = tf.position.x;
-        z = tf.position.z;
-
-        //ready turn
-        if (isturn != TurnState.NONE)
+        if (go == false) //앞으로 걷는 거 끝남.
         {
-            if (((seeX == Direction.X) && Math.Round(x) % TILE == 0) //when it going x line, check x position
-                || ((seeX == Direction.Z) && Math.Round(z) % TILE == 0)) //when it gotin z line, check z position
-            //if (Math.Round(x) % TILE == 0 && Math.Round(z) % TILE == 0)
-            {
-                correctGoalX = (float)Math.Round(x);
-                correctGoalZ = (float)Math.Round(z);
-
-                seeX = Direction.WAIT;
-                checkCount += 2;
-                go = false;
-
-                if (isturn == TurnState.LEFT)
-                {
-                    StartCoroutine(turnL());
-                }
-                else //RIGHT
-                {
-                    StartCoroutine(turnR());
-                }
-                isturn = TurnState.NONE;
-            }
+            rotateCheck(); //다시 회전 검사.
         }
 
-        //default move
-        if (go == true)
-        {
-            tf.Translate(Vector3.forward * speed * move * Time.deltaTime);
-        }
+        
 
         //speed up at an interval of 25s
         if (playTime > 25)
         {
-            playTime = 0;
-            checkCount = 1;
-            speedUp();
+            //motion = true;
+            Debug.Log(playTime);
+            //playTime = 0;
+            //checkCount = 1;
+            //speedUp();
         }
 
         playTime += Time.deltaTime;
+        //Debug.Log(playTime);
     }
 
-    private void correctLine() //no used
+    private void step()
     {
-        //correctLine
-        if (seeX == Direction.X)
+        Debug.Log("앞으로 가기");
+
+        Tween tween = tf.DOMove(nextPosition(), speed * 500)
+            .SetEase(Ease.Linear); //원하는 위치로
+
+        StartCoroutine(stepComplete(tween));
+        //go = false;
+
+    //    target.DOMoveX(5f, 1f)
+    //.SetEase(Ease.InOutSine)
+    //.OnComplete(StartNextTween);
+    }
+
+    private Vector3 nextPosition() //XXXXXXXXXXXX
+    {
+        Vector3 point = tf.position;
+
+        point += tf.forward * move * TILE; //연산 메소드가 필요할 수도
+
+        return point;
+    }
+
+    IEnumerator stepComplete(Tween move) //isturn 초기화 겸 이동 완료 검사.
+    {
+        float time = 0f;
+
+        while (time < timeAmongButton) //연타 시 오차 범위
         {
-            transform.position = Vector3.SmoothDamp(tf.position, new Vector3(x, tf.position.y, correctGoalZ), ref correctVelocity, correctTime);
+            time += Time.deltaTime;
+            yield return null;
         }
-        else if (seeX == Direction.Z)
+        rotateOrderDelete();
+
+        while(move.IsComplete() == false)
         {
-            transform.position = Vector3.SmoothDamp(tf.position, new Vector3(correctGoalX, tf.position.y, z), ref correctVelocity, correctTime);
+            yield return null;
+        }
+
+        go = false;
+    }
+
+    private void rotateCheck()
+    {
+        Debug.Log("회전 검사");
+        //Tween tween;
+
+        if (isturn == TurnState.NONE)
+            rotateEnd();
+        else if (isturn == TurnState.LEFT || isturn == TurnState.RIGHT)
+        {
+            tf.DORotate(angleRL(), speed * 500) //200000
+                //2번 .SetSpeedBased(true)
+                .SetEase(Ease.InOutSine)
+                .OnComplete(rotateEnd);
+        }
+        else if (isturn == TurnState.DOING)
+        {
+            ;
+        }
+        else if (isturn == TurnState.REEADY)
+        {
+            tf.DORotate(angleRL(), speed * 500)
+                .OnComplete(rotateOrderDelete);
         }
     }
 
-    private void speedUp()
+    private void rotateEnd()
     {
-        speed *= 1.2f;
+        rotateComplete = true;
+        isturn = TurnState.NONE;
     }
 
-    private bool checkPlace(float x) //no used.
+    private Vector3 angleRL()
     {
-        float xf = x - (float)Math.Floor(x);
+        Vector3 angle = Vector3.zero;
 
-        if (0.75 <= xf || xf <= 0.25)
-            return true; //xd + 1
+        if (isturn == TurnState.RIGHT)
+            angle = tf.rotation.eulerAngles + new Vector3(0f, 90f, 0f);
+        else if (isturn == TurnState.LEFT)
+            angle = tf.rotation.eulerAngles + new Vector3(0f, -90f, 0f);
         else
-            return false; //xd
+            Debug.Log("isturn: " + isturn);
+
+        isturn = TurnState.DOING;
+        return angle;
+    }
+
+    //private void correctLine() //no used
+    //{
+    //    //correctLine
+    //    if (seeX == Direction.X)
+    //    {
+    //        transform.position = Vector3.SmoothDamp(tf.position, new Vector3(x, tf.position.y, correctGoalZ), ref correctVelocity, correctTime);
+    //    }
+    //    else if (seeX == Direction.Z)
+    //    {
+    //        transform.position = Vector3.SmoothDamp(tf.position, new Vector3(correctGoalX, tf.position.y, z), ref correctVelocity, correctTime);
+    //    }
+    //}
+
+    //private void speedUp()
+    //{
+    //    speed *= 1.2f;
+    //}
+
+    //private bool checkPlace(float x) //no used.
+    //{
+    //    float xf = x - (float)Math.Floor(x);
+
+    //    if (0.75 <= xf || xf <= 0.25)
+    //        return true; //xd + 1
+    //    else
+    //        return false; //xd
+    //}
+
+    private void rotateOrderDelete()
+    {
+        isturn = TurnState.NONE;
     }
 
     private Vector3 touch(Touch touch) //��ġ �߻� -> �������� ���������� Ȯ��.
@@ -268,71 +355,71 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void checkSeeX() //오차 1
-    {
-        int o = 1; //오차
+    //private void checkSeeX() //오차 1
+    //{
+    //    int o = 1; //오차
 
-        if (lastX + o < tf.position.x || lastX - o > tf.position.x)
-        {
-            seeX = Direction.X;
-        }
-        else
-        {
-            seeX = Direction.Z;
-        }
+    //    if (lastX + o < tf.position.x || lastX - o > tf.position.x)
+    //    {
+    //        seeX = Direction.X;
+    //    }
+    //    else
+    //    {
+    //        seeX = Direction.Z;
+    //    }
 
-        //lastX = tf.position.x;
-        //lastZ = tf.position.z;
-    }
+    //    //lastX = tf.position.x;
+    //    //lastZ = tf.position.z;
+    //}
 
-    private int turnGoal(int r)
-    {
-        if (r % 90 == 0)
-        {
-            if (isturn == TurnState.RIGHT)
-                return r + 90;
-            else
-                return r - 90;
-        }
+    //private int turnGoal(int r)
+    //{
+    //    if (r % 90 == 0)
+    //    {
+    //        if (isturn == TurnState.RIGHT)
+    //            return r + 90;
+    //        else
+    //            return r - 90;
+    //    }
 
-        return r;
-    }
+    //    return r;
+    //}
 
-    IEnumerator turnR()
-    {
-        int rY = (int)tf.eulerAngles.y; //if error in angle, change int to float
-        int goal = turnGoal(rY); //turn
+    //IEnumerator turnR()
+    //{
+    //    int rY = (int)tf.eulerAngles.y; //if error in angle, change int to float
+    //    int goal = turnGoal(rY); //turn
 
-        while (rY != goal)
-        {
-            rY += 5; //ry값 조정. -> speed 올라가면 같이 올라가도록
-            rg.MoveRotation(Quaternion.Euler(0, rY, 0));
-            yield return null;
-        }
+    //    while (rY != goal)
+    //    {
+    //        rY += 5; //ry값 조정. -> speed 올라가면 같이 올라가도록
+    //        rg.MoveRotation(Quaternion.Euler(0, rY, 0));
+    //        yield return null;
+    //    }
 
-        endTrun();
-    }
+    //    endTrun();
+    //}
 
-    IEnumerator turnL() //ȸ�� �޼ҵ�.
-    {
-        int rY = (int)tf.eulerAngles.y;
-        int goal = turnGoal(rY); //��ǥ ����
+    //IEnumerator turnL() //ȸ�� �޼ҵ�.
+    //{
+    //    int rY = (int)tf.eulerAngles.y;
+    //    int goal = turnGoal(rY); //��ǥ ����
 
-        while (rY != goal)
-        {
-            rY -= 5;
-            rg.MoveRotation(Quaternion.Euler(0, rY, 0));
-            yield return null;
-        }
+    //    while (rY != goal)
+    //    {
+    //        rY -= 5;
+    //        rg.MoveRotation(Quaternion.Euler(0, rY, 0));
+    //        yield return null;
+    //    }
 
-        endTrun();
-    }
+    //    endTrun();
+    //}
 
-    private void endTrun()
-    {
-        go = true;
-        lastX = tf.position.x;
-        lastZ = tf.position.z;
-        seeX = Direction.READY;
-    }
+    //private void endTrun()
+    //{
+    //    go = true;
+    //    lastX = tf.position.x;
+    //    lastZ = tf.position.z;
+    //    seeX = Direction.READY;
+    //}
 }

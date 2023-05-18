@@ -7344,6 +7344,10 @@ PrefabInstance:
       propertyPath: cashRuleParticle.Array.data[2]
       value: 
       objectReference: {fileID: 100004, guid: 33446b52ab07c5948a767d25c85795b5, type: 3}
+    - target: {fileID: 3339026223318983592, guid: 2b3c301e17bbdca41a8764b4bfa067d9, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6819628145899308472, guid: 2b3c301e17bbdca41a8764b4bfa067d9, type: 3}
       propertyPath: playOnAwake
       value: 0
