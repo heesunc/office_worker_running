@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public GameObject GameClear_UI;
     private GameObject boss_UI;
     public GameObject smoke_UI;
+    public GameObject moneyParent;
 
     public CameraController eyes;
 
@@ -40,7 +41,7 @@ public class GameManager : MonoBehaviour
         soundSource = GameObject.Find("PlayerSoundSource");
         if (soundSource != null)
             playerSound = soundSource.GetComponent<PlayerSound>();
-            
+
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
@@ -53,7 +54,7 @@ public class GameManager : MonoBehaviour
             keyCount = keyFind.Length;
             GameClear();
         }
-    }    
+    }
 
     public void GameOver()
     {
@@ -68,7 +69,6 @@ public class GameManager : MonoBehaviour
         
         player.timeCount = -1;
         player.speedSet();
-        Debug.Log("했어");
         anim.SetBool("Dead", true);
         Invoke("GameOverTest", 3f);
     }
@@ -89,16 +89,15 @@ public class GameManager : MonoBehaviour
         }
         isClear = true;
 
-        if(PlayerPrefs.GetInt("curIndex") > PlayerPrefs.GetInt("clearData"))
+        if (PlayerPrefs.GetInt("curIndex") > PlayerPrefs.GetInt("clearData"))
         {
             PlayerPrefs.SetInt("clearData", PlayerPrefs.GetInt("curIndex"));
         }
-
+        moneyParent.SetActive(false); //Clear시 돈 비활성화
         playerSound.SoundPlay("GameClear");
         Debug.Log("GameClear!");
         player.timeCount = -1;
         player.speedSet();
-        Debug.Log("했어");
         anim.SetBool("Clear", true);
         Invoke("GameClearTest", 2.5f);
 
