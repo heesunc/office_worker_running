@@ -97,7 +97,7 @@ public class Revive : MonoBehaviour
                 // }
 
                 anim.SetBool("Dead", false);
-                player.speed = 15f;
+                //player.speedSet();
                 GameOver_UI.SetActive(false);
 
                 SecUI.SetActive(true);
