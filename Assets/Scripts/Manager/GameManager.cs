@@ -47,7 +47,6 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-
         keyCountText.text = (keyFind.Length - keyCount).ToString(); //KeyCount UI
 
         if (keyCount >= keyFind.Length)
@@ -68,7 +67,8 @@ public class GameManager : MonoBehaviour
 
         playerSound.SoundPlay("GameOver");
         
-        player.go = false;
+        player.timeCount = -1;
+        player.speedSet();
         anim.SetBool("Dead", true);
         Invoke("GameOverTest", 3f);
     }
@@ -96,8 +96,8 @@ public class GameManager : MonoBehaviour
         moneyParent.SetActive(false); //Clear시 돈 비활성화
         playerSound.SoundPlay("GameClear");
         Debug.Log("GameClear!");
-
-        player.go = false;
+        player.timeCount = -1;
+        player.speedSet();
         anim.SetBool("Clear", true);
         Invoke("GameClearTest", 2.5f);
 

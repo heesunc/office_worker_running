@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
         if (!isJump)
         {
             isJump = true;
-            //tf.DOJump(testJump(), 1f, 1, speed * 1000);
+            //tf.DOJump(testJump(), 1f, 1, ns * 1000);
             rg.AddForce(Vector3.up * f);
             playerSound.SoundPlay("Jump");
 
@@ -74,19 +74,24 @@ public class Player : MonoBehaviour
 
     const int TILE = 7;
 
+    public bool doing;
+
     //control
-    float timeAmongButton = 0.02f;
+    float timeAmongButton;
 
     //move
-    public float speed; //move speed
+    public float ns; //move ns
     private int move = 1;
     private bool go = false; //it is going now?
 
     private float playTime = 0f; //속도 올리기용. 나중에 없애기. 
+    public int timeCount;
+    private float speed; 
 
     //turn
     private TurnState isturn = TurnState.NONE;
     private bool rotateComplete = false;
+    private float speedTurn;
 
     //jump
     private bool isJump = false;
@@ -119,13 +124,15 @@ public class Player : MonoBehaviour
 
         startPos = new Vector3(0, 0, 0);
 
-        speed = 0.001f;
+        ns = 0.001f;
+        speedSet();
+        doing = true;
 
         //checkCount = 2;
 
         //Test
-        //tf.DOMove(nextPosition(), speed * 2000);
-        //tf.DORotate(angleRL(), speed * 500);
+        //tf.DOMove(nextPosition(), ns * 2000);
+        //tf.DORotate(angleRL(), ns * 500);
     }
 
     // Update is called once per frame
@@ -162,40 +169,68 @@ public class Player : MonoBehaviour
             }
         }
 
-        //move
-        if (rotateComplete == true)
+        if (doing == true)
         {
-            go = true; //회전 막고
-            rotateComplete = false; //검사 새로 해야함.
-            step(); //앞으로 가요.
+            //move
+            if (rotateComplete == true)
+            {
+                go = true; //회전 막고
+                rotateComplete = false; //검사 새로 해야함.
+                step(); //앞으로 가요.
+            }
+
+            if (go == false) //앞으로 걷는 거 끝남.
+            {
+                rotateCheck(); //다시 회전 검사.
+            }
         }
 
-        if (go == false) //앞으로 걷는 거 끝남.
-        {
-            rotateCheck(); //다시 회전 검사.
-        }
-
-        
-
-        //speed up at an interval of 25s
-        if (playTime > 25)
+        //ns up at an interval of 25s
+        if (playTime > 30)
         {
             //motion = true;
             Debug.Log(playTime);
-            //playTime = 0;
-            //checkCount = 1;
-            //speedUp();
+            playTime = 0;
+            timeCount += 1;
+            speedSet();
         }
 
         playTime += Time.deltaTime;
-        //Debug.Log(playTime);
+    }
+
+    public void speedSet()
+    {
+        switch (timeCount)
+        {
+            case 0:
+                speed = 400;
+                speedTurn = 500;
+                timeAmongButton = 0.02f;
+                break;
+            case 1:
+                speed = 330;
+                speedTurn = 420;
+                timeAmongButton = 0.015f;
+                break;
+            case 2:
+                speed = 270;
+                speedTurn = 350;
+                timeAmongButton = 0.01f;
+                break;
+            case -1:
+                doing = false;
+                break;
+            default:
+                speed = 200;
+                speedTurn = 270;
+                timeAmongButton= 0f;
+                break;
+        }
     }
 
     private void step()
     {
-        Debug.Log("앞으로 가기");
-
-        Tween tween = tf.DOMove(nextPosition(), speed * 500)
+        Tween tween = tf.DOMove(nextPosition(), ns * speed) //초기 400 최대200
             .SetEase(Ease.Linear); //원하는 위치로
 
         StartCoroutine(stepComplete(tween));
@@ -210,7 +245,7 @@ public class Player : MonoBehaviour
     {
         Vector3 point = tf.position;
 
-        point += tf.forward * move * TILE; //연산 메소드가 필요할 수도
+        point += tf.forward * move * TILE; //연산 메소드 필요
 
         return point;
     }
@@ -236,14 +271,11 @@ public class Player : MonoBehaviour
 
     private void rotateCheck()
     {
-        Debug.Log("회전 검사");
-        //Tween tween;
-
         if (isturn == TurnState.NONE)
             rotateEnd();
         else if (isturn == TurnState.LEFT || isturn == TurnState.RIGHT)
         {
-            tf.DORotate(angleRL(), speed * 500) //200000
+            tf.DORotate(angleRL(), ns * 500) //200000
                 //2번 .SetSpeedBased(true)
                 .SetEase(Ease.InOutSine)
                 .OnComplete(rotateEnd);
@@ -254,7 +286,7 @@ public class Player : MonoBehaviour
         }
         else if (isturn == TurnState.REEADY)
         {
-            tf.DORotate(angleRL(), speed * 500)
+            tf.DORotate(angleRL(), ns * 500)
                 .OnComplete(rotateOrderDelete);
         }
     }
@@ -295,7 +327,7 @@ public class Player : MonoBehaviour
 
     //private void speedUp()
     //{
-    //    speed *= 1.2f;
+    //    ns *= 1.2f;
     //}
 
     //private bool checkPlace(float x) //no used.
@@ -392,7 +424,7 @@ public class Player : MonoBehaviour
 
     //    while (rY != goal)
     //    {
-    //        rY += 5; //ry값 조정. -> speed 올라가면 같이 올라가도록
+    //        rY += 5; //ry값 조정. -> ns 올라가면 같이 올라가도록
     //        rg.MoveRotation(Quaternion.Euler(0, rY, 0));
     //        yield return null;
     //    }
