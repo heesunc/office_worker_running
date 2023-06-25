@@ -13,13 +13,13 @@ public class Player : MonoBehaviour
 
     public void oderTurnR() // Add condition statement if (!isPause && !isOver) in Pause, GameManager script when clicking the button *****
     {
-        if (isturn != TurnState.DOING)
+        if (isturn != TurnState.DOING && !isJump) //점프 중 회전 금지 추가
             isturn = TurnState.RIGHT;
     }
 
     public void oderTurnL()
     {
-        if (isturn != TurnState.DOING)
+        if (isturn != TurnState.DOING && !isJump)
             isturn = TurnState.LEFT;
     }
 
@@ -38,20 +38,30 @@ public class Player : MonoBehaviour
         if (!isJump)
         {
             isJump = true;
-            //tf.DOJump(testJump(), 1f, 1, ns * 1000);
-            rg.AddForce(Vector3.up * f);
-            playerSound.SoundPlay("Jump");
 
+            playerSound.SoundPlay("Jump");
+            jumpStartPos = tf.position;
+            StartCoroutine(JumpProcess());
         }
     }
 
-    private Vector3 testJump()
+    IEnumerator JumpProcess()
     {
-        Vector3 result = tf.position;
-
-        result += tf.forward * TILE;
-
-        return result;
+        passedDistance = 0.0f;
+        while(passedDistance <= maxJumpDistance && passedDistance >= -1*maxJumpDistance) //지난 거리의 절대값이 최대 점프 거리보다 작아야 함.
+        {
+            yield return new WaitForFixedUpdate();
+            currentPos = tf.position;
+            Vector3 temp = (currentPos - jumpStartPos);
+            passedDistance = Vector3.Dot(temp, tf.forward); //Vector3 -> float 
+            deltaJump = passedDistance / maxJumpDistance; //지난 거리 비율
+            if (move == -1) //뒤로 이동 중일 경우 x축 대칭
+                deltaJump *= -1;
+            currentH = (1 - Mathf.Pow((2 * deltaJump - 1), 2.0f)) * maxH; //2차 방정식 포물선
+            currentH = Mathf.Max(currentH, 0.0f); //방정식 Low Bound를 0으로 설정
+            tf.DOMoveY(currentH, 0.01f); //Dotween을 이용해 Y 좌표를 계산한 값으로 이동
+        }
+        isJump = false;
     }
 
     //private:
@@ -95,7 +105,14 @@ public class Player : MonoBehaviour
 
     //jump
     private bool isJump = false;
-    private int f = 15; //jump Force
+    private float currentH; //current Height
+    public float maxH;
+    public float maxJumpDistance = 14.0f;
+    private Vector3 currentPos;
+    private Vector3 jumpStartPos;
+    private float passedDistance;
+    private float deltaJump;
+    //private int f = 150; //jump Force
 
     //Controller
     private bool s = false; //Swipe mode true, Button mode false
@@ -230,15 +247,25 @@ public class Player : MonoBehaviour
 
     private void step()
     {
-        Tween tween = tf.DOMove(nextPosition(), ns * speed) //초기 400 최대200
+        //Position 이동이 Y 값에 영향을 미치지 않게 하도록 X와 Z로 나눠서 이동
+        if(tf.forward == Vector3.forward || tf.forward == Vector3.back)
+        {
+            Tween tweenZ = tf.DOMoveZ(nextPosition().z, ns * speed) //초기 400 최대200
             .SetEase(Ease.Linear); //원하는 위치로
+            StartCoroutine(stepComplete(tweenZ));
+        }
+        else if(tf.forward == Vector3.right || tf.forward == Vector3.left)
+        {
+            Tween tweenX = tf.DOMoveX(nextPosition().x, ns * speed) //초기 400 최대200
+                .SetEase(Ease.Linear); //원하는 위치로
+            StartCoroutine(stepComplete(tweenX));
+        }
 
-        StartCoroutine(stepComplete(tween));
         //go = false;
 
-    //    target.DOMoveX(5f, 1f)
-    //.SetEase(Ease.InOutSine)
-    //.OnComplete(StartNextTween);
+        //    target.DOMoveX(5f, 1f)
+        //.SetEase(Ease.InOutSine)
+        //.OnComplete(StartNextTween);
     }
 
     private Vector3 nextPosition() //XXXXXXXXXXXX
@@ -246,7 +273,6 @@ public class Player : MonoBehaviour
         Vector3 point = tf.position;
 
         point += tf.forward * move * TILE; //연산 메소드 필요
-
         return point;
     }
 
@@ -379,13 +405,13 @@ public class Player : MonoBehaviour
         s = false;
     }
 
-    private void OnCollisionEnter(Collision other) //���� ���� ���� Ȯ��.
-    {
-        if (other.collider.CompareTag("Floor")) //��ҹ��� Ȯ��
-        {
-            isJump = false;
-        }
-    }
+    //private void OnCollisionEnter(Collision other) //���� ���� ���� Ȯ��.
+    //{
+    //    if (other.collider.CompareTag("Floor")) //��ҹ��� Ȯ��
+    //    {
+    //        isJump = false;
+    //    }
+    //}
 
     //private void checkSeeX() //오차 1
     //{
