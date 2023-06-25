@@ -48,13 +48,15 @@ public class Player : MonoBehaviour
     IEnumerator JumpProcess()
     {
         passedDistance = 0.0f;
-        while(passedDistance <= maxJumpDistance)
+        while(passedDistance <= maxJumpDistance && passedDistance >= -1*maxJumpDistance) //지난 거리의 절대값이 최대 점프 거리보다 작아야 함.
         {
             yield return new WaitForFixedUpdate();
             currentPos = tf.position;
             Vector3 temp = (currentPos - jumpStartPos);
             passedDistance = Vector3.Dot(temp, tf.forward); //Vector3 -> float 
             deltaJump = passedDistance / maxJumpDistance; //지난 거리 비율
+            if (move == -1) //뒤로 이동 중일 경우 x축 대칭
+                deltaJump *= -1;
             currentH = (1 - Mathf.Pow((2 * deltaJump - 1), 2.0f)) * maxH; //2차 방정식 포물선
             currentH = Mathf.Max(currentH, 0.0f); //방정식 Low Bound를 0으로 설정
             tf.DOMoveY(currentH, 0.01f); //Dotween을 이용해 Y 좌표를 계산한 값으로 이동
