@@ -33,6 +33,8 @@ public class PlayerInteraction : MonoBehaviour
     public GameObject cashParticle;
     public GameObject cashRuleParticle;
 
+    public Player player;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,7 +53,8 @@ public class PlayerInteraction : MonoBehaviour
 
     void OnTriggerEnter(Collider other) 
     {
-        if (other.CompareTag("Smoke") || other.CompareTag("Mail") || other.CompareTag("Bomb")) //Handling Obstacle Conflicts
+        Debug.Log(other);
+        if (other.CompareTag("Smoke") || other.CompareTag("Mail") || other.CompareTag("Bomb") || other.CompareTag("Bomper")) //Handling Obstacle Conflicts
         {
                 ObstacleCollision(other);
         }
@@ -70,9 +73,6 @@ public class PlayerInteraction : MonoBehaviour
              x = int.Parse(parts[0]);
              y = int.Parse(parts[1]);
 
-
-
-
             if (map[x,y]==1)
             {
                 other.GetComponentInChildren<MeshRenderer>().materials = mat;  //Eating key
@@ -86,17 +86,19 @@ public class PlayerInteraction : MonoBehaviour
                 Debug.Log(x + " ," + y + "asd");
                 Debug.Log(map[x, y] + "asd");
                 edgeRule(x, y);
-            }    
-                
-
+            }  
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Bomper")) 
         {
                 ObstacleCollision(collision.gameObject.GetComponent<Collider>());
+        }
+        else if (collision.gameObject.CompareTag("wall"))
+        {
+
         }
     }
  
@@ -128,7 +130,6 @@ public class PlayerInteraction : MonoBehaviour
             }
             else
                 smokeUI.SetActive(true);
-             
         }
         else if (obstacle.CompareTag("Bomb"))
         {
@@ -140,7 +141,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             if (soundSource != null)
                 itemSound.SoundPlay("PostIt");
-            gameObject.GetComponent<Player>().ChangeMove();
+            player.ChangeMove();
         }
 
     }

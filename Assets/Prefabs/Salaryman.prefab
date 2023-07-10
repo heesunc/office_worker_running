@@ -27,12 +27,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2141999118}
-  m_LocalRotation: {x: 0.08351198, y: -2.220446e-16, z: 3.6278898e-17, w: 0.9965068}
-  m_LocalPosition: {x: 0, y: 0.348, z: -0.912}
-  m_LocalScale: {x: 0.090909086, y: 0.09090909, z: 0.09090913}
+  m_LocalRotation: {x: 0.08351212, y: -0.0000000036018184, z: 6.470088e-10, w: 0.9965068}
+  m_LocalPosition: {x: 0, y: 3.8280027, z: -10.031998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2152592347165942962}
+  m_Father: {fileID: 8138766498160679338}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 9.581, y: 0, z: 0}
 --- !u!20 &2141999121
@@ -98,6 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a260d0ea269cc4782ca3c095ed8c1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  party: {fileID: 0}
+  player: {fileID: 0}
+  dist: {x: 0, y: 0, z: 0}
 --- !u!65 &2141999123
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -173,7 +176,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8138766498160679338}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3283566064347624628
 MeshFilter:
@@ -638,7 +641,7 @@ Transform:
   m_Children:
   - {fileID: 1299304875413417991}
   m_Father: {fileID: 8138766498160679338}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3254055383296445764
 GameObject:
@@ -668,10 +671,9 @@ Transform:
   m_LocalPosition: {x: -0.000000017248093, y: -6.705451e-10, z: -0.000000058109872}
   m_LocalScale: {x: 11, y: 11, z: 10.999997}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2141999122}
+  m_Children: []
   m_Father: {fileID: 8138766498160679338}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &7009149040847578449
 SkinnedMeshRenderer:
@@ -1697,6 +1699,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2141999122}
   - {fileID: 2152592347165942962}
   - {fileID: 2575600494748527675}
   - {fileID: 6789337503008292505}
@@ -1765,12 +1768,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossUI: {fileID: 5756067376559395177, guid: 8eb2ba0e36e54114f9739c8255dae73c, type: 3}
+  boss: {fileID: 0}
   smokeUI: {fileID: 0}
   mat:
   - {fileID: 2100000, guid: afdd9c9d293dff6478b4e6e35caac428, type: 2}
   - {fileID: 2100000, guid: bf3b4e49eaa32874a8ec6e80e359bb2b, type: 2}
   - {fileID: 2100000, guid: d60c3166819f8eb4ba539c0b0f3e47fa, type: 2}
   cashParticle: {fileID: 0}
+  cashRuleParticle: {fileID: 0}
 --- !u!114 &3339026223318983590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1798,7 +1803,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1843edf27a03914081fd2723d827986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  doing: 0
+  ns: 0
+  timeCount: 0
+  maxH: 0
+  maxJumpDistance: 14
   anim: {fileID: 3339026223318983589}
 --- !u!1 &9099170927459185926
 GameObject:

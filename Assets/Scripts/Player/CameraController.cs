@@ -19,14 +19,24 @@ public class CameraController : MonoBehaviour
     //폭쥭폭쥭
     public GameObject party;
 
+    //카메라 거리 유지
+    public Transform player;
+    public Transform camera;
+    private Vector3 dist;
+
     void Start()
     {
         tf = GetComponent<Transform>();
-        parent = gameObject.transform.parent.transform;
+        parent = player;
+
+        //dist = player.position - camera.position;
     }
 
     void Update()
     {
+        //tf.position = player.position - dist;
+        //tf.LookAt(player.position);
+
         if (motion == true)
         {
             t += Time.deltaTime;
@@ -52,16 +62,11 @@ public class CameraController : MonoBehaviour
 
         if (c.CompareTag("wall"))
         {
-            int count = c.transform.childCount;
-            for (int i = 0; i < count; i++)
-            {
-                child = c.transform.GetChild(i);
-                rend = child.gameObject.GetComponent<Renderer>();
+                rend = c.GetComponent<Renderer>();
                 material = rend.material;
                 color = material.color;
                 material.shader = Shader.Find("Transparent/Diffuse");
                 material.color = new Color(1f, 1f, 1f, 0f);
-            }
         }
     }
 
@@ -71,15 +76,15 @@ public class CameraController : MonoBehaviour
 
         if (c.CompareTag("wall"))
         {
-            int count = c.transform.childCount;
-            for (int i = 0; i < count; i++)
-            {
-                child = c.transform.GetChild(i);
-                rend = child.gameObject.GetComponent<Renderer>();
+            //int count = c.transform.childCount;
+            //for (int i = 0; i < count; i++)
+            //{
+            //    child = c.transform.GetChild(i);
+                rend = c.GetComponent<Renderer>();
                 material = rend.material;
                 material.shader = Shader.Find("Transparent/Diffuse");
                 material.color = color;
-            }
+            //}
         }
     }
 }
