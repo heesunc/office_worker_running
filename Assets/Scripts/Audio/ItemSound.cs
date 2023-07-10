@@ -16,21 +16,6 @@ public class ItemSound : MonoBehaviour
      4 = 포스트잇
      5 = 커피
       */
-    private void Awake()
-    {
-       
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void SoundPlay(string name)
     {

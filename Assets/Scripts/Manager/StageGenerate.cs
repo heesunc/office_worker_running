@@ -47,7 +47,7 @@ public class StageGenerate : MonoBehaviour
     private void Awake()
     {
         stageManager = GameObject.Find("StageManager");
-        player = GameObject.FindWithTag("Player").transform;
+        player = GameObject.FindWithTag("PlayerPoint").transform;
         playerTarget = GameObject.Find("PlayerTarget").transform;
         timer = GameObject.Find("SliderTimer").GetComponent<SliderTimer>();
         secScript = SecUI.GetComponent<Sec>();
