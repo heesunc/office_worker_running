@@ -38,14 +38,14 @@ public class Player : MonoBehaviour
         if (!isJump)
         {
             isJump = true;
-
+            int direction = getMove();
             playerSound.SoundPlay("Jump");
             jumpStartPos = tf.position;
-            StartCoroutine(JumpProcess());
+            StartCoroutine(JumpProcess(direction));
         }
     }
 
-    IEnumerator JumpProcess()
+    IEnumerator JumpProcess(int direction)
     {
         passedDistance = 0.0f;
         while(passedDistance <= maxJumpDistance && passedDistance >= -1*maxJumpDistance) //지난 거리의 절대값이 최대 점프 거리보다 작아야 함.
@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
             Vector3 temp = (currentPos - jumpStartPos);
             passedDistance = Vector3.Dot(temp, tf.forward); //Vector3 -> float 
             deltaJump = passedDistance / maxJumpDistance; //지난 거리 비율
-            if (move == -1) //뒤로 이동 중일 경우 x축 대칭
+            if (direction == -1) //뒤로 이동 중일 경우 x축 대칭
                 deltaJump *= -1;
             currentH = (1 - Mathf.Pow((2 * deltaJump - 1), 2.0f)) * maxH; //2차 방정식 포물선
             currentH = Mathf.Max(currentH, 0.0f); //방정식 Low Bound를 0으로 설정
