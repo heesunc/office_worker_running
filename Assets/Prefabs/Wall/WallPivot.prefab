@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 6394112899317525942}
   m_Layer: 0
   m_Name: Wall1
-  m_TagString: wall
+  m_TagString: Bomper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -73,7 +73,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -102.75, y: 29.5}
+  m_AnchoredPosition: {x: -102, y: 30}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2081032454233488928
@@ -95,8 +95,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.0711663, y: 72.29013, z: 208.16653}
-  m_Center: {x: -1.009682, y: 5.063652, z: -0.6320343}
+  m_Size: {x: 24.736868, y: 61.668163, z: 208.16653}
+  m_Center: {x: -8.465686, y: -0.24733543, z: -0.6320343}
 --- !u!1 &8195960829454475301
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 2799966956151912903}
   m_Layer: 0
   m_Name: Wall2
-  m_TagString: wall
+  m_TagString: Bomper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -135,7 +135,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.5, y: 29.5}
+  m_AnchoredPosition: {x: 0.5, y: 30}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!65 &4947380558176048252
@@ -149,8 +149,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.0711663, y: 72.29013, z: 208.16653}
-  m_Center: {x: -1.009682, y: 5.063652, z: -0.6320343}
+  m_Size: {x: 39.720985, y: 72.29013, z: 208.16653}
+  m_Center: {x: -15.813335, y: 5.063652, z: -0.6320343}
 --- !u!222 &2799966956151912903
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 8995764402788608357}
   m_Layer: 0
   m_Name: Wall3
-  m_TagString: wall
+  m_TagString: Bomper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -185,7 +185,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8195960829750823021}
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -102.75}
+  m_LocalPosition: {x: 0, y: 0, z: -102}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -197,7 +197,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.5, y: 29.5}
+  m_AnchoredPosition: {x: 0.5, y: 30}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!65 &1948574621881878418
@@ -211,8 +211,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.0711663, y: 72.29013, z: 208.16653}
-  m_Center: {x: -1.009682, y: 5.063652, z: -0.6320343}
+  m_Size: {x: 39.170547, y: 72.29013, z: 208.16653}
+  m_Center: {x: -16.088554, y: 5.063652, z: -0.6320343}
 --- !u!222 &8995764402788608357
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 4859561754250804307}
   m_Layer: 0
   m_Name: Wall4
-  m_TagString: wall
+  m_TagString: Bomper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -259,7 +259,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 102, y: 29.5}
+  m_AnchoredPosition: {x: 102, y: 30}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!65 &4986477491320813935
@@ -273,8 +273,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.0711663, y: 72.29013, z: 208.16653}
-  m_Center: {x: -1.009682, y: 5.063652, z: -0.6320343}
+  m_Size: {x: 39.486404, y: 72.29013, z: 208.16653}
+  m_Center: {x: -15.930626, y: 5.063652, z: -0.6320343}
 --- !u!222 &4859561754250804307
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -352,7 +352,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 13049deed8772c348be6d4ad595f9f38, type: 3}
       propertyPath: m_TagString
-      value: Bomper
+      value: wall
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 13049deed8772c348be6d4ad595f9f38, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -381,8 +381,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5789664, y: 0.05272237, z: 0.5884564}
-  m_Center: {x: 0, y: -0.000000067055225, z: -0.000000014901161}
+  m_Size: {x: 0.5789664, y: 0.49148002, z: 0.5884564}
+  m_Center: {x: -0.00000002225702, y: 0.21937889, z: -0.000000041933692}
 --- !u!1001 &8195960828317627510
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -452,7 +452,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 13049deed8772c348be6d4ad595f9f38, type: 3}
       propertyPath: m_TagString
-      value: Bomper
+      value: wall
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 13049deed8772c348be6d4ad595f9f38, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -481,8 +481,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5789664, y: 0.05272237, z: 0.5884564}
-  m_Center: {x: 0.00000017881393, y: 0, z: -0.000000014901161}
+  m_Size: {x: 0.57896644, y: 0.43368545, z: 0.5884564}
+  m_Center: {x: 0.00000021411833, y: 0.19048162, z: -0.000000038739607}
 --- !u!1001 &8195960828647396119
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -552,7 +552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 13049deed8772c348be6d4ad595f9f38, type: 3}
       propertyPath: m_TagString
-      value: Bomper
+      value: wall
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 13049deed8772c348be6d4ad595f9f38, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -581,8 +581,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.57896626, y: 0.052722357, z: 0.5884564}
-  m_Center: {x: 0.00000011920929, y: 0, z: -0.000000014901161}
+  m_Size: {x: 0.578966, y: 0.3496219, z: 0.5884563}
+  m_Center: {x: 0.00000012986203, y: 0.14844985, z: -0.000000026979706}
 --- !u!1001 &8195960828746408201
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -652,7 +652,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 13049deed8772c348be6d4ad595f9f38, type: 3}
       propertyPath: m_TagString
-      value: Bomper
+      value: wall
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 13049deed8772c348be6d4ad595f9f38, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -681,8 +681,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.57896626, y: 0.052722357, z: 0.5884564}
-  m_Center: {x: -0.000000029802322, y: -0.000000074505806, z: -0.000000014901161}
+  m_Size: {x: 0.578966, y: 0.48887014, z: 0.5884564}
+  m_Center: {x: -0.000000032465508, y: 0.21153148, z: -0.000000017685197}
 --- !u!1001 &8195960828833340266
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -756,7 +756,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 13049deed8772c348be6d4ad595f9f38, type: 3}
       propertyPath: m_TagString
-      value: Bomper
+      value: wall
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 13049deed8772c348be6d4ad595f9f38, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -785,8 +785,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.57896626, y: 0.052722357, z: 0.58845645}
-  m_Center: {x: -0.00000011920929, y: -0.000000074505806, z: -0.000000014901163}
+  m_Size: {x: 0.578966, y: 0.4811494, z: 0.58845633}
+  m_Center: {x: -0.00000012986203, y: 0.21421343, z: 0}
 --- !u!1001 &8195960828922237306
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -860,7 +860,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 13049deed8772c348be6d4ad595f9f38, type: 3}
       propertyPath: m_TagString
-      value: Bomper
+      value: wall
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 13049deed8772c348be6d4ad595f9f38, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -889,8 +889,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.57896626, y: 0.052722357, z: 0.5884564}
-  m_Center: {x: -0.000000059604645, y: -0.000000074505806, z: -0.000000014901161}
+  m_Size: {x: 0.578966, y: 0.4813945, z: 0.5884564}
+  m_Center: {x: -0.000000064931015, y: 0.21433601, z: -0.000000019073486}
 --- !u!1001 &8195960829101338890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -964,7 +964,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 13049deed8772c348be6d4ad595f9f38, type: 3}
       propertyPath: m_TagString
-      value: Bomper
+      value: wall
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 13049deed8772c348be6d4ad595f9f38, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -993,8 +993,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.57896626, y: 0.052722357, z: 0.58845645}
-  m_Center: {x: 0.000000029802322, y: 0, z: -0.000000014901163}
+  m_Size: {x: 0.578966, y: 0.35438204, z: 0.58845633}
+  m_Center: {x: 0.000000032465508, y: 0.1508299, z: 0}
 --- !u!1001 &8195960829254365657
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1068,7 +1068,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 13049deed8772c348be6d4ad595f9f38, type: 3}
       propertyPath: m_TagString
-      value: Bomper
+      value: wall
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 13049deed8772c348be6d4ad595f9f38, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1097,8 +1097,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5789664, y: 0.05272237, z: 0.5884564}
-  m_Center: {x: -0.000000059604645, y: -0.000000070780516, z: -0.000000014901161}
+  m_Size: {x: 0.5789664, y: 0.4909369, z: 0.5884564}
+  m_Center: {x: -0.000000087160494, y: 0.21910751, z: -0.000000022021457}
 --- !u!1001 &8195960829485838693
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1172,7 +1172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 13049deed8772c348be6d4ad595f9f38, type: 3}
       propertyPath: m_TagString
-      value: Bomper
+      value: wall
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 13049deed8772c348be6d4ad595f9f38, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1201,8 +1201,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5789664, y: 0.05272237, z: 0.5884564}
-  m_Center: {x: 0, y: 0, z: -0.000000014901161}
+  m_Size: {x: 0.57896644, y: 0.4319254, z: 0.5884564}
+  m_Center: {x: 0.000000019235973, y: 0.18960159, z: -0.000000019055957}
 --- !u!1001 &8195960829558423617
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1276,7 +1276,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 13049deed8772c348be6d4ad595f9f38, type: 3}
       propertyPath: m_TagString
-      value: Bomper
+      value: wall
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 13049deed8772c348be6d4ad595f9f38, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1305,8 +1305,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.57896626, y: 0.052722357, z: 0.5884564}
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.000000014901161}
+  m_Size: {x: 0.578966, y: 0.3511741, z: 0.5884564}
+  m_Center: {x: 0.000000064931015, y: 0.14922588, z: -0.000000019073486}
 --- !u!1001 &8195960830193912851
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1380,7 +1380,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 13049deed8772c348be6d4ad595f9f38, type: 3}
       propertyPath: m_TagString
-      value: Bomper
+      value: wall
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 13049deed8772c348be6d4ad595f9f38, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1409,8 +1409,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5789664, y: 0.05272237, z: 0.58845645}
-  m_Center: {x: 0, y: 0.00000023841858, z: -0.000000014901163}
+  m_Size: {x: 0.57896644, y: 0.43259394, z: 0.58845645}
+  m_Center: {x: 0.00000001926991, y: 0.1899361, z: -0.000000018956923}
 --- !u!1001 &8195960830206921854
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1484,7 +1484,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 13049deed8772c348be6d4ad595f9f38, type: 3}
       propertyPath: m_TagString
-      value: Bomper
+      value: wall
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 13049deed8772c348be6d4ad595f9f38, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1513,5 +1513,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5789664, y: 0.05272237, z: 0.58845645}
-  m_Center: {x: -0.00000020861626, y: -0.000000074505806, z: -0.000000014901163}
+  m_Size: {x: 0.5789664, y: 0.4917, z: 0.58845645}
+  m_Center: {x: -0.0000002170612, y: 0.21948886, z: -0.00000002190649}
