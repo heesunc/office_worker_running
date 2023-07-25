@@ -27,8 +27,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5756067376559395177}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -10.58, y: 0, z: 112.09}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 168, y: 0, z: 77}
   m_LocalScale: {x: 1, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -36,7 +36,7 @@ Transform:
   - {fileID: 5704373641447777072}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &5756067376559395176
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -48,8 +48,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.425184, y: 0.3991154, z: 1.0809923}
-  m_Center: {x: 0.014609814, y: 0.49818382, z: -0.08290596}
+  m_Size: {x: 5.425184, y: 0.3991154, z: 0.85629827}
+  m_Center: {x: 0.014609814, y: 0.49818382, z: -0.19525301}
 --- !u!114 &6899451924039537509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,7 +78,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 8138766498160679338, guid: 2b3c301e17bbdca41a8764b4bfa067d9, type: 3}
   targetP: {fileID: 0}
-  distance: 2.5
+  distance: 2
   height: 0
   bossAudioSource: {fileID: 6872531782769615587}
   bossAudioClip: {fileID: 8300000, guid: f136618b48e607f48b729031731450f0, type: 3}

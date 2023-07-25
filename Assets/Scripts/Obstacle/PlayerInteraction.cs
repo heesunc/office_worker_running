@@ -109,8 +109,8 @@ public class PlayerInteraction : MonoBehaviour
             itemSound.SoundPlay("Mail");
             if ( GameObject.FindWithTag("Boss") ==  null)
             {
-                Vector3 bossPosition = tf.position - tf.forward * 3;
-                boss = Instantiate(bossUI, bossPosition, Quaternion.identity);
+                Vector3 bossPosition = tf.position - tf.forward * 5;
+                boss = Instantiate(bossUI, bossPosition, Quaternion.identity, tf.parent);
                 //bossUI.SetActive(true);
             }
             else
@@ -142,8 +142,13 @@ public class PlayerInteraction : MonoBehaviour
             if (soundSource != null)
                 itemSound.SoundPlay("PostIt");
             player.ChangeMove();
-        }
 
+            GameObject boss;
+            if ((boss = GameObject.FindWithTag("Boss")) != null)
+            {
+                boss.GetComponent<Transform>().SetParent(null);
+            }
+        }
     }
 
     void edgeRule(int x, int y) //(DFS executed on a live key (starting point) in 8 directions (clockwise) from the location of the collision) Dead key = Wall, Obstacle or Empty = Arrival point
