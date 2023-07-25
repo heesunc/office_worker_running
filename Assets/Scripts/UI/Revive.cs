@@ -24,8 +24,8 @@ public class Revive : MonoBehaviour
         ReviveBtn.onClick.AddListener(OnReviveButtonClick);
         admobRewardAd = FindObjectOfType<AdmobRewardAd>();
 
-        anim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        anim = GameObject.FindGameObjectWithTag("PlayerPoint").GetComponent<Animator>();
+        player = GameObject.FindGameObjectWithTag("PlayerPoint").GetComponent<Player>();
 
         mapData = GameObject.Find("StageGenerator").GetComponent<StageGenerate>().mapData;
     }
@@ -35,10 +35,10 @@ public class Revive : MonoBehaviour
         Vector3 playerPos = player.transform.position;
         Vector3 cubePos;
 
-        if (admobRewardAd != null)
+        /*if (admobRewardAd != null)
         {
             admobRewardAd.ShowAd(() =>
-            {
+            { */
                 if (player.transform.rotation.y == 90 || player.transform.rotation.y == 270)
                 {
                     // Player is facing along the X-axis
@@ -107,11 +107,11 @@ public class Revive : MonoBehaviour
                 manager.isOver = false;
                 ReviveBtn.interactable = false;
                 //Score.Rescore(); // 부활하고 먹은 점수 반영되도록
-            });
+            /*});
         }
         else
         {
             Debug.LogError("부활 시 광고 오류");
-        }
+        } */
     }
 }

@@ -157,20 +157,20 @@ public class StageGenerate : MonoBehaviour
 
     public void NextStageLoad()
     {
-        if (admobRewardAd != null)
+        /* if (admobRewardAd != null)
         {
             admobRewardAd.ShowAd(() =>
-            {
+            { */
                 Time.timeScale = 1.0f;
                 stageManager.GetComponent<LoadGame>().UpIndex();
                 if(PlayerPrefs.GetInt("curIndex") != stageManager.GetComponent<LoadGame>().numberOfStage)
                     LoadingSceneController.LoadScene("Stage");
-            });
+            /*});
         }
         else
         {
             Debug.LogError("계속하기 버튼 누를 시 광고 오류");
-        }
+        }*/
 
     }
 
