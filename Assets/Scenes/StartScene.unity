@@ -2067,7 +2067,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneToLoad: Stage
   Index: 1
-  numberOfStage: 15
+  numberOfStage: 30
   stageSelection: {fileID: 1926102404}
 --- !u!4 &879650741
 Transform:
@@ -5938,7 +5938,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 209f58eb9ef205741a69a22835bea083, type: 3}
   - {fileID: 8300000, guid: 7bc45350283045e4596d9df026922a9e, type: 3}
   playTime: 0
-  loadGame: {fileID: 879650740}
+  stageIndex: 0
 --- !u!1 &2093042319
 GameObject:
   m_ObjectHideFlags: 0
