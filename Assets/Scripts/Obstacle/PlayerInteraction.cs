@@ -77,7 +77,7 @@ public class PlayerInteraction : MonoBehaviour
             {
                 other.GetComponentInChildren<MeshRenderer>().materials = mat;  //Eating key
                 other.transform.GetChild(0).gameObject.SetActive(false);
-                Instantiate(cashParticle, tf);
+                Instantiate(cashParticle, tf.parent);
 
                 if (soundSource != null)
                     itemSound.SoundPlay("Money");
