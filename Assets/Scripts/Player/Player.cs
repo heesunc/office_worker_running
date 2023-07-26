@@ -13,19 +13,23 @@ public class Player : MonoBehaviour
 
     public void oderTurnR() // Add condition statement if (!isPause && !isOver) in Pause, GameManager script when clicking the button *****
     {
-        if (isturn != TurnState.DOING && !isJump) //점프 중 회전 금지 추가
+        if (isturn != TurnState.DOING && !isJump && !isBomper) //점프 중 회전 금지 추가 && 넉백과 충돌 중일 때 회전 금지 추가
             isturn = TurnState.RIGHT;
     }
 
     public void oderTurnL()
     {
-        if (isturn != TurnState.DOING && !isJump)
+        if (isturn != TurnState.DOING && !isJump && !isBomper)
             isturn = TurnState.LEFT;
     }
 
     public void oderFront()
     {
-        move = 1;
+        if(!isBomper) //넉백과 충돌 중에 앞으로 명령 금지 추가
+        {
+            move = 1;
+        }
+
     }
 
     public int getMove()
@@ -59,8 +63,11 @@ public class Player : MonoBehaviour
                 deltaJump *= -1;
             currentH = (1 - Mathf.Pow((2 * deltaJump - 1), 2.0f)) * maxH; //2차 방정식 포물선
             currentH = Mathf.Max(currentH, 0.0f); //방정식 Low Bound를 0으로 설정
+            if (currentH == 0) //넉백 맞고 다시 땅으로 착지했을 때
+                break;
             tf.DOMoveY(currentH, 0.01f); //Dotween을 이용해 Y 좌표를 계산한 값으로 이동
         }
+        tf.DOMoveY(currentH, 0.01f); //Dotween을 이용해 Y 좌표를 계산한 값으로 이동
         isJump = false;
     }
 
@@ -129,6 +136,8 @@ public class Player : MonoBehaviour
     GameObject soundSource;
     PlayerSound playerSound;
 
+    //Bomper
+    public bool isBomper;
 
     void Start()
     {
@@ -213,6 +222,22 @@ public class Player : MonoBehaviour
         }
 
         playTime += Time.deltaTime;
+    }
+    private void OnTriggerEnter(Collider other) //넉백이랑 충돌 중일 경우 isBomper = true
+    {
+        if (other.CompareTag("Bomper"))
+        {
+            isBomper = true;
+            go = true; //회전 막고
+            rotateComplete = false; //검사 새로 해야함.
+            rotateOrderDelete();
+        }           
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Bomper"))
+            isBomper = false;
     }
 
     public void speedSet()

@@ -7292,7 +7292,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2694523669690464484, guid: e239189d8746156468929cff01381e83, type: 3}
       propertyPath: testIndex
-      value: 1
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2694523669690464484, guid: e239189d8746156468929cff01381e83, type: 3}
       propertyPath: mailParent
@@ -7560,8 +7560,12 @@ PrefabInstance:
       value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 471832847, guid: 2b3c301e17bbdca41a8764b4bfa067d9, type: 3}
+      propertyPath: interaction
+      value: 
+      objectReference: {fileID: 1040671077}
+    - target: {fileID: 471832847, guid: 2b3c301e17bbdca41a8764b4bfa067d9, type: 3}
       propertyPath: maxJumpDistance
-      value: 12
+      value: 13.5
       objectReference: {fileID: 0}
     - target: {fileID: 2141999118, guid: 2b3c301e17bbdca41a8764b4bfa067d9, type: 3}
       propertyPath: m_IsActive

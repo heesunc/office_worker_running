@@ -34,7 +34,7 @@ public class PlayerInteraction : MonoBehaviour
     public GameObject cashRuleParticle;
 
     public Player player;
-
+ 
     // Start is called before the first frame update
     void Start()
     {
@@ -83,25 +83,36 @@ public class PlayerInteraction : MonoBehaviour
                     itemSound.SoundPlay("Money");
                 manager.keyCount++;
                 map[x, y] = 9;
-                Debug.Log(x + " ," + y + "asd");
-                Debug.Log(map[x, y] + "asd");
+           
                 edgeRule(x, y);
             }  
         }
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Bomper")) 
-        {
-                ObstacleCollision(collision.gameObject.GetComponent<Collider>());
-        }
-        else if (collision.gameObject.CompareTag("wall"))
-        {
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    if (other.CompareTag("Bomper"))
+    //        Debug.Log("범퍼 충돌 중");
+    //}
 
-        }
-    }
- 
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.CompareTag("Bomper"))
+    //        isBomper = false;
+    //}
+
+    //void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Bomper")) 
+    //    {
+    //            ObstacleCollision(collision.gameObject.GetComponent<Collider>());
+    //    }
+    //    else if (collision.gameObject.CompareTag("wall"))
+    //    {
+
+    //    }
+    //}
+
     public void ObstacleCollision(Collider obstacle) //Obstacle collision handling function
     {
         if (obstacle.CompareTag("Mail"))
@@ -139,6 +150,8 @@ public class PlayerInteraction : MonoBehaviour
         }
         else if(obstacle.CompareTag("Bomper"))
         {
+            //isBomper = true;
+            //Debug.Log("범퍼 충돌 시작");
             if (soundSource != null)
                 itemSound.SoundPlay("PostIt");
             player.ChangeMove();
