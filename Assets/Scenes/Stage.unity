@@ -7561,7 +7561,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 471832847, guid: 2b3c301e17bbdca41a8764b4bfa067d9, type: 3}
       propertyPath: maxJumpDistance
-      value: 13.5
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2141999118, guid: 2b3c301e17bbdca41a8764b4bfa067d9, type: 3}
       propertyPath: m_IsActive
