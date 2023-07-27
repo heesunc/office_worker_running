@@ -8,7 +8,7 @@ public class LoadGame : MonoBehaviour
 {
     public string SceneToLoad;
     public int Index;
-    public int numberOfStage = 15;
+    public int numberOfStage = 30;
  
     public GameObject stageSelection;
     private Text stageIndexText;
@@ -41,7 +41,8 @@ public class LoadGame : MonoBehaviour
             PlayerPrefs.SetInt("curIndex", 1);
 
         Index = PlayerPrefs.GetInt("curIndex");
-        
+
+        PlayerPrefs.SetInt("clearData", numberOfStage); // 올 클리어 설정
     }
 
     public void Update()
