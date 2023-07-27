@@ -62,11 +62,11 @@ public class StageGenerate : MonoBehaviour
         }  
 
         //�������� �� ��Ƽ���� ����
-        if(stageIndex <= 5)
+        if(stageIndex <= 10)
             matNum = 0;
-        else if(stageIndex <= 10)
+        else if(stageIndex <= 20)
             matNum = 1;
-        else if (stageIndex <= 15)
+        else if (stageIndex <= 30)
             matNum = 2;
 
         floorColor = Resources.LoadAll<Material>("Materials/Floor" + matNum);

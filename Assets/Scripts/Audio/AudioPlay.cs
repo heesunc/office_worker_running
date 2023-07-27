@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class AudioPlay : MonoBehaviour
 {
-    const int normal = 5, hard = 10, chaos = 15;
+    const int normal = 10, hard = 20, chaos = 30;
     private static AudioPlay _instance; // 사운드를 한 곳에서 관리할 수 있도록
     public AudioSource audioSource;
     public AudioClip[] audioList;
@@ -33,18 +33,18 @@ public class AudioPlay : MonoBehaviour
     }
     public void Update()
     {
-        if(SceneManager.GetActiveScene().name == "Stage")
-        {
-            playTime += Time.deltaTime;
-            if(playTime > 30.0f && count < 3 && stageIndex <= hard) //최대 세 번만 배속, 하드 스테이지 이하만 배속
-            {
-                playTime = 0.0f;
-                pitch = pitch + (pitch * 0.08f);
-                audioSource.pitch = pitch;
-                count++; //배속 카운터
-            }
-            Debug.Log("playTime : " + playTime);
-        }
+        //if(SceneManager.GetActiveScene().name == "Stage")
+        //{
+        //    playTime += Time.deltaTime;
+        //    if(playTime > 30.0f && count < 3 && stageIndex <= hard) //최대 세 번만 배속, 하드 스테이지 이하만 배속
+        //    {
+        //        playTime = 0.0f;
+        //        pitch = pitch + (pitch * 0.08f);
+        //        audioSource.pitch = pitch;
+        //        count++; //배속 카운터
+        //    }
+        //    Debug.Log("playTime : " + playTime);
+        //}
     }
 
     // scene이 로딩됐을때 해당 scene 이름과 같은 이름의 bgm 재생

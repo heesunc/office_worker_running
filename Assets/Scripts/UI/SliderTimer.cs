@@ -33,7 +33,8 @@ public class SliderTimer : MonoBehaviour
     {
         if (slTimer.value > 0.0f)
         {
-            slTimer.value -= Time.deltaTime;
+            if(!manager.isClear && !manager.isOver) //게임 오버, 클리어 시 타이머 멈춤
+                slTimer.value -= Time.deltaTime;
 
             if(slTimer.value < 8.0f)
             {
@@ -92,9 +93,4 @@ public class SliderTimer : MonoBehaviour
         }
 
    }
-
-    void Delay()
-    {
-        Debug.Log("delay");
-    }
 }
