@@ -214,7 +214,8 @@ public class Player : MonoBehaviour
             if (go == false) //앞으로 걷는 거 끝남.
             {
                 Debug.Log("go는 false가 됨.");
-                rotateCheck(); //다시 회전 검사.
+                rotateEnd();
+                //rotateCheck(); //다시 회전 검사.
             }
         }
 
