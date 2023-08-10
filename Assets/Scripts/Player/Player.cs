@@ -161,8 +161,6 @@ public class Player : MonoBehaviour
         //tf.DOMove(nextPosition(), ns * 2000);
         //tf.DORotate(angleRL(), ns * 500);
 
-        //for Test
-        rotateComplete = true;
     }
 
     // Update is called once per frame
@@ -205,7 +203,7 @@ public class Player : MonoBehaviour
             //move
             if (rotateComplete == true) 
             {
-                //go = true; //회전 검사 x
+                go = true; //회전 검사 x
                 rotateComplete = false; //step 중복 x
                 step(); //앞으로 가요.
             }
@@ -215,11 +213,11 @@ public class Player : MonoBehaviour
 
             //}
 
-            //if (go == false) //앞으로 걷는 거 끝남.
-            //{
-            //    Debug.Log("go는 false가 됨.");
-            //    rotateCheck(); //다시 회전 검사.
-            //}
+            if (go == false) //앞으로 걷는 거 끝남.
+            {
+                Debug.Log("go는 false가 됨.");
+                rotateCheck(); //다시 회전 검사.
+            }
         }
 
         //ns up at an interval of 25s
@@ -341,8 +339,7 @@ public class Player : MonoBehaviour
     {
         Debug.Log("step OnComplete");
         Debug.Log(tf.position);
-        rotateComplete = true;
-        //go = false;
+        go = false;
         //isMoving = true;
     }
 
