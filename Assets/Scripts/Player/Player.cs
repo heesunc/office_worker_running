@@ -140,6 +140,9 @@ public class Player : MonoBehaviour
     //Bomper
     public bool isBomper;
 
+    public int testT;
+    public bool testR;
+
     void Start()
     {
         soundSource = GameObject.Find("PlayerSoundSource");
@@ -154,6 +157,9 @@ public class Player : MonoBehaviour
         ns = 0.001f;
         speedSet();
         doing = true;
+
+        testT = TestButton.tween;
+        testR = TestButton.rotate;
 
         //checkCount = 2;
 
@@ -200,24 +206,45 @@ public class Player : MonoBehaviour
         //Player Main Move
         if (doing == true)
         {
-            //move
-            if (rotateComplete == true) 
+            if (testR == true)
             {
-                go = true; //회전 검사 x
-                rotateComplete = false; //step 중복 x
-                step(); //앞으로 가요.
-            }
+                //move
+                if (rotateComplete == true)
+                {
+                    go = true; //회전 검사 x
+                    rotateComplete = false; //step 중복 x
+                    if (testT == 0)
+                        step(); //앞으로 가요.
+                    else if (testT == 1)
+                        step1();
+                    else if (testT == 2)
+                        step2();
+                    else 
+                        step3();
+                }
 
-            //if (isMoving == true)
-            //{
-
-            //}
-
-            if (go == false) //앞으로 걷는 거 끝남.
+                if (go == false) //앞으로 걷는 거 끝남.
+                {
+                    rotateCheck(); //다시 회전 검사.
+                }
+            } else
             {
-                Debug.Log("go는 false가 됨.");
-                rotateCheck(); //다시 회전 검사.
-            }
+                //move
+                if (go == false)
+                {
+                    go = true; //스텝 중복x
+                    //rotateComplete = false; //step 중복 x
+                    if (testT == 0)
+                        step(); //앞으로 가요.
+                    else if (testT == 1)
+                        step1();
+                    else if (testT == 2)
+                        step2();
+                    else
+                        step3();
+                }
+            }    
+            
         }
 
         //ns up at an interval of 25s
@@ -254,7 +281,10 @@ public class Player : MonoBehaviour
         switch (timeCount)
         {
             case 0:
-                speed = 400;
+                if (TestButton.time == 1000)
+                    speed = 1000;
+                else
+                    speed = 400;
                 speedTurn = 500;
                 timeAmongButton = 0.02f;
                 break;
@@ -282,7 +312,7 @@ public class Player : MonoBehaviour
     Tween tweenZ;
     Tween tweenX;
 
-    private void step() //3. 구조 문제
+    private void step() //트윈 사용
     {
         //Position 이동이 Y 값에 영향을 미치지 않게 하도록 X와 Z로 나눠서 이동
         if(tf.forward == Vector3.forward || tf.forward == Vector3.back)
@@ -301,15 +331,57 @@ public class Player : MonoBehaviour
                 .OnComplete(stepComplete); //원하는 위치로
             //StartCoroutine(stepComplete(tweenX));
         }
-
-        //go = false;
-
-        //    target.DOMoveX(5f, 1f)
-        //.SetEase(Ease.InOutSine)
-        //.OnComplete(StartNextTween);
     }
 
-    private Vector3 nextPosition() //XXXXXXXXXXXX
+    private void step1() //직접 이동
+    {
+        //Position 이동이 Y 값에 영향을 미치지 않게 하도록 X와 Z로 나눠서 이동
+        if (tf.forward == Vector3.forward || tf.forward == Vector3.back)
+        {
+            //2. Tween을 만들어서 StartCoroutine을 반복하는 것
+            tf.DOMoveZ(nextPosition().z, ns * speed) //초기 400 최대200
+                .SetEase(Ease.Linear)
+                .OnComplete(stepComplete); //원하는 위치로
+        }
+        else if (tf.forward == Vector3.right || tf.forward == Vector3.left)
+        {
+            tf.DOMoveX(nextPosition().x, ns * speed) //초기 400 최대200
+                .SetEase(Ease.Linear)
+                .OnComplete(stepComplete); //원하는 위치로
+            //StartCoroutine(stepComplete(tweenX));
+        }
+    }
+
+    private void step2() //Translate, 거리기준
+    {
+        Vector3 goal = tf.forward * move * TILE; //확정되면 next 메소드 제거 후 직접 대입
+        tf.Translate(goal);
+
+        StartCoroutine(stepComplete1(goal));
+
+        //if (tf.forward == Vector3.forward || tf.forward == Vector3.back)
+        //{
+        //    //2. Tween을 만들어서 StartCoroutine을 반복하는 것
+        //    tf.translate(nextPosition);
+        //}
+        //else if (tf.forward == Vector3.right || tf.forward == Vector3.left)
+        //{
+        //    tf.DOMoveX(nextPosition().x, ns * speed) //초기 400 최대200
+        //        .SetEase(Ease.Linear)
+        //        .OnComplete(stepComplete); //원하는 위치로
+        //    //StartCoroutine(stepComplete(tweenX));
+        //}
+    }
+
+    private void step3() //Translate, 시간기준
+    {
+        Vector3 goal = tf.forward * move * TILE; //확정되면 next 메소드 제거 후 직접 대입
+        tf.Translate(goal);
+
+        StartCoroutine(stepComplete2(goal));
+    }
+
+        private Vector3 nextPosition() //XXXXXXXXXXXX
     {
         Vector3 point = tf.position;
 
@@ -335,17 +407,53 @@ public class Player : MonoBehaviour
 
     //    go = false;
     //}
+
+    IEnumerator stepComplete1(Vector3 goal) //isturn 초기화 겸 이동 완료 검사.
+    {
+        float time = 0f;
+        //1. while 날려보기
+        while (time < timeAmongButton) //연타 시 오차 범위
+        {
+            time += Time.deltaTime;
+            yield return null;
+        }
+        rotateOrderDelete();
+
+        while (tf.position != goal)
+        {
+            yield return null;
+        }
+
+        go = false;
+    }
+
+    IEnumerator stepComplete2(Vector3 goal) //isturn 초기화 겸 이동 완료 검사.
+    {
+        float time = 0f;
+        //1. while 날려보기
+        while (time < timeAmongButton) //연타 시 오차 범위
+        {
+            time += Time.deltaTime;
+            yield return null;
+        }
+        rotateOrderDelete();
+
+        while (time < speed * ns)
+        {
+            yield return null;
+        }
+
+        go = false;
+    }
+
     void stepComplete()
     {
-        Debug.Log("step OnComplete");
-        Debug.Log(tf.position);
         go = false;
         //isMoving = true;
     }
 
     private void rotateCheck()
     {
-        Debug.Log("rotateCheck isturn: " + isturn);
         if (isturn == TurnState.NONE)
             rotateEnd();
         else if (isturn == TurnState.LEFT || isturn == TurnState.RIGHT)
