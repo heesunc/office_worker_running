@@ -66,9 +66,9 @@ public class GameManager : MonoBehaviour
         Debug.Log("GameOver!");
 
         playerSound.SoundPlay("GameOver");
-        
-        player.timeCount = -1;
-        player.speedSet();
+        player.stop();
+        //player.timeCount = -1;
+        //player.speedSet();
         anim.SetBool("Dead", true);
         Invoke("GameOverTest", 3f);
     }
