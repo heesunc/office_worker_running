@@ -99,7 +99,7 @@ public class Player : MonoBehaviour
     //move
     public float ns; //move ns
     private int move = 1;
-    private bool go = false; //it is going now?
+    //private bool go = false; //it is going now?
 
     private float playTime = 0f; //속도 올리기용. 나중에 없애기. 
     public int timeCount;
@@ -107,7 +107,7 @@ public class Player : MonoBehaviour
 
     //turn
     private TurnState isturn = TurnState.NONE;
-    private bool rotateComplete = false;
+    //private bool rotateComplete = false;
     private float speedTurn;
 
     //jump
@@ -154,6 +154,8 @@ public class Player : MonoBehaviour
         speedSet();
         doing = true;
 
+        step();
+
         //checkCount = 2;
 
         //Test
@@ -197,18 +199,19 @@ public class Player : MonoBehaviour
 
         if (doing == true)
         {
-            //move
-            if (rotateComplete == true)
-            {
-                go = true; //회전 막고
-                rotateComplete = false; //검사 새로 해야함.
-                step(); //앞으로 가요.
-            }
+            //회전 완료 -> 앞으로
+            //if (rotateComplete == true)
+            //{
+            //    go = true; //회전 막고
+            //    rotateComplete = false; //검사 새로 해야함.
+            //    step(); //앞으로 가요.
+            //}
 
-            if (go == false) //앞으로 걷는 거 끝남.
-            {
-                rotateCheck(); //다시 회전 검사.
-            }
+            ////회전 시작 -> 멈춤
+            //if (go == false) //앞으로 걷는 거 끝남.
+            //{
+            //    rotateCheck(); //다시 회전 검사.
+            //}
         }
 
         //ns up at an interval of 25s
@@ -228,9 +231,10 @@ public class Player : MonoBehaviour
         if (other.CompareTag("Bomper"))
         {
             isBomper = true;
-            go = true; //회전 막고
-            rotateComplete = false; //검사 새로 해야함.
+            //go = true; //회전 막고
+            //rotateComplete = false; //검사 새로 해야함.
             rotateOrderDelete();
+            step(); //rotateComplete 대체
         }           
     }
 
@@ -317,7 +321,8 @@ public class Player : MonoBehaviour
             yield return null;
         }
 
-        go = false;
+        //go = false;
+        rotateCheck(); //다시 회전 검사.
     }
 
     private void rotateCheck()
@@ -344,7 +349,11 @@ public class Player : MonoBehaviour
 
     private void rotateEnd()
     {
-        rotateComplete = true;
+        //rotateComplete = true;
+        //go = true; //회전 막고
+        //rotateComplete = false; //검사 새로 해야함.
+        step(); //앞으로 가요.
+
         isturn = TurnState.NONE;
     }
 
@@ -362,24 +371,6 @@ public class Player : MonoBehaviour
         isturn = TurnState.DOING;
         return angle;
     }
-
-    //private void correctLine() //no used
-    //{
-    //    //correctLine
-    //    if (seeX == Direction.X)
-    //    {
-    //        transform.position = Vector3.SmoothDamp(tf.position, new Vector3(x, tf.position.y, correctGoalZ), ref correctVelocity, correctTime);
-    //    }
-    //    else if (seeX == Direction.Z)
-    //    {
-    //        transform.position = Vector3.SmoothDamp(tf.position, new Vector3(correctGoalX, tf.position.y, z), ref correctVelocity, correctTime);
-    //    }
-    //}
-
-    //private void speedUp()
-    //{
-    //    ns *= 1.2f;
-    //}
 
     //private bool checkPlace(float x) //no used.
     //{
@@ -429,80 +420,4 @@ public class Player : MonoBehaviour
 
         s = false;
     }
-
-    //private void OnCollisionEnter(Collision other) //���� ���� ���� Ȯ��.
-    //{
-    //    if (other.collider.CompareTag("Floor")) //��ҹ��� Ȯ��
-    //    {
-    //        isJump = false;
-    //    }
-    //}
-
-    //private void checkSeeX() //오차 1
-    //{
-    //    int o = 1; //오차
-
-    //    if (lastX + o < tf.position.x || lastX - o > tf.position.x)
-    //    {
-    //        seeX = Direction.X;
-    //    }
-    //    else
-    //    {
-    //        seeX = Direction.Z;
-    //    }
-
-    //    //lastX = tf.position.x;
-    //    //lastZ = tf.position.z;
-    //}
-
-    //private int turnGoal(int r)
-    //{
-    //    if (r % 90 == 0)
-    //    {
-    //        if (isturn == TurnState.RIGHT)
-    //            return r + 90;
-    //        else
-    //            return r - 90;
-    //    }
-
-    //    return r;
-    //}
-
-    //IEnumerator turnR()
-    //{
-    //    int rY = (int)tf.eulerAngles.y; //if error in angle, change int to float
-    //    int goal = turnGoal(rY); //turn
-
-    //    while (rY != goal)
-    //    {
-    //        rY += 5; //ry값 조정. -> ns 올라가면 같이 올라가도록
-    //        rg.MoveRotation(Quaternion.Euler(0, rY, 0));
-    //        yield return null;
-    //    }
-
-    //    endTrun();
-    //}
-
-    //IEnumerator turnL() //ȸ�� �޼ҵ�.
-    //{
-    //    int rY = (int)tf.eulerAngles.y;
-    //    int goal = turnGoal(rY); //��ǥ ����
-
-    //    while (rY != goal)
-    //    {
-    //        rY -= 5;
-    //        rg.MoveRotation(Quaternion.Euler(0, rY, 0));
-    //        yield return null;
-    //    }
-
-    //    endTrun();
-    //}
-
-    //private void endTrun()
-    //{
-    //    go = true;
-    //    lastX = tf.position.x;
-    //    lastZ = tf.position.z;
-    //    seeX = Direction.READY;
-    //}
 }
