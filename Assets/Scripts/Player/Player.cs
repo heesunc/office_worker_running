@@ -81,14 +81,6 @@ public class Player : MonoBehaviour
         LEFT
     };
 
-    //enum Direction
-    //{
-    //    X,
-    //    Z,
-    //    READY,
-    //    WAIT
-    //}
-
     const int TILE = 7;
 
     public bool doing;
@@ -99,7 +91,6 @@ public class Player : MonoBehaviour
     //move
     public float ns; //move ns
     private int move = 1;
-    //private bool go = false; //it is going now?
     private bool isStop = false;
 
     private float playTime = 0f; //속도 올리기용. 나중에 없애기. 
@@ -108,7 +99,6 @@ public class Player : MonoBehaviour
 
     //turn
     private TurnState isturn = TurnState.NONE;
-    //private bool rotateComplete = false;
     private float speedTurn;
 
     //jump
@@ -120,7 +110,6 @@ public class Player : MonoBehaviour
     private Vector3 jumpStartPos;
     private float passedDistance;
     private float deltaJump;
-    //private int f = 150; //jump Force
 
     //Controller
     private bool s = false; //Swipe mode true, Button mode false
@@ -156,12 +145,6 @@ public class Player : MonoBehaviour
         doing = true;
 
         step();
-
-        //checkCount = 2;
-
-        //Test
-        //tf.DOMove(nextPosition(), ns * 2000);
-        //tf.DORotate(angleRL(), ns * 500);
     }
 
     // Update is called once per frame
@@ -198,27 +181,9 @@ public class Player : MonoBehaviour
             }
         }
 
-        //if (doing == true)
-        //{
-        //    //회전 완료 -> 앞으로
-        //    //if (rotateComplete == true)
-        //    //{
-        //    //    go = true; //회전 막고
-        //    //    rotateComplete = false; //검사 새로 해야함.
-        //    //    step(); //앞으로 가요.
-        //    //}
-
-        //    ////회전 시작 -> 멈춤
-        //    //if (go == false) //앞으로 걷는 거 끝남.
-        //    //{
-        //    //    rotateCheck(); //다시 회전 검사.
-        //    //}
-        //}
-
         //ns up at an interval of 25s
         if (playTime > 30)
         {
-            //motion = true;
             Debug.Log(playTime);
             playTime = 0;
             timeCount += 1;
@@ -232,11 +197,8 @@ public class Player : MonoBehaviour
         if (other.CompareTag("Bomper"))
         {
             isBomper = true;
-            //go = true; //회전 막고
-            //rotateComplete = false; //검사 새로 해야함.
             rotateOrderDelete();
-            step(); //rotateComplete 대체
-        }           
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -292,12 +254,6 @@ public class Player : MonoBehaviour
                 .OnComplete(stepComplete);
             //StartCoroutine(stepComplete(tweenX));
         }
-
-        //go = false;
-
-        //    target.DOMoveX(5f, 1f)
-        //.SetEase(Ease.InOutSine)
-        //.OnComplete(StartNextTween);
     }
 
     private Vector3 nextPosition() //XXXXXXXXXXXX
@@ -371,9 +327,6 @@ public class Player : MonoBehaviour
 
     private void rotateEnd()
     {
-        //rotateComplete = true;
-        //go = true; //회전 막고
-        //rotateComplete = false; //검사 새로 해야함.
         isturn = TurnState.NONE;
         step(); //앞으로 가요.
     }
