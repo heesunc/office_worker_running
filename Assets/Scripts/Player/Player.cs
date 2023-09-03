@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-//using System;
 using UnityEngine;
 using DG.Tweening;
 
@@ -13,13 +12,13 @@ public class Player : MonoBehaviour
 
     public void oderTurnR() // Add condition statement if (!isPause && !isOver) in Pause, GameManager script when clicking the button *****
     {
-        if (isturn != TurnState.DOING && !isJump && !isBomper) //점프 중 회전 금지 추가 && 넉백과 충돌 중일 때 회전 금지 추가
+        if (!isJump && !isBomper) //점프 중 회전 금지 추가 && 넉백과 충돌 중일 때 회전 금지 추가
             isturn = TurnState.RIGHT;
     }
 
     public void oderTurnL()
     {
-        if (isturn != TurnState.DOING && !isJump && !isBomper)
+        if (!isJump && !isBomper)
             isturn = TurnState.LEFT;
     }
 
@@ -71,19 +70,15 @@ public class Player : MonoBehaviour
         isJump = false;
     }
 
-    //private:
     enum TurnState
     {
         REEADY,
         NONE,
-        DOING,
         RIGHT,
         LEFT
     };
 
     const int TILE = 7;
-
-    public bool doing;
 
     //control
     float timeAmongButton;
@@ -142,7 +137,6 @@ public class Player : MonoBehaviour
 
         ns = 0.001f;
         speedSet();
-        doing = true;
 
         step();
     }
@@ -225,9 +219,6 @@ public class Player : MonoBehaviour
                 speed = 270;
                 speedTurn = 350;
                 timeAmongButton = 0.01f;
-                break;
-            case -1:
-                doing = false;
                 break;
             default:
                 speed = 200;
@@ -314,10 +305,6 @@ public class Player : MonoBehaviour
                 .SetEase(Ease.InOutSine)
                 .OnComplete(rotateEnd);
         }
-        else if (isturn == TurnState.DOING)
-        {
-            ;
-        }
         else if (isturn == TurnState.REEADY)
         {
             tf.DORotate(angleRL(), ns * 500)
@@ -342,7 +329,7 @@ public class Player : MonoBehaviour
         else
             Debug.Log("isturn: " + isturn);
 
-        isturn = TurnState.DOING;
+        //isturn = TurnState.DOING;
         return angle;
     }
 
