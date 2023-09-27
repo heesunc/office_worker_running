@@ -186,6 +186,9 @@ public class PlayerInteraction : MonoBehaviour
                     remove[xx, yy] = 1; //Mark position that executed DFS
                     RemoveKey();
                     Debug.Log("removed!");
+
+                    Vector3 particlePos = tf.position + 2 * Vector3.up;
+                    Instantiate(cashRuleParticle, particlePos, Quaternion.identity, tf);
                     break;
                 }
             }
@@ -237,9 +240,7 @@ public class PlayerInteraction : MonoBehaviour
 
                     GameObject.Find("(" + i + "," + j + ")").GetComponentInChildren<MeshRenderer>().materials = mat; //Eating key
                     GameObject.Find("(" + i + "," + j + ")").transform.GetChild(0).gameObject.SetActive(false);
-                    Vector3 particlePos = tf.position + 2 * Vector3.up;
-                    Instantiate(cashRuleParticle, particlePos, Quaternion.identity, tf);
-
+                    
                     map[i, j] = 9;
                     manager.keyCount++;
                 }
