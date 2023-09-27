@@ -66,9 +66,9 @@ public class GameManager : MonoBehaviour
         Debug.Log("GameOver!");
 
         playerSound.SoundPlay("GameOver");
-        
-        player.timeCount = -1;
-        player.speedSet();
+        player.stop();
+        //player.timeCount = -1;
+        //player.speedSet();
         anim.SetBool("Dead", true);
         Invoke("GameOverTest", 3f);
     }
@@ -96,8 +96,7 @@ public class GameManager : MonoBehaviour
         moneyParent.SetActive(false); //Clear시 돈 비활성화
         playerSound.SoundPlay("GameClear");
         Debug.Log("GameClear!");
-        player.timeCount = -1;
-        player.speedSet();
+        player.stop();
         anim.SetBool("Clear", true);
         Invoke("GameClearTest", 2.5f);
 

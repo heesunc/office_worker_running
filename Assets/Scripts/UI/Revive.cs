@@ -97,7 +97,7 @@ public class Revive : MonoBehaviour
                 // }
 
                 anim.SetBool("Dead", false);
-                player.doing = true;
+                player.reRun();
                 GameOver_UI.SetActive(false);
 
                 SecUI.SetActive(true);
