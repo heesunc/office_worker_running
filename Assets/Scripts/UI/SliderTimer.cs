@@ -31,40 +31,72 @@ public class SliderTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if(manager.isClear || manager.isOver) //게임 종료 시 타이머 오디오 중단
+        //{
+        //    TimerSoundPlay
+        //}
+        //else
+        //{
+        //    slTimer.value -= Time.deltaTime;
+
+        //    if (slTimer.value <= 0.0f)
+        //    {
+        //        if (isTimeOut == false)
+        //        {
+        //            isTimeOut = true;
+        //            TimerSoundPlay("TimeOut");
+        //        }
+
+        //        manager.GameOver();
+        //        reviveBtn.interactable = false;
+        //    }
+        //    else if (slTimer.value < 8.0f)
+        //    {
+        //        if (activeSound == false)
+        //        {
+        //            TimerSoundPlay("Timer");
+        //            activeSound = true;
+        //        }
+        //    }
+        //}
         if (slTimer.value > 0.0f)
         {
-            if(!manager.isClear && !manager.isOver) //게임 오버, 클리어 시 타이머 멈춤
+            if (manager.isClear || manager.isOver) //게임 오버, 클리어 시 타이머 멈춤
+                timerAudioSource.Pause();
+            else
+            {
                 slTimer.value -= Time.deltaTime;
 
-            if(slTimer.value < 8.0f)
-            {
-                if(activeSound == false)
+                if (slTimer.value < 8.0f)
                 {
-                    TimerSoundPlay("Timer");
-                    activeSound = true;
+                    if (activeSound == false)
+                    {
+                        TimerSoundPlay("Timer");
+                        activeSound = true;
+                    }
                 }
             }
 
-            if (Time.timeScale != 1.0f)
-            {
-                
-                    timerAudioSource.Pause();
-            }
-            else
-            {
-                if (!timerAudioSource.isPlaying)
-                    timerAudioSource.Play();
-            }
-            
+            //아래 코드 용도가 승리/ 패배 조건에서 사운드 안 나게 하는거면 지워주세요
+            //if (Time.timeScale != 1.0f)
+            //{
+
+            //    timerAudioSource.Pause();
+            //}
+            //else
+            //{
+            //    if (!timerAudioSource.isPlaying)
+            //        timerAudioSource.Play();
+            //}
 
         }
         else
         {
-            if(isTimeOut == false)
+            if (isTimeOut == false)
             {
                 isTimeOut = true;
                 TimerSoundPlay("TimeOut");
-            } 
+            }
             manager.GameOver();
             reviveBtn.interactable = false;
         }

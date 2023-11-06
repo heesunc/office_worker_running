@@ -38,10 +38,8 @@ public class Player : MonoBehaviour
 
     public void Jump()
     {
-        Debug.Log("함수 시행");
         if (!isJump)
         {
-            Debug.Log("is Jump 정상");
             isJump = true;
             int direction = getMove();
             playerSound.SoundPlay("Jump");
@@ -141,8 +139,6 @@ public class Player : MonoBehaviour
         speedSet();
 
         step();
-
-        Debug.Log("swipe:" + Option.getController());
     }
 
     // Update is called once per frame
