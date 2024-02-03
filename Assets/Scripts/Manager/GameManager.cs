@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public bool isOver;
     public GameObject GameOver_UI;
     public GameObject GameClear_UI;
+    public GameObject LastClear_UI;
     private GameObject boss_UI;
     public GameObject smoke_UI;
     public GameObject moneyParent;
@@ -37,12 +38,14 @@ public class GameManager : MonoBehaviour
         keyCountText = keyCountUI.GetComponentInChildren<TextMeshProUGUI>(); //keyCountUI의 자식 keyCountText의 Text 컴포넌트 get
         anim = GameObject.FindGameObjectWithTag("PlayerPoint").GetComponent<Animator>();
 
-
         soundSource = GameObject.Find("PlayerSoundSource");
         if (soundSource != null)
             playerSound = soundSource.GetComponent<PlayerSound>();
 
         player = GameObject.FindGameObjectWithTag("PlayerPoint").GetComponent<Player>();
+
+        if (StageGenerate.stageIndex == 30) //마지막 스테이지
+            GameClear_UI = LastClear_UI;
     }
 
     void Update()
@@ -75,7 +78,6 @@ public class GameManager : MonoBehaviour
 
     private void GameOverTest()
     {
-
         Time.timeScale = 0;
         GameOver_UI.SetActive(true);
         InactiveUI(); //이미 활성화 된 UI들 제거

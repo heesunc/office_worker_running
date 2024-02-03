@@ -68,6 +68,8 @@ public class StageGenerate : MonoBehaviour
             matNum = 1;
         else if (stageIndex <= 30)
             matNum = 2;
+        
+        //스테이지에 따른 clear UI는 GameManager에서 변경했습니다.
 
         floorColor = Resources.LoadAll<Material>("Materials/Floor" + matNum);
         GameObject.FindWithTag("Player").GetComponentInChildren<SkinnedMeshRenderer>().material = playerBody[matNum];
@@ -187,7 +189,6 @@ public class StageGenerate : MonoBehaviour
 
     public void CloseTutorial()
     {
-        
         tutorial[0].SetActive(false);
         SecUI.SetActive(true);
         secScript.StartSecond(); // 3�� ���� �ڷ�ƾ �Լ� ����
@@ -196,10 +197,5 @@ public class StageGenerate : MonoBehaviour
     void Start()
     {
        admobRewardAd = FindObjectOfType<AdmobRewardAd>();
-    }
-
-    void update()
-    {
-
     }
 }
