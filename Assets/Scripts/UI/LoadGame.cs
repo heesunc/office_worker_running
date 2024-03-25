@@ -42,7 +42,7 @@ public class LoadGame : MonoBehaviour
 
         Index = PlayerPrefs.GetInt("curIndex");
 
-        PlayerPrefs.SetInt("clearData", numberOfStage); // 올 클리어 설정
+        //PlayerPrefs.SetInt("clearData", numberOfStage); // 올 클리어 설정
     }
 
     public void Update()

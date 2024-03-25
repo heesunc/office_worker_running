@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   party: {fileID: 0}
   player: {fileID: 0}
-  dist: {x: 0, y: 0, z: 0}
+  camera: {fileID: 0}
 --- !u!65 &2141999123
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1776,6 +1776,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: d60c3166819f8eb4ba539c0b0f3e47fa, type: 2}
   cashParticle: {fileID: 0}
   cashRuleParticle: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &3339026223318983590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1803,12 +1804,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1843edf27a03914081fd2723d827986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doing: 0
   ns: 0
   timeCount: 0
   maxH: 0
   maxJumpDistance: 14
   anim: {fileID: 3339026223318983589}
+  isBomper: 0
 --- !u!1 &9099170927459185926
 GameObject:
   m_ObjectHideFlags: 0
